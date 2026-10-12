@@ -1334,6 +1334,104 @@ footer h2 {
   background: linear-gradient(90deg, #a9ddec, #ffe7a0, #719b72);
   box-shadow: 0 0 10px rgba(169, 221, 236, 0.45);
 }
+    /* Compact navigation — keep menu on one line */
+nav[aria-label="Main navigation"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 6px;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 8px 4px;
+  box-sizing: border-box;
+  scrollbar-width: none;
+}
+
+nav[aria-label="Main navigation"]::-webkit-scrollbar {
+  display: none;
+}
+
+nav[aria-label="Main navigation"] a {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  font-size: 12px;
+  padding: 8px 10px;
+  margin: 0;
+}
+
+/* Slightly larger navigation on wider screens */
+@media (min-width: 1200px) {
+  nav[aria-label="Main navigation"] a {
+    font-size: 13px;
+    padding: 9px 12px;
+  }
+}
+    /* Contact section */
+.contact-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.contact-intro {
+  max-width: 600px;
+  margin: 16px auto 30px;
+  line-height: 1.7;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.contact-card {
+  display: block;
+  padding: 24px 16px;
+  border-radius: 22px;
+  text-decoration: none;
+  color: inherit;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(127, 23, 23, 0.12);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow-wrap: anywhere;
+}
+
+.contact-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(127, 23, 23, 0.12);
+}
+
+.contact-icon {
+  display: block;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.contact-card h3 {
+  margin: 8px 0;
+  color: #7f1717;
+}
+
+.contact-card p {
+  margin: 0;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+@media (max-width: 650px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-card {
+    padding: 20px 16px;
+  }
+}
   </style>
 </head>
 
@@ -2103,6 +2201,43 @@ footer h2 {
         </div>
       </div>
     </section>
+    <!-- Contact Details -->
+<section id="contact" class="contact-section">
+  <div class="section-title">
+    Contact Us
+  </div>
+
+  <p class="contact-intro">
+    Have questions or want to place an order?
+    We'd love to hear from you!
+  </p>
+
+  <div class="contact-grid">
+
+    <a href="tel:068430043" class="contact-card">
+      <span class="contact-icon">☎</span>
+      <h3>Call Us</h3>
+      <p>068 430 043</p>
+    </a>
+
+    <a href="https://wa.me/2768430043"
+       class="contact-card"
+       target="_blank"
+       rel="noopener noreferrer">
+      <span class="contact-icon">💬</span>
+      <h3>WhatsApp</h3>
+      <p>Chat with us</p>
+    </a>
+
+    <a href="mailto:sense.ational26@gmail.com"
+       class="contact-card">
+      <span class="contact-icon">✉</span>
+      <h3>Email Us</h3>
+      <p>sense.ational26@gmail.com</p>
+    </a>
+
+  </div>
+</section>
 
     <!-- PAYMENT AND COLLECTION -->
 
