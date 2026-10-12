@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Sense-ational Market Day</title>
+  <title>Sense-ational</title>
 
   <meta
     name="description"
@@ -473,6 +473,155 @@
         align-items: flex-start;
       }
     }
+    /* ==========================================
+   SENSE-ATIONAL — TINTED LIQUID GLASS
+   ========================================== */
+
+:root {
+  --glass-red: rgba(198, 40, 40, 0.12);
+  --glass-red-strong: rgba(198, 40, 40, 0.22);
+
+  --glass-green: rgba(100, 135, 103, 0.14);
+  --glass-green-strong: rgba(100, 135, 103, 0.24);
+
+  --glass-yellow: rgba(255, 242, 178, 0.55);
+
+  --glass-border: rgba(255, 255, 255, 0.7);
+  --glass-highlight: rgba(255, 255, 255, 0.55);
+}
+
+/* Shared glass appearance */
+.glass,
+button,
+.btn,
+select,
+input,
+textarea {
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+
+  border: 1px solid var(--glass-border);
+
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    0 8px 24px rgba(48, 38, 56, 0.08);
+
+  transition:
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+/* Green-tinted glass navigation */
+nav a {
+  color: var(--green);
+  border-radius: 999px;
+  padding: 10px 14px;
+  transition: background 0.25s ease, box-shadow 0.25s ease;
+}
+
+nav a:hover,
+nav a:focus-visible {
+  background: var(--glass-green);
+  box-shadow: inset 0 1px 0 var(--glass-highlight);
+}
+
+/* Red-tinted glass buttons */
+button,
+.btn {
+  background: linear-gradient(
+    135deg,
+    rgba(198, 40, 40, 0.88),
+    rgba(142, 23, 23, 0.94)
+  );
+
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+button:hover,
+.btn:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(220, 65, 65, 0.96),
+    rgba(142, 23, 23, 0.98)
+  );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    0 10px 28px rgba(198, 40, 40, 0.2);
+
+  transform: translateY(-1px);
+}
+
+/* Frosted glass cards */
+.stall-card,
+.card {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.78),
+    rgba(255, 242, 178, 0.30)
+  );
+
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 24px;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    0 12px 32px rgba(48, 38, 56, 0.07);
+}
+
+/* Green glass for navigation-style options */
+.glass-green {
+  background: var(--glass-green);
+  border: 1px solid rgba(100, 135, 103, 0.28);
+}
+
+/* Red glass for important features */
+.glass-red {
+  background: var(--glass-red);
+  border: 1px solid rgba(198, 40, 40, 0.25);
+}
+
+/* Soft yellow glass for highlights */
+.glass-yellow {
+  background: var(--glass-yellow);
+  border: 1px solid rgba(230, 190, 70, 0.3);
+}
+
+/* Frosted form controls */
+input,
+select,
+textarea {
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--dark);
+  border: 1px solid rgba(100, 135, 103, 0.35);
+  border-radius: 14px;
+  padding: 12px 14px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid rgba(100, 135, 103, 0.4);
+  outline-offset: 2px;
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
   </style>
 </head>
 
