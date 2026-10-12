@@ -1239,6 +1239,37 @@
         transition-duration: 0.01ms !important;
       }
     }
+    /* Navigation ribbon layout */
+nav[aria-label="Main navigation"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+}
+
+nav[aria-label="Main navigation"] a {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+nav[aria-label="Main navigation"] a svg {
+  display: block;
+  flex: 0 0 auto;
+}
+
+/* Phone layout */
+@media (max-width: 600px) {
+  nav[aria-label="Main navigation"] {
+    gap: 8px 10px;
+    padding: 10px 12px;
+  }
+
+  nav[aria-label="Main navigation"] a {
+    font-size: 0.9rem;
+  }
+}
   </style>
 </head>
 
