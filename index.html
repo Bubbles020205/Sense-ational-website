@@ -1311,6 +1311,29 @@ button:hover {
     inset 0 1px 0 rgba(255, 255, 255, 0.95),
     0 0 20px rgba(127, 23, 23, 0.20);
 }
+    /* Dark-red heading treatment */
+.hero h1,
+.section-title,
+.about-card h3,
+.stall-card h3,
+.promo-card h2,
+.order-card h3,
+footer h2 {
+  color: #7f1717;
+  text-shadow: 0 2px 12px rgba(127, 23, 23, 0.14);
+}
+
+/* Elegant accent line below main section headings */
+.section-title::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 3px;
+  margin: 14px auto 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #a9ddec, #ffe7a0, #719b72);
+  box-shadow: 0 0 10px rgba(169, 221, 236, 0.45);
+}
   </style>
 </head>
 
