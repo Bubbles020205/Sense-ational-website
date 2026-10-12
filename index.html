@@ -3,765 +3,1376 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#176b45">
-  <title>Sense-ational | Awaken Your Senses</title>
+
+  <title>Sense-ational Market Day</title>
+
+  <meta
+    name="description"
+    content="Explore the five senses at Sense-ational Market Day! Shop our sensory stalls, preorder your favourites, and earn a free Tea Bomb."
+  >
+
   <style>
     :root {
-      --green: #176b45;
-      --dark-green: #104b32;
-      --cream: #fffaf0;
-      --yellow: #ffdc70;
-      --red: #e75b52;
-      --blue: #5298d5;
-      --text: #24332b;
+      --purple: #673ab7;
+      --dark-purple: #422078;
+      --pink: #f7c8dc;
+      --light-pink: #fff2f7;
+      --cream: #fffaf1;
+      --green: #648767;
+      --dark: #302638;
       --white: #ffffff;
+      --shadow: 0 5px 20px rgba(48, 38, 56, 0.09);
     }
+
     * {
       box-sizing: border-box;
       scroll-behavior: smooth;
     }
+
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       background: var(--cream);
-      color: var(--text);
-      line-height: 1.6;
+      color: var(--dark);
+      line-height: 1.65;
     }
+
     a {
-      color: inherit;
+      color: var(--purple);
     }
-    header {
-      background: var(--white);
-      padding: 12px 5%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-      border-bottom: 3px solid var(--green);
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
     }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 1.3rem;
-      font-weight: 900;
-      color: var(--green);
-    }
-    .brand img {
-      width: 76px;
-      height: 76px;
-      object-fit: contain;
-    }
-    nav {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-    nav a {
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: bold;
-    }
-    nav a:hover {
-      color: var(--red);
-    }
-    .hero {
-      background: linear-gradient(135deg, #176b45, #328b62);
-      color: white;
-      text-align: center;
-      padding: 75px 20px;
-    }
-    .hero h1 {
-      font-size: clamp(2.2rem, 7vw, 4.5rem);
-      margin: 0 auto 16px;
-      line-height: 1.1;
-      max-width: 900px;
-    }
-    .hero p {
-      max-width: 680px;
-      margin: 20px auto;
-      font-size: 1.1rem;
-    }
+
+    button,
     .button {
       display: inline-block;
-      padding: 13px 22px;
-      border-radius: 30px;
-      background: var(--yellow);
-      color: var(--text);
-      text-decoration: none;
       border: none;
+      border-radius: 30px;
+      background: var(--purple);
+      color: var(--white);
+      padding: 12px 22px;
       font-weight: bold;
+      text-decoration: none;
       cursor: pointer;
-      margin: 6px 4px;
-      font-size: 0.95rem;
+      transition: 0.2s ease;
     }
+
+    button:hover,
     .button:hover {
+      background: var(--dark-purple);
       transform: translateY(-2px);
-      filter: brightness(0.97);
     }
-    .button.green {
-      background: var(--green);
-      color: white;
+
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 3px solid var(--green);
+      outline-offset: 3px;
     }
-    .button.red {
-      background: var(--red);
-      color: white;
-    }
-    section {
-      padding: 55px 6%;
-      max-width: 1200px;
+
+    .container {
+      width: min(1100px, 92%);
       margin: auto;
     }
-    .section-heading {
-      text-align: center;
-      margin-bottom: 30px;
+
+    header {
+      background: var(--white);
+      box-shadow: var(--shadow);
+      position: relative;
+      z-index: 5;
     }
-    .section-heading h2 {
-      font-size: clamp(1.8rem, 5vw, 2.7rem);
-      color: var(--green);
-      margin-bottom: 8px;
-    }
-    .promo {
-      max-width: none;
-      background: var(--yellow);
-      text-align: center;
-      padding: 45px 6%;
-    }
-    .promo h2 {
-      font-size: clamp(2rem, 6vw, 3.3rem);
-      margin: 0 0 12px;
-    }
-    .promo-total {
-      display: inline-block;
-      background: var(--green);
-      color: white;
-      font-size: 2.1rem;
-      font-weight: 900;
-      padding: 10px 28px;
-      border-radius: 18px;
-      margin: 15px 0;
-    }
-    .stall-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr));
-      gap: 22px;
-    }
-    .stall-card {
-      background: white;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 5px 18px #0000000d;
-      border: 1px solid #e7eadf;
-    }
-    .stall-card details {
-      padding: 0 20px 20px;
-    }
-    .stall-card summary {
-      cursor: pointer;
-      list-style: none;
-      padding: 18px 0 12px;
-      font-size: 1.1rem;
-      font-weight: bold;
-      color: var(--green);
-    }
-    .stall-card summary::-webkit-details-marker {
-      display: none;
-    }
-    .stall-card summary::after {
-      content: "+";
-      float: right;
-      font-size: 1.3rem;
-    }
-    .stall-card details[open] summary::after {
-      content: "−";
-    }
-    .stall-banner {
-      text-align: center;
-      padding: 25px 15px;
-      font-size: 3rem;
-    }
-    .touch-banner { background: #f8ded9; }
-    .taste-banner { background: #fff0b6; }
-    .smell-banner { background: #d9f0df; }
-    .sight-banner { background: #dceafa; }
-    .sound-banner { background: #e8def7; }
-    .product {
-      padding: 12px 0;
-      border-bottom: 1px solid #eee;
-    }
-    .product:last-child {
-      border-bottom: none;
-    }
-    .product strong {
-      display: block;
-    }
-    .price {
-      color: var(--green);
-      font-weight: 900;
-    }
-    .product select,
-    .product input[type="number"] {
-      width: 100%;
-      padding: 10px;
-      margin-top: 8px;
-      border: 1px solid #ccd5cd;
-      border-radius: 8px;
-      background: white;
-      font-size: 1rem;
-    }
-    .product .button {
-      width: 100%;
-      margin: 10px 0 0;
-    }
-    .game-note {
-      background: #fff5d7;
-      padding: 12px;
-      border-radius: 10px;
-      font-size: 0.9rem;
-    }
-    .tea-bomb {
-      background: #e3f3e7;
-      border-radius: 20px;
-      padding: 28px;
-    }
-    .tea-bomb h3 {
-      color: var(--green);
-      font-size: 1.6rem;
-    }
-    .about {
-      background: white;
-      border-radius: 20px;
-      padding: 28px;
-    }
-    .cart {
-      background: white;
-      border-radius: 20px;
-      padding: 25px;
-      box-shadow: 0 5px 18px #0000000d;
-    }
-    .cart-item {
+
+    .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 20px;
+      padding: 15px 0;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      display: block;
+      width: 110px;
+      max-height: 100px;
+      object-fit: contain;
+    }
+
+    nav {
+      display: flex;
       gap: 12px;
-      padding: 12px 0;
-      border-bottom: 1px solid #eee;
+      flex-wrap: wrap;
+      align-items: center;
     }
-    .remove-button {
-      border: none;
-      background: #fbe1de;
-      color: #9b2f2a;
-      padding: 7px 10px;
-      border-radius: 8px;
-      cursor: pointer;
+
+    nav a {
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.92rem;
     }
-    .cart-total {
+
+    nav a:hover {
+      color: var(--green);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 75px 20px;
+      background: linear-gradient(
+        135deg,
+        var(--light-pink),
+        #f0e8ff,
+        #eff7ed
+      );
+    }
+
+    .hero h1 {
+      max-width: 850px;
+      margin: 0 auto 15px;
+      color: var(--dark-purple);
+      font-size: clamp(2.2rem, 6vw, 4.2rem);
+      line-height: 1.15;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: 15px auto 25px;
+      font-size: 1.1rem;
+    }
+
+    .hero .tagline {
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--green);
+      font-size: 0.9rem;
+    }
+
+    section {
+      padding: 65px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin: 0 0 12px;
+      color: var(--dark-purple);
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+    }
+
+    .section-intro {
+      max-width: 750px;
+      text-align: center;
+      margin: 0 auto 35px;
+    }
+
+    .about-card,
+    .promo-card,
+    .order-card,
+    .info-card {
+      background: var(--white);
+      padding: 28px;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .about-card {
+      max-width: 850px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .stalls-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .stall-card {
+      border-radius: 20px;
+      padding: 24px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+      border-top: 6px solid var(--pink);
+      overflow-wrap: anywhere;
+    }
+
+    .stall-card:nth-child(2) {
+      border-top-color: #e8bf73;
+    }
+
+    .stall-card:nth-child(3) {
+      border-top-color: #a5c5a3;
+    }
+
+    .stall-card:nth-child(4) {
+      border-top-color: #a8c8e8;
+    }
+
+    .stall-card:nth-child(5) {
+      border-top-color: #c3a7e5;
+    }
+
+    .stall-icon {
+      font-size: 2.4rem;
+    }
+
+    .stall-card h3 {
+      margin: 5px 0;
       font-size: 1.5rem;
+      color: var(--dark-purple);
+    }
+
+    .price {
+      color: var(--green);
+      font-weight: bold;
+      font-size: 1.3rem;
+    }
+
+    details {
+      margin-top: 18px;
+      border-radius: 12px;
+      background: var(--light-pink);
+      padding: 12px 15px;
+    }
+
+    details summary {
+      cursor: pointer;
+      font-weight: bold;
+      color: var(--dark-purple);
+    }
+
+    details[open] summary {
+      margin-bottom: 12px;
+    }
+
+    .promo-section {
+      background: linear-gradient(135deg, #673ab7, #422078);
+      color: var(--white);
+    }
+
+    .promo-card {
+      max-width: 850px;
+      margin: auto;
+      color: var(--dark);
+      text-align: center;
+    }
+
+    .promo-card h2 {
+      color: var(--dark-purple);
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.2;
+    }
+
+    .promo-price {
+      font-size: clamp(3rem, 8vw, 5rem);
       font-weight: 900;
       color: var(--green);
-      margin: 20px 0;
+      margin: 10px 0;
     }
-    .form-field {
-      margin: 15px 0;
+
+    .price-breakdown {
+      max-width: 430px;
+      margin: 20px auto;
+      text-align: left;
     }
-    .form-field label {
-      display: block;
+
+    .price-breakdown li {
+      margin: 7px 0;
+    }
+
+    .notice {
+      padding: 15px;
+      border-radius: 12px;
+      background: #fff2cc;
+      color: #59451b;
+      margin-top: 20px;
+      font-size: 0.94rem;
+    }
+
+    .tea-bomb {
+      margin-top: 25px;
+      padding: 20px;
+      border-radius: 15px;
+      background: var(--light-pink);
+    }
+
+    .order-section {
+      background: #f0e8ff;
+    }
+
+    .order-card {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
       font-weight: bold;
-      margin-bottom: 6px;
     }
-    .form-field input,
-    .form-field textarea {
+
+    input,
+    select,
+    textarea {
       width: 100%;
       padding: 12px;
-      border: 1px solid #ccd5cd;
-      border-radius: 9px;
-      font-size: 1rem;
+      border: 1px solid #d4c9dc;
+      border-radius: 10px;
+      background: var(--white);
+      color: var(--dark);
     }
-    .form-field textarea {
-      min-height: 90px;
-      resize: vertical;
+
+    .product-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid #eadff0;
+      padding: 15px 0;
     }
-    .notice {
+
+    .product-row:last-child {
+      border-bottom: none;
+    }
+
+    .product-description {
+      flex: 1;
+    }
+
+    .product-description strong {
+      display: block;
+    }
+
+    .product-description small {
+      color: #665b6b;
+    }
+
+    .quantity {
+      width: 85px;
+      flex-shrink: 0;
+    }
+
+    .order-total {
+      margin: 20px 0;
+      padding: 18px;
+      border-radius: 12px;
+      background: var(--light-pink);
+      font-size: 1.35rem;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .checkbox-row input {
+      width: auto;
+      margin-top: 7px;
+    }
+
+    .checkbox-row label {
+      font-weight: normal;
+    }
+
+    .form-message {
+      margin-top: 15px;
+      font-weight: bold;
+      overflow-wrap: anywhere;
+    }
+
+    .small-print {
+      color: #655a69;
       font-size: 0.9rem;
-      color: #526157;
     }
-    .stamp-card-link {
-      background: var(--green);
-      color: white;
-      text-align: center;
-      padding: 35px 20px;
-      border-radius: 20px;
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
     }
-    .stamp-card-link h2 {
-      font-size: 2rem;
+
+    .info-card h3 {
+      color: var(--dark-purple);
       margin-top: 0;
     }
+
     footer {
-      background: var(--dark-green);
-      color: white;
+      padding: 35px 20px;
       text-align: center;
-      padding: 30px 15px;
+      background: var(--dark);
+      color: var(--white);
     }
-    @media (max-width: 600px) {
-      header {
+
+    footer a {
+      color: var(--pink);
+    }
+
+    @media (max-width: 650px) {
+      .header-inner {
         justify-content: center;
-        text-align: center;
       }
+
       nav {
         justify-content: center;
-        gap: 12px;
       }
+
+      nav a {
+        font-size: 0.85rem;
+      }
+
       .hero {
         padding: 55px 18px;
       }
-      section {
-        padding: 40px 18px;
+
+      .stalls-grid,
+      .form-grid,
+      .info-grid {
+        grid-template-columns: 1fr;
       }
-      .promo {
-        padding: 38px 18px;
+
+      .form-group.full {
+        grid-column: auto;
+      }
+
+      .stall-card,
+      .about-card,
+      .promo-card,
+      .order-card,
+      .info-card {
+        padding: 20px;
+      }
+
+      .product-row {
+        align-items: flex-start;
       }
     }
   </style>
 </head>
+
 <body>
+
+  <!-- HEADER -->
   <header>
-    <a class="brand" href="#home" style="text-decoration:none">
-      <!-- Replace the image path below with your actual logo filename. -->
-      <img src="logo.png" alt="Sense-ational logo"
-           onerror="this.style.display='none'">
-      <span>SENSE-ATIONAL</span>
-    </a>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#stalls">Our Stalls</a>
-      <a href="#games">Games</a>
-      <a href="#preorder">Pre-Order</a>
-      <a href="#promotion">Promotion</a>
-    </nav>
+    <div class="container header-inner">
+
+      <a href="#home" aria-label="Sense-ational home">
+        <img
+          class="logo"
+          src="Sensational-%20logo.png"
+          alt="Sense-ational Market Day logo"
+        >
+      </a>
+
+      <nav aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#about">About Us</a>
+        <a href="#stalls">Our Stalls</a>
+        <a href="#promotion">R100 Special</a>
+        <a href="#preorder">Preorder</a>
+        <a
+          href="https://bubbles020205.github.io/Sense-ational-card/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Digital Stamp Card</a>
+      </nav>
+
+    </div>
   </header>
+
+
+  <!-- HERO -->
   <main>
     <section class="hero" id="home">
-      <h1>Five Stalls.<br>Five Senses.<br>Only R100!</h1>
-      <p>
-        Discover the world through touch, taste, smell, sight and sound.
-        Create, explore, challenge yourself and enjoy a unique sensory
-        experience at Sense-ational Market Day!
-      </p>
-      <a class="button" href="#stalls">Explore Our Stalls</a>
-      <a class="button" href="#preorder">Pre-Order Products</a>
-      <a class="button" href="#promotion">Claim Your Reward</a>
+      <div class="container">
+
+        <p class="tagline">Explore • Experience • Enjoy</p>
+
+        <h1>Sense-ational Market Day</h1>
+
+        <p>
+          Five exciting stalls. Five incredible senses.
+          One unforgettable experience!
+        </p>
+
+        <p>
+          Discover new flavours, explore amazing scents, test your
+          memory, challenge your coordination and treat yourself
+          to something special.
+        </p>
+
+        <a class="button" href="#stalls">Explore Our Stalls</a>
+
+        <a class="button" href="#preorder">Preorder &amp; Collect</a>
+
+      </div>
     </section>
+
+
+    <!-- ABOUT US -->
     <section id="about">
-      <div class="section-heading">
-        <h2>🌿 About Sense-ational</h2>
-        <p>More than a market. It's an experience!</p>
-      </div>
-      <div class="about">
-        <p>
-          Welcome to Sense-ational, where the five senses come together
-          for a fun, interactive and memorable Market Day experience.
+      <div class="container">
+
+        <h2 class="section-title">About Us</h2>
+
+        <p class="section-intro">
+          Get to know the people and passion behind Sense-ational
+          Market Day.
         </p>
-        <p>
-          Discover handmade creations, explore herbal flavours,
-          experience aromatic oils and challenge your senses through
-          exciting games.
-        </p>
-        <p>
-          Our goal is to make learning about the senses engaging,
-          creative and enjoyable while bringing people together.
-        </p>
-      </div>
-    </section>
-    <section id="stalls">
-      <div class="section-heading">
-        <h2>Explore Our Five Stalls</h2>
-        <p>Tap each stall to discover what's available.</p>
-      </div>
-      <div class="stall-grid">
-        <!-- TOUCH -->
-        <article class="stall-card">
-          <div class="stall-banner touch-banner">✋</div>
-          <details open>
-            <summary>Touch — DIY Body Scrub</summary>
-            <p>
-              Create your own 100 ml DIY body scrub using your favourite
-              available ingredient.
-            </p>
-            <div class="product">
-              <strong>Build Your Own Body Scrub</strong>
-              <span class="price">R35.00</span>
-              <label for="scrub-choice">Choose your ingredient:</label>
-              <select id="scrub-choice">
-                <option>Vanilla</option>
-                <option>Cinnamon</option>
-                <option>Lavender</option>
-                <option>Peppermint</option>
-                <option>Hibiscus</option>
-              </select>
-              <button class="button green"
-                onclick="addProduct('DIY Body Scrub — ' + document.getElementById('scrub-choice').value,35)">
-                Add to Pre-Order
-              </button>
-            </div>
-          </details>
-        </article>
-        <!-- TASTE -->
-        <article class="stall-card">
-          <div class="stall-banner taste-banner">👅</div>
-          <details open>
-            <summary>Taste — Herbal Iced Tea</summary>
-            <p>
-              Explore our selection of herbal iced tea flavours.
-            </p>
-            <div class="product">
-              <strong>Herbal Iced Tea</strong>
-              <span class="price">R25.00 each</span>
-              <label for="tea-choice">Choose your flavour:</label>
-              <select id="tea-choice">
-                <option>Lemon</option>
-                <option>Hibiscus</option>
-                <option>Camomile</option>
-                <option>Mint</option>
-                <option>Vanilla</option>
-                <option>Cinnamon</option>
-              </select>
-              <button class="button green"
-                onclick="addProduct('Herbal Iced Tea — ' + document.getElementById('tea-choice').value,25)">
-                Add to Pre-Order
-              </button>
-            </div>
-          </details>
-        </article>
-        <!-- SMELL -->
-        <article class="stall-card">
-          <div class="stall-banner smell-banner">👃</div>
-          <details open>
-            <summary>Smell — Essential Oil Bracelets</summary>
-            <p>
-              Choose an aromatic oil to personalise your bracelet.
-            </p>
-            <div class="product">
-              <strong>Essential Oil Bracelet</strong>
-              <span class="price">R20.00 each</span>
-              <label for="oil-choice">Choose your oil:</label>
-              <select id="oil-choice">
-                <option>Lavender</option>
-                <option>Cinnamon</option>
-                <option>Moringa</option>
-                <option>Eucalyptus</option>
-                <option>Tea Tree</option>
-                <option>Orange</option>
-                <option>Peppermint</option>
-              </select>
-              <button class="button green"
-                onclick="addProduct('Essential Oil Bracelet — ' + document.getElementById('oil-choice').value,20)">
-                Add to Pre-Order
-              </button>
-            </div>
-          </details>
-        </article>
-        <!-- SIGHT -->
-        <article class="stall-card" id="games">
-          <div class="stall-banner sight-banner">👁️</div>
-          <details>
-            <summary>Sight — Herb Memory Game</summary>
-            <p>
-              Think you've got a sharp eye and an excellent memory?
-              Put yourself to the test!
-            </p>
-            <h3>How to Play</h3>
-            <ol>
-              <li>Study 10–15 herb cards for 20 seconds.</li>
-              <li>One card is removed.</li>
-              <li>Identify the missing card to progress.</li>
-              <li>Each successful round removes more cards.</li>
-              <li>Earn 5 points for every round progressed.</li>
-            </ol>
-            <p>
-              Your name, contact number and score will be recorded.
-              The highest-scoring player at the end of Market Day wins
-              a big prize!
-            </p>
-            <div class="game-note">
-              <strong>Entry: R10 per attempt.</strong><br>
-              Enter as many times as you like to try to improve your score.
-              Game entries cannot be pre-ordered.
-            </div>
-          </details>
-        </article>
-        <!-- SOUND -->
-        <article class="stall-card">
-          <div class="stall-banner sound-banner">🔊</div>
-          <details>
-            <summary>Sound — Wire Buzzing Challenge</summary>
-            <p>
-              Steady hands, sharp concentration and nerves of steel.
-              Can you beat the buzzer?
-            </p>
-            <h3>Round 1</h3>
-            <ul>
-              <li>Complete the wire course in 30 seconds.</li>
-              <li>Start with 15 points.</li>
-              <li>Lose 5 points for each buzz.</li>
-            </ul>
-            <h3>Round 2</h3>
-            <ul>
-              <li>Advance only if you finish Round 1 without buzzing.</li>
-              <li>Complete the course in 20 seconds.</li>
-              <li>Start with another 15 points and lose 5 per buzz.</li>
-            </ul>
-            <h3>Round 3</h3>
-            <ul>
-              <li>Advance only if you finish Round 2 without buzzing.</li>
-              <li>Complete the course in 10 seconds.</li>
-              <li>Start with another 15 points and lose 5 per buzz.</li>
-            </ul>
-            <p>
-              Your total score will be recorded with your name and
-              contact number. The highest-scoring player wins a big prize!
-            </p>
-            <div class="game-note">
-              <strong>Entry: R10 per attempt.</strong><br>
-              Enter as many times as you like. Game entries cannot
-              be pre-ordered.
-            </div>
-          </details>
-        </article>
-      </div>
-    </section>
-    <!-- PROMOTION -->
-    <section class="promo" id="promotion">
-      <h2>🎁 FIVE STALLS. FIVE SENSES. ONLY R100!</h2>
-      <p>
-        Experience everything Sense-ational has to offer!
-        Make a qualifying purchase at all five stalls for a minimum
-        combined spend of just R100.
-      </p>
-      <div class="promo-total">R100 TOTAL</div>
-      <p>
-        ✋ Touch: R35<br>
-        👅 Taste: R25<br>
-        👃 Smell: R20<br>
-        👁️ Sight: R10<br>
-        🔊 Sound: R10
-      </p>
-      <p><strong>R35 + R25 + R20 + R10 + R10 = R100!</strong></p>
-      <p>
-        Make a purchase at every stall, complete your digital stamp card
-        with the help of our team members, and receive a FREE Tea Bomb!
-      </p>
-      <a class="button" href="#stamp-card">Start Your Stamp Card</a>
-    </section>
-    <!-- TEA BOMB -->
-    <section id="tea-bomb">
-      <div class="section-heading">
-        <h2>🫖 Meet the Tea Bomb</h2>
-        <p>A little burst of tea magic!</p>
-      </div>
-      <div class="tea-bomb">
-        <h3>What is a Tea Bomb?</h3>
-        <p>
-          A Tea Bomb is a hard-candy shell containing loose-leaf tea,
-          herbs or dried edible flowers. When added to hot water, the
-          shell melts or cracks open, releasing its contents and
-          lightly sweetening your drink.
-        </p>
-        <h3>How Does It Work?</h3>
-        <ol>
-          <li>Drop the Tea Bomb into a mug or teapot.</li>
-          <li>Pour hot or boiling water over it.</li>
-          <li>Watch the shell dissolve or crack open.</li>
-          <li>Allow the tea and botanicals to infuse, then enjoy!</li>
-        </ol>
-        <p>
-          Visit all five stalls, make qualifying purchases totalling at
-          least R100, and complete your stamp card to claim yours!
-        </p>
-      </div>
-    </section>
-    <!-- STAMP CARD -->
-    <section id="stamp-card">
-      <div class="stamp-card-link">
-        <h2>🌿 Collect All Five Stamps!</h2>
-        <p>
-          Visit each stall and ask a team member to unlock your stamp
-          using the staff password. Complete all five stalls to
-          finish your digital card!
-        </p>
-        <!-- Replace # with your actual stamp-card website URL. -->
-        <a class="button" id="stamp-link" href="#">
-          Open My Digital Stamp Card
-        </a>
-        <p class="notice" style="color:white">
-          Remember: your stamp card records completed stalls.
-          A qualifying purchase at every stall is required for the
-          R100 promotion.
-        </p>
-      </div>
-    </section>
-    <!-- PRE-ORDER -->
-    <section id="preorder">
-      <div class="section-heading">
-        <h2>🛒 Pre-Order & Collect</h2>
-        <p>Choose your products and prepare your order for Market Day.</p>
-      </div>
-      <div class="cart">
-        <h3>Your Basket</h3>
-        <div id="cart-items">
-          <p>Your basket is empty. Add a product from one of our stalls!</p>
-        </div>
-        <div class="cart-total">
-          Total: <span id="cart-total">R0.00</span>
-        </div>
-        <form id="order-form">
-          <div class="form-field">
-            <label for="customer-name">Full name *</label>
-            <input id="customer-name" name="name" required>
-          </div>
-          <div class="form-field">
-            <label for="customer-phone">Cellphone number *</label>
-            <input id="customer-phone" name="phone"
-                   type="tel" required>
-          </div>
-          <div class="form-field">
-            <label for="customer-email">Email address (optional)</label>
-            <input id="customer-email" name="email" type="email">
-          </div>
-          <div class="form-field">
-            <label for="customer-notes">Order notes (optional)</label>
-            <textarea id="customer-notes" name="notes"
-              placeholder="Any additional details about your order?"></textarea>
-          </div>
-          <button class="button green" type="submit">
-            Prepare My Order
-          </button>
-          <p class="notice">
-            This first version prepares your order details on your device.
-            It does not send your order to the organisers or verify EFT
-            payments until a submission service is connected.
+
+        <div class="about-card">
+          <h3>More Than Just a Market</h3>
+
+          <p>
+            Sense-ational Market Day is an interactive experience
+            built around the five human senses: touch, taste, smell,
+            sight and sound.
           </p>
-        </form>
-        <div id="order-result" aria-live="polite"></div>
+
+          <p>
+            Each stall offers a different activity or product,
+            giving visitors the opportunity to explore, participate
+            and have fun while learning about the world around them.
+          </p>
+
+          <p>
+            Whether you're creating your own body scrub, tasting
+            herbal iced tea or taking on one of our games, there's
+            something to discover at every stall.
+          </p>
+
+          <p>
+            Visit all five stalls, complete your digital stamp card
+            and qualify for our special Tea Bomb promotion!
+          </p>
+        </div>
+
       </div>
     </section>
+
+
+    <!-- FIVE STALLS -->
+    <section id="stalls">
+      <div class="container">
+
+        <h2 class="section-title">Explore Our Five Stalls</h2>
+
+        <p class="section-intro">
+          Each stall brings one of your senses to life.
+          Tap each dropdown to discover the products, activities
+          and prices.
+        </p>
+
+        <div class="stalls-grid">
+
+          <!-- TOUCH -->
+          <article class="stall-card">
+            <div class="stall-icon" aria-hidden="true">🤲</div>
+
+            <h3>1. Touch</h3>
+
+            <p>
+              Get hands-on and create your own sensory experience
+              with a personalised body scrub.
+            </p>
+
+            <p class="price">R35 per scrub</p>
+
+            <details>
+              <summary>Discover the Touch Stall</summary>
+
+              <h4>DIY Body Scrub</h4>
+
+              <p>
+                Create a 100 ml body scrub and choose your preferred
+                scent from our available options.
+              </p>
+
+              <p><strong>Available scent options:</strong></p>
+
+              <ul>
+                <li>Vanilla</li>
+                <li>Cinnamon</li>
+                <li>Lavender</li>
+                <li>Peppermint</li>
+                <li>Hibiscus</li>
+              </ul>
+
+              <p>
+                <strong>Price:</strong> R35
+              </p>
+
+              <p>
+                <strong>Preorder:</strong> Available.
+              </p>
+
+              <p class="small-print">
+                Follow the stall team's instructions and check
+                ingredient suitability before using your scrub.
+              </p>
+            </details>
+          </article>
+
+
+          <!-- TASTE -->
+          <article class="stall-card">
+            <div class="stall-icon" aria-hidden="true">🍵</div>
+
+            <h3>2. Taste</h3>
+
+            <p>
+              Explore herbal flavours with a refreshing iced tea
+              prepared for your taste buds.
+            </p>
+
+            <p class="price">R25 per iced tea</p>
+
+            <details>
+              <summary>Discover the Taste Stall</summary>
+
+              <h4>Herbal Iced Tea</h4>
+
+              <p>
+                Discover a refreshing drink inspired by the
+                flavours and aromas of herbs and botanicals.
+              </p>
+
+              <p><strong>Available flavour options:</strong></p>
+
+              <ul>
+                <li>Lemon</li>
+                <li>Hibiscus</li>
+                <li>Camomile</li>
+                <li>Mint</li>
+                <li>Vanilla</li>
+                <li>Cinnamon</li>
+              </ul>
+
+              <p>
+                <strong>Price:</strong> R25
+              </p>
+
+              <p>
+                <strong>Preorder:</strong> Available.
+              </p>
+
+              <p class="small-print">
+                Please ask the stall team about ingredients and
+                possible allergens before purchasing.
+              </p>
+            </details>
+          </article>
+
+
+          <!-- SMELL -->
+          <article class="stall-card">
+            <div class="stall-icon" aria-hidden="true">🌿</div>
+
+            <h3>3. Smell</h3>
+
+            <p>
+              Discover different botanical aromas and create
+              a scented bracelet to take home.
+            </p>
+
+            <p class="price">R20 per bracelet</p>
+
+            <details>
+              <summary>Discover the Smell Stall</summary>
+
+              <h4>Essential Oil Bracelet</h4>
+
+              <p>
+                Explore a selection of scents and enjoy a
+                personalised aromatic accessory.
+              </p>
+
+              <p><strong>Available scent options:</strong></p>
+
+              <ul>
+                <li>Lavender</li>
+                <li>Cinnamon</li>
+                <li>Moringa</li>
+                <li>Eucalyptus</li>
+                <li>Tea Tree</li>
+                <li>Orange</li>
+                <li>Peppermint</li>
+              </ul>
+
+              <p>
+                <strong>Price:</strong> R20
+              </p>
+
+              <p>
+                <strong>Preorder:</strong> Available.
+              </p>
+
+              <p class="small-print">
+                Essential oils should be handled according to the
+                stall team's safety instructions.
+              </p>
+            </details>
+          </article>
+
+
+          <!-- SIGHT -->
+          <article class="stall-card">
+            <div class="stall-icon" aria-hidden="true">👀</div>
+
+            <h3>4. Sight</h3>
+
+            <p>
+              Put your observation skills and memory to the test
+              in our herb memory challenge.
+            </p>
+
+            <p class="price">R10 entry</p>
+
+            <details>
+              <summary>Discover the Sight Stall</summary>
+
+              <h4>Herb Memory Game</h4>
+
+              <ol>
+                <li>Study a selection of herb cards for 20 seconds.</li>
+                <li>One card will be removed.</li>
+                <li>Identify the missing card.</li>
+                <li>Correct answers allow you to progress.</li>
+                <li>Earn an additional five points for each successful round.</li>
+              </ol>
+
+              <p>
+                <strong>Entry:</strong> R10
+              </p>
+
+              <p>
+                The participant with the highest score at the end
+                of the day wins the main prize.
+              </p>
+
+              <p class="small-print">
+                Game entry must be purchased at the stall.
+                Game entries cannot be preordered through this website.
+              </p>
+            </details>
+          </article>
+
+
+          <!-- SOUND -->
+          <article class="stall-card">
+            <div class="stall-icon" aria-hidden="true">🔊</div>
+
+            <h3>5. Sound</h3>
+
+            <p>
+              Steady hands and concentration are essential in our
+              wire buzzing challenge.
+            </p>
+
+            <p class="price">R10 entry</p>
+
+            <details>
+              <summary>Discover the Sound Stall</summary>
+
+              <h4>Wire Buzzing Game</h4>
+
+              <p>
+                Navigate the wire challenge without triggering
+                a buzz and aim for the highest possible score.
+              </p>
+
+              <ul>
+                <li>
+                  <strong>Round 1:</strong>
+                  30 seconds, starting with 15 points.
+                </li>
+                <li>
+                  Each buzz costs five points.
+                </li>
+                <li>
+                  You progress to the next round only if you finish
+                  without buzzing.
+                </li>
+                <li>
+                  <strong>Round 2:</strong>
+                  20 seconds, with another 15 points available.
+                </li>
+                <li>
+                  <strong>Round 3:</strong>
+                  10 seconds, with another 15 points available.
+                </li>
+              </ul>
+
+              <p>
+                <strong>Entry:</strong> R10
+              </p>
+
+              <p>
+                The top scorer wins the prize.
+              </p>
+
+              <p class="small-print">
+                Game entry must be purchased at the stall.
+                Game entries cannot be preordered through this website.
+              </p>
+            </details>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- R100 PROMOTION -->
+    <section class="promo-section" id="promotion">
+      <div class="container">
+
+        <div class="promo-card">
+
+          <p class="tagline">The Ultimate Market Day Deal</p>
+
+          <h2>Five Stalls. Five Senses.</h2>
+
+          <div class="promo-price">Only R100!</div>
+
+          <p>
+            Visit every stall, make a qualifying purchase at each
+            stall, complete your digital stamp card and receive
+            a <strong>FREE Tea Bomb!</strong>
+          </p>
+
+          <h3>Your R100 Breakdown</h3>
+
+          <ul class="price-breakdown">
+            <li>🤲 Touch — DIY Body Scrub: <strong>R35</strong></li>
+            <li>🍵 Taste — Herbal Iced Tea: <strong>R25</strong></li>
+            <li>🌿 Smell — Essential Oil Bracelet: <strong>R20</strong></li>
+            <li>👀 Sight — Memory Game Entry: <strong>R10</strong></li>
+            <li>🔊 Sound — Wire Game Entry: <strong>R10</strong></li>
+            <li>
+              <strong>Total minimum spend: R100</strong>
+            </li>
+          </ul>
+
+          <div class="notice">
+            <strong>How to qualify:</strong>
+
+            <p>
+              Make a purchase at all five stalls with a combined
+              minimum spend of R100. Complete your digital stamp
+              card with assistance from the stall teams and follow
+              the team’s instructions to claim your free Tea Bomb.
+            </p>
+
+            <p>
+              The R100 total assumes you purchase the listed
+              R35 scrub, R25 iced tea, R20 bracelet and both R10
+              game entries. Other purchases may change your total.
+            </p>
+          </div>
+
+          <div class="tea-bomb">
+            <h3>🍬 What Is a Tea Bomb?</h3>
+
+            <p>
+              A Tea Bomb is a hard candy shell containing loose-leaf
+              tea, herbs and dried edible flowers. Place it in a mug
+              or teapot and add hot water. As the shell melts or
+              cracks, the contents are released into the water,
+              creating a colourful, aromatic tea that is lightly
+              sweetened by the shell.
+            </p>
+          </div>
+
+          <p>
+            <a
+              class="button"
+              href="https://bubbles020205.github.io/Sense-ational-card/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open My Digital Stamp Card
+            </a>
+          </p>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- PREORDER AND COLLECT -->
+    <section class="order-section" id="preorder">
+      <div class="container">
+
+        <h2 class="section-title">Preorder &amp; Collect</h2>
+
+        <p class="section-intro">
+          Want to plan your purchases in advance?
+          Select your products, enter your details and prepare
+          your preorder summary.
+        </p>
+
+        <div class="order-card">
+
+          <h3>Your Details</h3>
+
+          <form id="orderForm">
+
+            <div class="form-grid">
+
+              <div class="form-group">
+                <label for="customerName">Full name *</label>
+
+                <input
+                  id="customerName"
+                  name="customerName"
+                  type="text"
+                  autocomplete="name"
+                  required
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="customerPhone">Contact number *</label>
+
+                <input
+                  id="customerPhone"
+                  name="customerPhone"
+                  type="tel"
+                  autocomplete="tel"
+                  required
+                >
+              </div>
+
+              <div class="form-group full">
+                <label for="customerEmail">Email address (optional)</label>
+
+                <input
+                  id="customerEmail"
+                  name="customerEmail"
+                  type="email"
+                  autocomplete="email"
+                >
+              </div>
+
+            </div>
+
+            <h3>Select Your Products</h3>
+
+            <p class="small-print">
+              Select the quantity you would like to preorder.
+              Leave a quantity at zero if you do not want that product.
+              Game entries must be purchased at the event.
+            </p>
+
+
+            <!-- BODY SCRUB -->
+            <div class="product-row">
+              <div class="product-description">
+                <strong>DIY Body Scrub — R35</strong>
+                <small>100 ml body scrub</small>
+              </div>
+
+              <label>
+                <span class="small-print">Quantity</span>
+
+                <input
+                  class="quantity"
+                  type="number"
+                  id="scrubQty"
+                  min="0"
+                  max="50"
+                  value="0"
+                  aria-label="Body scrub quantity"
+                  data-name="DIY Body Scrub"
+                  data-price="35"
+                >
+              </label>
+            </div>
+
+
+            <!-- ICED TEA -->
+            <div class="product-row">
+              <div class="product-description">
+                <strong>Herbal Iced Tea — R25</strong>
+                <small>Refreshing herbal iced tea</small>
+              </div>
+
+              <label>
+                <span class="small-print">Quantity</span>
+
+                <input
+                  class="quantity"
+                  type="number"
+                  id="teaQty"
+                  min="0"
+                  max="50"
+                  value="0"
+                  aria-label="Herbal iced tea quantity"
+                  data-name="Herbal Iced Tea"
+                  data-price="25"
+                >
+              </label>
+            </div>
+
+
+            <!-- BRACELET -->
+            <div class="product-row">
+              <div class="product-description">
+                <strong>Essential Oil Bracelet — R20</strong>
+                <small>Scented bracelet</small>
+              </div>
+
+              <label>
+                <span class="small-print">Quantity</span>
+
+                <input
+                  class="quantity"
+                  type="number"
+                  id="braceletQty"
+                  min="0"
+                  max="50"
+                  value="0"
+                  aria-label="Essential oil bracelet quantity"
+                  data-name="Essential Oil Bracelet"
+                  data-price="20"
+                >
+              </label>
+            </div>
+
+
+            <div class="order-total">
+              <span>Order Total</span>
+              <span id="orderTotal">R0.00</span>
+            </div>
+
+            <div class="form-group">
+              <label for="collectionNotes">
+                Product preferences or collection notes (optional)
+              </label>
+
+              <textarea
+                id="collectionNotes"
+                name="collectionNotes"
+                rows="4"
+                placeholder="For example, your preferred scrub scent or iced tea flavour."
+              ></textarea>
+            </div>
+
+            <div class="checkbox-row">
+              <input
+                id="confirmOrder"
+                name="confirmOrder"
+                type="checkbox"
+                required
+              >
+
+              <label for="confirmOrder">
+                I confirm that my contact details are correct and
+                understand that this form prepares a preorder
+                summary. My order is not submitted to the organisers
+                until an official submission method has been connected
+                and the order has been acknowledged.
+              </label>
+            </div>
+
+            <button type="submit">
+              Prepare My Preorder
+            </button>
+
+            <p
+              id="orderMessage"
+              class="form-message"
+              role="status"
+              aria-live="polite"
+            ></p>
+
+            <div class="notice">
+              <strong>Important:</strong>
+
+              This website currently prepares a downloadable order
+              summary on your device. It does not automatically send
+              your order to the organisers or confirm stock.
+
+              EFT payment details and an online order-submission
+              service must be configured separately before this
+              form can accept confirmed orders.
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- PAYMENT AND COLLECTION -->
+    <section id="collection">
+      <div class="container">
+
+        <h2 class="section-title">Payment &amp; Collection</h2>
+
+        <p class="section-intro">
+          A few important things to know before placing your preorder.
+        </p>
+
+        <div class="info-grid">
+
+          <div class="info-card">
+            <h3>💳 EFT Payments</h3>
+
+            <p>
+              EFT payment instructions will be provided once the
+              organisers' verified banking details and payment
+              procedure have been added.
+            </p>
+
+            <p class="small-print">
+              Always verify payment details with the organisers
+              before making a transfer. Do not make a payment based
+              on unverified banking information.
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>🛍️ Preorder &amp; Collect</h3>
+
+            <p>
+              Preordering helps you plan your purchases ahead of
+              Market Day. Your collection arrangements, stock
+              availability and payment status must be confirmed
+              by the organisers.
+            </p>
+
+            <p class="small-print">
+              Please keep your preorder summary until your order
+              has been acknowledged.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
   </main>
+
+
+  <!-- FOOTER -->
   <footer>
-    <h2>SENSE-ATIONAL 🌿</h2>
-    <p>Five Stalls. Five Senses. One Unforgettable Experience.</p>
-    <p>Awaken Your Senses!</p>
+    <div class="container">
+
+      <h2>Sense-ational Market Day</h2>
+
+      <p>Five Stalls. Five Senses. One Amazing Experience.</p>
+
+      <p>
+        Ready to collect your digital stamps?
+      </p>
+
+      <a
+        href="https://bubbles020205.github.io/Sense-ational-card/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Visit the Digital Stamp Card
+      </a>
+
+      <p class="small-print">
+        &copy; <span id="currentYear"></span>
+        Sense-ational Market Day.
+      </p>
+
+    </div>
   </footer>
+
+
+  <!-- WEBSITE FUNCTIONALITY -->
   <script>
-    let cart = [];
-    function money(amount) {
-      return "R" + amount.toFixed(2);
-    }
-    function addProduct(name, price) {
-      cart.push({
-        name: name,
-        price: price,
-        id: Date.now() + Math.random()
+    // Update the displayed year.
+    document.getElementById("currentYear").textContent =
+      new Date().getFullYear();
+
+
+    // Calculate the preorder total.
+    const quantityInputs = document.querySelectorAll(".quantity");
+    const orderTotalDisplay = document.getElementById("orderTotal");
+
+    function calculateOrderTotal() {
+      let total = 0;
+
+      quantityInputs.forEach(function(input) {
+        let quantity = Number.parseInt(input.value, 10);
+
+        if (!Number.isFinite(quantity) || quantity < 0) {
+          quantity = 0;
+        }
+
+        const price = Number(input.dataset.price);
+
+        total += quantity * price;
       });
-      renderCart();
-      document.getElementById("preorder").scrollIntoView({
-        behavior: "smooth"
-      });
+
+      orderTotalDisplay.textContent =
+        "R" + total.toFixed(2);
+
+      return total;
     }
-    function removeProduct(id) {
-      cart = cart.filter(item => item.id !== id);
-      renderCart();
-    }
-    function renderCart() {
-      const container = document.getElementById("cart-items");
-      const totalElement = document.getElementById("cart-total");
-      if (cart.length === 0) {
-        container.innerHTML =
-          "<p>Your basket is empty. Add a product from one of our stalls!</p>";
-        totalElement.textContent = money(0);
-        return;
-      }
-      container.innerHTML = "";
-      cart.forEach(item => {
-        const row = document.createElement("div");
-        row.className = "cart-item";
-        const description = document.createElement("span");
-        description.textContent = item.name + " — " + money(item.price);
-        const remove = document.createElement("button");
-        remove.className = "remove-button";
-        remove.type = "button";
-        remove.textContent = "Remove";
-        remove.addEventListener("click", () => removeProduct(item.id));
-        row.appendChild(description);
-        row.appendChild(remove);
-        container.appendChild(row);
-      });
-      const total = cart.reduce((sum, item) => sum + item.price, 0);
-      totalElement.textContent = money(total);
-    }
-    document.getElementById("order-form").addEventListener("submit", event => {
-      event.preventDefault();
-      if (cart.length === 0) {
-        alert("Please add at least one product to your basket first.");
-        return;
-      }
-      const name = document.getElementById("customer-name").value.trim();
-      const phone = document.getElementById("customer-phone").value.trim();
-      const email = document.getElementById("customer-email").value.trim();
-      const notes = document.getElementById("customer-notes").value.trim();
-      const total = cart.reduce((sum, item) => sum + item.price, 0);
-      const order = {
-        customer: name,
-        phone: phone,
-        email: email,
-        notes: notes,
-        items: cart.map(item => ({
-          product: item.name,
-          price: item.price
-        })),
-        total: total,
-        currency: "ZAR"
-      };
-      const text = [
-        "SENSE-ATIONAL PRE-ORDER",
-        "",
-        "Customer: " + order.customer,
-        "Cellphone: " + order.phone,
-        "Email: " + (order.email || "Not provided"),
-        "",
-        ...order.items.map(item =>
-          item.product + " — " + money(item.price)
-        ),
-        "",
-        "TOTAL: " + money(order.total),
-        "",
-        "Notes: " + (order.notes || "None")
-      ].join("\n");
-      const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
-      const url = URL.createObjectURL(blob);
-      const download = document.createElement("a");
-      download.href = url;
-      download.download = "sense-ational-order.txt";
-      download.click();
-      URL.revokeObjectURL(url);
-      const result = document.getElementById("order-result");
-      result.textContent =
-        "Your order summary has been prepared for download. " +
-        "It has NOT been sent to the organisers yet. " +
-        "Please submit it using the official ordering method once provided.";
-      result.style.marginTop = "20px";
-      result.style.fontWeight = "bold";
+
+    quantityInputs.forEach(function(input) {
+      input.addEventListener("input", calculateOrderTotal);
     });
-    /*
-      SETUP REQUIRED BEFORE PUBLISHING:
-      1. Replace the logo path "logo.png" with the exact filename
-         of your uploaded logo.
-      2. Replace the stamp-card link "#" with the URL of your
-         existing digital stamp-card website.
-      3. Connect a real order submission service before accepting
-         pre-orders. This demo does not transmit customer details.
-      4. Do not put staff passwords, bank account credentials,
-         or payment verification secrets in this public file.
-    */
+
+
+    // Prepare a downloadable preorder summary.
+    // This does not submit an order to a server.
+    document.getElementById("orderForm").addEventListener(
+      "submit",
+      function(event) {
+        event.preventDefault();
+
+        const message = document.getElementById("orderMessage");
+        const form = event.currentTarget;
+
+        if (!form.reportValidity()) {
+          return;
+        }
+
+        const name =
+          document.getElementById("customerName").value.trim();
+
+        const phone =
+          document.getElementById("customerPhone").value.trim();
+
+        const email =
+          document.getElementById("customerEmail").value.trim();
+
+        const notes =
+          document.getElementById("collectionNotes").value.trim();
+
+        const confirmation =
+          document.getElementById("confirmOrder").checked;
+
+        if (!confirmation) {
+          message.textContent =
+            "Please confirm the preorder conditions.";
+          return;
+        }
+
+        const items = [];
+        let total = 0;
+
+        quantityInputs.forEach(function(input) {
+          const quantity =
+            Number.parseInt(input.value, 10) || 0;
+
+          const price = Number(input.dataset.price);
+
+          if (quantity > 0) {
+            const subtotal = quantity * price;
+
+            items.push(
+              input.dataset.name +
+              " x " + quantity +
+              " — R" + subtotal.toFixed(2)
+            );
+
+            total += subtotal;
+          }
+        });
+
+        if (items.length === 0) {
+          message.textContent =
+            "Please select at least one product before preparing your preorder.";
+          return;
+        }
+
+        const orderNumber =
+          "SA-" + Date.now().toString().slice(-8);
+
+        const orderText = [
+          "SENSE-ATIONAL MARKET DAY",
+          "PREORDER SUMMARY",
+          "==========================",
+          "",
+          "Reference: " + orderNumber,
+          "Name: " + name,
+          "Contact number: " + phone,
+          "Email: " + (email || "Not provided"),
+          "",
+          "PRODUCTS",
+          "--------------------------",
+          ...items,
+          "",
+          "TOTAL: R" + total.toFixed(2),
+          "",
+          "Collection notes:",
+          notes || "None provided",
+          "",
+          "IMPORTANT:",
+          "This is a locally generated preorder summary.",
+          "It has NOT been sent to the organisers.",
+          "It is NOT a confirmed order or proof of payment.",
+          "Contact the organisers to confirm stock, collection",
+          "arrangements and verified EFT payment instructions.",
+          "",
+          "Please retain this summary for your records."
+        ].join("\n");
+
+        const file = new Blob(
+          [orderText],
+          { type: "text/plain;charset=utf-8" }
+        );
+
+        const downloadURL = URL.createObjectURL(file);
+        const downloadLink = document.createElement("a");
+
+        downloadLink.href = downloadURL;
+        downloadLink.download =
+          "Sense-ational-Preorder-" + orderNumber + ".txt";
+
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        downloadLink.remove();
+
+        URL.revokeObjectURL(downloadURL);
+
+        message.textContent =
+          "Your preorder summary has been prepared for download. " +
+          "Remember: your order has not yet been sent to the organisers.";
+      }
+    );
+
+
+    // Initialise the total.
+    calculateOrderTotal();
   </script>
+
 </body>
 </html>
