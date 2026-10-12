@@ -3,26 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta name="theme-color" content="#fffdf5">
+  <meta name="description" content="Discover Sense-ational: five sensory stalls, handmade products, interactive games and our special offer.">
   <title>Sense-ational</title>
 
-  <meta
-    name="description"
-    content="Explore the five senses at Sense-ational Market Day! Shop our sensory stalls, preorder your favourites, and earn a free Tea Bomb."
-  >
-
   <style>
-:root {
-  --purple: #C62828;
-  --dark-purple: #8E1717;
-  --pink: #FFF2B2;
-  --light-pink: #FFF9DF;
-  --cream: #FFFDF5;
-  --green: #648767;
-  --dark: #302638;
-  --white: #ffffff;
-  --shadow: 0 5px 20px rgba(142, 23, 23, 0.10);
-}
+    :root {
+      --red: #c62828;
+      --red-dark: #8e1717;
+      --red-glass: rgba(198, 40, 40, 0.16);
+
+      --yellow: #fff2b2;
+      --yellow-glass: rgba(255, 242, 178, 0.40);
+
+      --cream: #fffdf5;
+
+      --green: #648767;
+      --green-dark: #3f6244;
+      --green-glass: rgba(100, 135, 103, 0.14);
+
+      --ink: #302638;
+      --muted: #716773;
+
+      --glass: rgba(255, 255, 255, 0.48);
+      --glass-strong: rgba(255, 255, 255, 0.68);
+      --glass-border: rgba(255, 255, 255, 0.82);
+
+      --shadow:
+        0 14px 40px rgba(48, 38, 56, 0.09);
+
+      --blur: 24px;
+      --radius: 26px;
+    }
 
     * {
       box-sizing: border-box;
@@ -31,14 +43,38 @@
 
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--cream);
-      color: var(--dark);
-      line-height: 1.65;
+      color: var(--ink);
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+      line-height: 1.7;
+
+      background:
+        radial-gradient(
+          ellipse at 5% 5%,
+          rgba(255, 242, 178, 0.65),
+          transparent 32rem
+        ),
+        radial-gradient(
+          ellipse at 95% 25%,
+          rgba(100, 135, 103, 0.15),
+          transparent 34rem
+        ),
+        var(--cream);
+
+      background-attachment: fixed;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
     }
 
     a {
-      color: var(--purple);
+      color: var(--red);
     }
 
     button,
@@ -49,279 +85,810 @@
     }
 
     button,
-    .button {
-      display: inline-block;
-      border: none;
-      border-radius: 30px;
-      background: var(--purple);
-      color: var(--white);
-      padding: 12px 22px;
-      font-weight: bold;
-      text-decoration: none;
-      cursor: pointer;
-      transition: 0.2s ease;
+    a,
+    summary,
+    input,
+    select,
+    textarea {
+      -webkit-tap-highlight-color: transparent;
     }
 
-    button:hover,
-    .button:hover {
-      background: var(--dark-purple);
-      transform: translateY(-2px);
-    }
-
-    button:focus-visible,
-    a:focus-visible,
-    input:focus-visible,
-    select:focus-visible,
-    textarea:focus-visible {
-      outline: 3px solid var(--green);
-      outline-offset: 3px;
+    :focus-visible {
+      outline: 3px solid rgba(100, 135, 103, 0.8);
+      outline-offset: 4px;
     }
 
     .container {
-      width: min(1100px, 92%);
-      margin: auto;
+      width: min(1160px, 92%);
+      margin-inline: auto;
     }
 
+    /* ==============================
+       HEADER AND SPACED NAVIGATION
+       ============================== */
+
     header {
-      background: var(--white);
-      box-shadow: var(--shadow);
-      position: relative;
-      z-index: 5;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+
+      background: rgba(255, 253, 245, 0.76);
+
+      border-bottom:
+        1px solid rgba(100, 135, 103, 0.18);
+
+      box-shadow:
+        0 8px 30px rgba(48, 38, 56, 0.05);
+
+      backdrop-filter:
+        blur(28px) saturate(180%);
+
+      -webkit-backdrop-filter:
+        blur(28px) saturate(180%);
     }
 
     .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
-      padding: 15px 0;
-      flex-wrap: wrap;
+
+      gap: 35px;
+
+      padding-top: 24px;
+      padding-bottom: 28px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      flex: 0 0 auto;
     }
 
     .logo {
-      display: block;
-      width: 110px;
-      max-height: 100px;
+      width: 125px;
+      max-height: 105px;
       object-fit: contain;
     }
 
     nav {
       display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
       align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+
+      gap: 15px 18px;
     }
 
     nav a {
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 0.92rem;
-    }
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
 
-    nav a:hover {
-      color: var(--green);
-    }
+      min-height: 45px;
+      padding: 10px 17px;
 
-    .hero {
-      text-align: center;
-      padding: 75px 20px;
-      background: linear-gradient(
-        135deg,
-        var(--light-pink),
-        #f0e8ff,
-        #eff7ed
-      );
-    }
+      border-radius: 999px;
 
-    .hero h1 {
-      max-width: 850px;
-      margin: 0 auto 15px;
-      color: var(--dark-purple);
-      font-size: clamp(2.2rem, 6vw, 4.2rem);
-      line-height: 1.15;
-    }
+      border:
+        1px solid rgba(100, 135, 103, 0.28);
 
-    .hero p {
-      max-width: 700px;
-      margin: 15px auto 25px;
-      font-size: 1.1rem;
-    }
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.66),
+          rgba(100, 135, 103, 0.10)
+        );
 
-    .hero .tagline {
-      font-weight: bold;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--green);
+      color: var(--green-dark);
+
       font-size: 0.9rem;
+      font-weight: 750;
+      text-decoration: none;
+      white-space: nowrap;
+
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.95),
+        0 5px 15px rgba(48, 38, 56, 0.035);
+
+      backdrop-filter:
+        blur(18px) saturate(170%);
+
+      -webkit-backdrop-filter:
+        blur(18px) saturate(170%);
+
+      transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
     }
 
-    section {
-      padding: 65px 0;
+    nav a:hover,
+    nav a:focus-visible {
+      background:
+        rgba(100, 135, 103, 0.23);
+
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.95),
+        0 8px 22px rgba(100, 135, 103, 0.13);
+
+      transform: translateY(-2px);
+    }
+
+    /* ==============================
+       GENERAL GLASS COMPONENTS
+       ============================== */
+
+    .glass-card {
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.73),
+          rgba(255, 242, 178, 0.24)
+        );
+
+      border:
+        1px solid var(--glass-border);
+
+      border-radius: var(--radius);
+
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.95),
+        var(--shadow);
+
+      backdrop-filter:
+        blur(var(--blur)) saturate(165%);
+
+      -webkit-backdrop-filter:
+        blur(var(--blur)) saturate(165%);
     }
 
     .section-title {
+      margin: 0 0 15px;
+
+      color: var(--red);
+
       text-align: center;
-      margin: 0 0 12px;
-      color: var(--dark-purple);
-      font-size: clamp(1.8rem, 4vw, 2.7rem);
+
+      font-size: clamp(2rem, 4vw, 3.1rem);
+      line-height: 1.2;
+      letter-spacing: -0.035em;
     }
 
     .section-intro {
-      max-width: 750px;
+      max-width: 760px;
+
+      margin: 0 auto 40px;
+
       text-align: center;
-      margin: 0 auto 35px;
+
+      color: var(--muted);
     }
 
-    .about-card,
-    .promo-card,
-    .order-card,
-    .info-card {
-      background: var(--white);
-      padding: 28px;
-      border-radius: 20px;
-      box-shadow: var(--shadow);
+    section {
+      padding: clamp(60px, 7vw, 95px) 0;
+      scroll-margin-top: 165px;
     }
+
+    .eyebrow {
+      margin: 0 0 16px;
+
+      color: var(--green-dark);
+
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    /* ==============================
+       BUTTONS
+       ============================== */
+
+    .button,
+    button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 9px;
+
+      min-height: 49px;
+      padding: 12px 23px;
+
+      border:
+        1px solid rgba(255, 255, 255, 0.75);
+
+      border-radius: 999px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(198, 40, 40, 0.88),
+          rgba(142, 23, 23, 0.96)
+        );
+
+      color: #ffffff;
+
+      font-weight: 750;
+      text-decoration: none;
+
+      cursor: pointer;
+
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.45),
+        0 10px 25px rgba(198, 40, 40, 0.18);
+
+      backdrop-filter:
+        blur(18px) saturate(170%);
+
+      -webkit-backdrop-filter:
+        blur(18px) saturate(170%);
+
+      transition:
+        transform 0.23s ease,
+        box-shadow 0.23s ease,
+        filter 0.23s ease;
+    }
+
+    .button:hover,
+    button:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.06);
+
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.65),
+        0 14px 30px rgba(198, 40, 40, 0.23);
+    }
+
+    .button.secondary {
+      color: var(--red-dark);
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.75),
+          rgba(255, 242, 178, 0.36)
+        );
+
+      border:
+        1px solid rgba(198, 40, 40, 0.22);
+
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.95),
+        0 8px 22px rgba(48, 38, 56, 0.06);
+    }
+
+    /* ==============================
+       HERO
+       ============================== */
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+
+      text-align: center;
+
+      padding: clamp(85px, 11vw, 145px) 18px;
+
+      background:
+        radial-gradient(
+          ellipse at 15% 15%,
+          rgba(255, 242, 178, 0.85),
+          transparent 38%
+        ),
+        radial-gradient(
+          ellipse at 85% 20%,
+          rgba(100, 135, 103, 0.19),
+          transparent 38%
+        ),
+        linear-gradient(
+          145deg,
+          rgba(255, 253, 245, 0.84),
+          rgba(255, 242, 178, 0.28)
+        );
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+
+      position: absolute;
+      z-index: -1;
+
+      border-radius: 50%;
+      pointer-events: none;
+
+      border:
+        1px solid rgba(255, 255, 255, 0.75);
+    }
+
+    .hero::before {
+      width: 260px;
+      height: 260px;
+
+      top: 15px;
+      left: -100px;
+
+      background: rgba(198, 40, 40, 0.06);
+    }
+
+    .hero::after {
+      width: 320px;
+      height: 320px;
+
+      right: -100px;
+      bottom: -120px;
+
+      background: rgba(100, 135, 103, 0.09);
+    }
+
+    .hero h1 {
+      margin: 0 auto 22px;
+
+      color: var(--red);
+
+      font-size: clamp(3.2rem, 9vw, 6.3rem);
+      line-height: 1.02;
+      letter-spacing: -0.06em;
+    }
+
+    .hero p:not(.eyebrow) {
+      max-width: 760px;
+      margin: 14px auto;
+
+      font-size: clamp(1rem, 2vw, 1.15rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      gap: 17px;
+
+      margin-top: 32px;
+    }
+
+    /* ==============================
+       ABOUT US
+       ============================== */
 
     .about-card {
-      max-width: 850px;
+      max-width: 900px;
+
       margin: auto;
+      padding: clamp(28px, 5vw, 52px);
+
       text-align: center;
     }
+
+    .about-card h3 {
+      margin-top: 0;
+      color: var(--red);
+      font-size: 1.6rem;
+    }
+
+    /* ==============================
+       STALL CARDS
+       ============================== */
 
     .stalls-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 26px;
     }
 
     .stall-card {
-      border-radius: 20px;
-      padding: 24px;
-      background: var(--white);
-      box-shadow: var(--shadow);
-      border-top: 6px solid var(--pink);
-      overflow-wrap: anywhere;
+      position: relative;
+      overflow: hidden;
+
+      padding: clamp(25px, 3vw, 36px);
+
+      border-radius: var(--radius);
+
+      border:
+        1px solid rgba(255, 255, 255, 0.88);
+
+      border-top:
+        4px solid rgba(198, 40, 40, 0.65);
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.76),
+          rgba(255, 242, 178, 0.30)
+        );
+
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.96),
+        0 15px 38px rgba(48, 38, 56, 0.075);
+
+      backdrop-filter:
+        blur(25px) saturate(165%);
+
+      -webkit-backdrop-filter:
+        blur(25px) saturate(165%);
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
     }
 
-    .stall-card:nth-child(2) {
-      border-top-color: #e8bf73;
-    }
+    .stall-card:hover {
+      transform: translateY(-3px);
 
-    .stall-card:nth-child(3) {
-      border-top-color: #a5c5a3;
-    }
-
-    .stall-card:nth-child(4) {
-      border-top-color: #a8c8e8;
-    }
-
-    .stall-card:nth-child(5) {
-      border-top-color: #c3a7e5;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.98),
+        0 22px 45px rgba(48, 38, 56, 0.11);
     }
 
     .stall-icon {
-      font-size: 2.4rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 58px;
+      height: 58px;
+
+      margin-bottom: 15px;
+
+      color: var(--red);
+
+      border:
+        1px solid rgba(198, 40, 40, 0.19);
+
+      border-radius: 20px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.82),
+          rgba(198, 40, 40, 0.08)
+        );
+
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.95),
+        0 6px 18px rgba(48, 38, 56, 0.045);
+    }
+
+    .stall-icon svg {
+      width: 31px;
+      height: 31px;
+    }
+
+    .icon {
+      width: 22px;
+      height: 22px;
+
+      flex: 0 0 auto;
+
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     .stall-card h3 {
-      margin: 5px 0;
-      font-size: 1.5rem;
-      color: var(--dark-purple);
+      margin: 0 0 12px;
+
+      color: var(--red);
+
+      font-size: 1.75rem;
     }
 
     .price {
-      color: var(--green);
-      font-weight: bold;
-      font-size: 1.3rem;
+      margin: 15px 0;
+
+      color: var(--red-dark);
+
+      font-size: 1.24rem;
+      font-weight: 850;
     }
+
+    /* ==============================
+       GLASS DROPDOWNS / ACCORDIONS
+       ============================== */
 
     details {
-      margin-top: 18px;
-      border-radius: 12px;
-      background: var(--light-pink);
-      padding: 12px 15px;
+      margin-top: 20px;
+
+      overflow: hidden;
+
+      border:
+        1px solid rgba(198, 40, 40, 0.19);
+
+      border-radius: 19px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.54),
+          rgba(255, 242, 178, 0.30)
+        );
+
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.88);
+
+      backdrop-filter:
+        blur(20px) saturate(165%);
+
+      -webkit-backdrop-filter:
+        blur(20px) saturate(165%);
+
+      transition:
+        background 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
     }
 
-    details summary {
+    details[open] {
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.69),
+          rgba(255, 242, 178, 0.52)
+        );
+
+      border-color:
+        rgba(198, 40, 40, 0.30);
+
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.98),
+        0 10px 25px rgba(198, 40, 40, 0.07);
+    }
+
+    summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 15px;
+
+      padding: 17px 19px;
+
+      color: var(--red-dark);
+
+      font-weight: 800;
+
       cursor: pointer;
-      font-weight: bold;
-      color: var(--dark-purple);
+      list-style: none;
     }
 
-    details[open] summary {
-      margin-bottom: 12px;
+    summary::-webkit-details-marker {
+      display: none;
     }
+
+    summary::after {
+      content: "";
+
+      width: 9px;
+      height: 9px;
+
+      flex: 0 0 auto;
+
+      border-right: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+
+      transform: rotate(45deg) translateY(-2px);
+
+      transition: transform 0.22s ease;
+    }
+
+    details[open] summary::after {
+      transform: rotate(225deg) translate(-2px, -1px);
+    }
+
+    .details-content {
+      padding: 0 19px 20px;
+    }
+
+    .details-content h4 {
+      margin: 10px 0;
+
+      color: var(--red);
+
+      font-size: 1.15rem;
+    }
+
+    .details-content ul,
+    .details-content ol {
+      padding-left: 23px;
+    }
+
+    .details-content li {
+      margin: 6px 0;
+    }
+
+    .small-print {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* ==============================
+       PROMOTION
+       ============================== */
 
     .promo-section {
-      background: linear-gradient(135deg, #673ab7, #422078);
-      color: var(--white);
+      background:
+        radial-gradient(
+          ellipse at 10% 15%,
+          rgba(255, 242, 178, 0.86),
+          transparent 40%
+        ),
+        linear-gradient(
+          135deg,
+          rgba(198, 40, 40, 0.07),
+          rgba(255, 253, 245, 0.66)
+        );
     }
 
     .promo-card {
-      max-width: 850px;
+      max-width: 940px;
+
       margin: auto;
-      color: var(--dark);
+
+      padding: clamp(28px, 5vw, 56px);
+
       text-align: center;
     }
 
     .promo-card h2 {
-      color: var(--dark-purple);
-      font-size: clamp(2rem, 5vw, 3rem);
-      line-height: 1.2;
+      margin: 8px 0 16px;
+
+      color: var(--red);
+
+      font-size: clamp(2rem, 5vw, 3.5rem);
     }
 
     .promo-price {
-      font-size: clamp(3rem, 8vw, 5rem);
+      margin: 12px 0;
+
+      color: var(--red-dark);
+
+      font-size: clamp(3.4rem, 8vw, 5.7rem);
       font-weight: 900;
-      color: var(--green);
-      margin: 10px 0;
+      letter-spacing: -0.06em;
     }
 
     .price-breakdown {
-      max-width: 430px;
-      margin: 20px auto;
+      max-width: 560px;
+
+      margin: 25px auto;
+      padding: 0;
+
+      list-style: none;
       text-align: left;
     }
 
     .price-breakdown li {
-      margin: 7px 0;
+      display: flex;
+      align-items: center;
+
+      gap: 12px;
+
+      margin: 9px 0;
+      padding: 13px 15px;
+
+      border-radius: 17px;
+
+      background: rgba(255, 255, 255, 0.49);
+
+      border:
+        1px solid rgba(255, 255, 255, 0.86);
+
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.94);
+
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .price-breakdown li strong {
+      margin-left: auto;
+      white-space: nowrap;
+    }
+
+    .inline-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      color: var(--red);
     }
 
     .notice {
-      padding: 15px;
-      border-radius: 12px;
-      background: #fff2cc;
-      color: #59451b;
-      margin-top: 20px;
-      font-size: 0.94rem;
+      margin-top: 24px;
+      padding: 20px;
+
+      border-radius: 19px;
+
+      text-align: left;
+
+      background: rgba(255, 242, 178, 0.57);
+
+      border:
+        1px solid rgba(198, 40, 40, 0.13);
+
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.92);
     }
 
     .tea-bomb {
       margin-top: 25px;
-      padding: 20px;
-      border-radius: 15px;
-      background: var(--light-pink);
+      padding: 24px;
+
+      border-radius: 21px;
+
+      text-align: left;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.70),
+          rgba(100, 135, 103, 0.09)
+        );
+
+      border:
+        1px solid rgba(255, 255, 255, 0.9);
+
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.96);
     }
 
+    .tea-bomb h3 {
+      margin-top: 0;
+      color: var(--red);
+    }
+
+    /* ==============================
+       PREORDER FORM
+       ============================== */
+
     .order-section {
-      background: #f0e8ff;
+      background:
+        radial-gradient(
+          ellipse at 90% 5%,
+          rgba(100, 135, 103, 0.15),
+          transparent 33rem
+        ),
+        linear-gradient(
+          180deg,
+          rgba(255, 242, 178, 0.24),
+          rgba(255, 253, 245, 0.62)
+        );
     }
 
     .order-card {
-      max-width: 800px;
+      max-width: 920px;
+
       margin: auto;
+      padding: clamp(25px, 5vw, 50px);
+    }
+
+    .order-card h3 {
+      color: var(--red);
     }
 
     .form-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 21px;
     }
 
     .form-group {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+
+      gap: 8px;
+      min-width: 0;
     }
 
     .form-group.full {
@@ -329,31 +896,103 @@
     }
 
     label {
-      font-weight: bold;
+      font-weight: 700;
     }
 
     input,
     select,
     textarea {
       width: 100%;
-      padding: 12px;
-      border: 1px solid #d4c9dc;
-      border-radius: 10px;
-      background: var(--white);
-      color: var(--dark);
+      min-height: 49px;
+
+      padding: 12px 15px;
+
+      color: var(--ink);
+
+      border:
+        1px solid rgba(100, 135, 103, 0.34);
+
+      border-radius: 15px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.62),
+          rgba(255, 242, 178, 0.19)
+        );
+
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.95),
+        0 5px 16px rgba(48, 38, 56, 0.035);
+
+      backdrop-filter:
+        blur(20px) saturate(165%);
+
+      -webkit-backdrop-filter:
+        blur(20px) saturate(165%);
+
+      transition:
+        background 0.22s ease,
+        border-color 0.22s ease,
+        box-shadow 0.22s ease;
+    }
+
+    input:hover,
+    select:hover,
+    textarea:hover {
+      background:
+        rgba(255, 255, 255, 0.72);
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+
+      border-color:
+        rgba(100, 135, 103, 0.8);
+
+      background:
+        rgba(255, 255, 255, 0.84);
+
+      box-shadow:
+        0 0 0 4px rgba(100, 135, 103, 0.13),
+        inset 0 1px 0 rgba(255, 255, 255, 0.98);
+    }
+
+    select {
+      cursor: pointer;
+    }
+
+    /*
+      iOS controls the appearance of its native option popup.
+      The select field itself keeps the glass styling.
+    */
+
+    select option {
+      color: var(--ink);
+      background: var(--cream);
+    }
+
+    textarea {
+      resize: vertical;
     }
 
     .product-row {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 12px;
-      border-bottom: 1px solid #eadff0;
-      padding: 15px 0;
+      justify-content: space-between;
+
+      gap: 20px;
+
+      padding: 19px 0;
+
+      border-bottom:
+        1px solid rgba(100, 135, 103, 0.19);
     }
 
-    .product-row:last-child {
-      border-bottom: none;
+    .product-row:last-of-type {
+      border-bottom: 0;
     }
 
     .product-description {
@@ -365,90 +1004,200 @@
     }
 
     .product-description small {
-      color: #665b6b;
+      color: var(--muted);
     }
 
     .quantity {
-      width: 85px;
-      flex-shrink: 0;
+      width: 100px;
     }
 
     .order-total {
-      margin: 20px 0;
-      padding: 18px;
-      border-radius: 12px;
-      background: var(--light-pink);
-      font-size: 1.35rem;
-      font-weight: bold;
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      gap: 12px;
+
+      gap: 15px;
+
+      margin: 25px 0;
+      padding: 21px;
+
+      border-radius: 19px;
+
+      color: var(--red-dark);
+
+      font-size: 1.25rem;
+      font-weight: 850;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255, 242, 178, 0.69),
+          rgba(255, 255, 255, 0.47)
+        );
+
+      border:
+        1px solid rgba(255, 255, 255, 0.9);
+
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.98);
     }
 
     .checkbox-row {
       display: flex;
       align-items: flex-start;
-      gap: 10px;
-      margin: 20px 0;
+
+      gap: 12px;
+
+      margin: 23px 0;
     }
 
     .checkbox-row input {
-      width: auto;
-      margin-top: 7px;
+      width: 20px;
+      height: 20px;
+      min-height: 20px;
+
+      margin-top: 5px;
+
+      flex: 0 0 auto;
+
+      accent-color: var(--red);
     }
 
     .checkbox-row label {
-      font-weight: normal;
+      font-weight: 400;
     }
 
     .form-message {
-      margin-top: 15px;
-      font-weight: bold;
+      margin-top: 17px;
+
+      font-weight: 750;
       overflow-wrap: anywhere;
     }
 
-    .small-print {
-      color: #655a69;
-      font-size: 0.9rem;
-    }
+    /* ==============================
+       PAYMENT AND COLLECTION
+       ============================== */
 
     .info-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 25px;
+    }
+
+    .info-card {
+      padding: 29px;
     }
 
     .info-card h3 {
-      color: var(--dark-purple);
+      display: flex;
+      align-items: center;
+
+      gap: 11px;
+
       margin-top: 0;
+
+      color: var(--red);
     }
 
+    /* ==============================
+       FOOTER
+       ============================== */
+
     footer {
-      padding: 35px 20px;
+      padding: 45px 20px;
+
       text-align: center;
-      background: var(--dark);
-      color: var(--white);
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255, 242, 178, 0.49),
+          rgba(255, 253, 245, 0.80)
+        );
+
+      border-top:
+        1px solid rgba(255, 255, 255, 0.92);
+
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+    }
+
+    footer h2 {
+      margin-top: 0;
+      color: var(--red);
     }
 
     footer a {
-      color: var(--pink);
+      color: var(--green-dark);
+      font-weight: 750;
     }
 
-    @media (max-width: 650px) {
+    .footer-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+    }
+
+    /* ==============================
+       RESPONSIVE DESIGN
+       ============================== */
+
+    @media (max-width: 1000px) {
       .header-inner {
-        justify-content: center;
+        flex-direction: column;
+        gap: 24px;
       }
 
       nav {
         justify-content: center;
+        gap: 13px 16px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .container {
+        width: min(100% - 30px, 560px);
+      }
+
+      .header-inner {
+        padding-top: 22px;
+        padding-bottom: 25px;
+        gap: 23px;
+      }
+
+      .logo {
+        width: 112px;
+      }
+
+      nav {
+        justify-content: center;
+        gap: 11px;
       }
 
       nav a {
-        font-size: 0.85rem;
+        min-height: 43px;
+        padding: 10px 13px;
+        font-size: 0.83rem;
+      }
+
+      section {
+        scroll-margin-top: 230px;
       }
 
       .hero {
-        padding: 55px 18px;
+        padding: 82px 15px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+
+        max-width: 330px;
+        margin-inline: auto;
       }
 
       .stalls-grid,
@@ -466,296 +1215,43 @@
       .promo-card,
       .order-card,
       .info-card {
-        padding: 20px;
+        padding: 24px;
       }
 
       .product-row {
         align-items: flex-start;
       }
+
+      .quantity {
+        width: 82px;
+      }
+
+      .price-breakdown li {
+        align-items: flex-start;
+      }
     }
-    /* ==========================================
-   SENSE-ATIONAL — TINTED LIQUID GLASS
-   ========================================== */
 
-:root {
-  --glass-red: rgba(198, 40, 40, 0.12);
-  --glass-red-strong: rgba(198, 40, 40, 0.22);
-
-  --glass-green: rgba(100, 135, 103, 0.14);
-  --glass-green-strong: rgba(100, 135, 103, 0.24);
-
-  --glass-yellow: rgba(255, 242, 178, 0.55);
-
-  --glass-border: rgba(255, 255, 255, 0.7);
-  --glass-highlight: rgba(255, 255, 255, 0.55);
-}
-
-/* Shared glass appearance */
-.glass,
-button,
-.btn,
-select,
-input,
-textarea {
-  backdrop-filter: blur(18px) saturate(160%);
-  -webkit-backdrop-filter: blur(18px) saturate(160%);
-
-  border: 1px solid var(--glass-border);
-
-  box-shadow:
-    inset 0 1px 0 var(--glass-highlight),
-    0 8px 24px rgba(48, 38, 56, 0.08);
-
-  transition:
-    background 0.25s ease,
-    box-shadow 0.25s ease,
-    transform 0.25s ease;
-}
-
-/* Green-tinted glass navigation */
-nav a {
-  color: var(--green);
-  border-radius: 999px;
-  padding: 10px 14px;
-  transition: background 0.25s ease, box-shadow 0.25s ease;
-}
-
-nav a:hover,
-nav a:focus-visible {
-  background: var(--glass-green);
-  box-shadow: inset 0 1px 0 var(--glass-highlight);
-}
-
-/* Red-tinted glass buttons */
-button,
-.btn {
-  background: linear-gradient(
-    135deg,
-    rgba(198, 40, 40, 0.88),
-    rgba(142, 23, 23, 0.94)
-  );
-
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 999px;
-  cursor: pointer;
-}
-
-button:hover,
-.btn:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(220, 65, 65, 0.96),
-    rgba(142, 23, 23, 0.98)
-  );
-
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.65),
-    0 10px 28px rgba(198, 40, 40, 0.2);
-
-  transform: translateY(-1px);
-}
-
-/* Frosted glass cards */
-.stall-card,
-.card {
-  background: linear-gradient(
-    145deg,
-    rgba(255, 255, 255, 0.78),
-    rgba(255, 242, 178, 0.30)
-  );
-
-  backdrop-filter: blur(20px) saturate(150%);
-  -webkit-backdrop-filter: blur(20px) saturate(150%);
-
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  border-radius: 24px;
-
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.85),
-    0 12px 32px rgba(48, 38, 56, 0.07);
-}
-
-/* Green glass for navigation-style options */
-.glass-green {
-  background: var(--glass-green);
-  border: 1px solid rgba(100, 135, 103, 0.28);
-}
-
-/* Red glass for important features */
-.glass-red {
-  background: var(--glass-red);
-  border: 1px solid rgba(198, 40, 40, 0.25);
-}
-
-/* Soft yellow glass for highlights */
-.glass-yellow {
-  background: var(--glass-yellow);
-  border: 1px solid rgba(230, 190, 70, 0.3);
-}
-
-/* Frosted form controls */
-input,
-select,
-textarea {
-  background: rgba(255, 255, 255, 0.72);
-  color: var(--dark);
-  border: 1px solid rgba(100, 135, 103, 0.35);
-  border-radius: 14px;
-  padding: 12px 14px;
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-  outline: 2px solid rgba(100, 135, 103, 0.4);
-  outline-offset: 2px;
-}
-
-/* Reduced motion accessibility */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-    /* =================================
-   SENSE-ATIONAL LIQUID GLASS FIX
-   ================================= */
-
-/* Header: translucent green-tinted glass */
-header {
-  background: rgba(255, 253, 245, 0.76) !important;
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border-bottom: 1px solid rgba(100, 135, 103, 0.22);
-  box-shadow: 0 8px 30px rgba(48, 38, 56, 0.07);
-}
-
-/* Green glass navigation bubbles */
-nav a {
-  color: #648767 !important;
-  background: rgba(100, 135, 103, 0.10);
-  border: 1px solid rgba(100, 135, 103, 0.22);
-  border-radius: 999px;
-  padding: 9px 14px;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  transition: all 0.25s ease;
-}
-
-nav a:hover {
-  background: rgba(100, 135, 103, 0.24);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
-}
-
-/* Frosted glass for all main cards */
-.about-card,
-.stall-card,
-.promo-card,
-.order-card,
-.info-card {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.68),
-    rgba(255, 242, 178, 0.30)
-  ) !important;
-
-  backdrop-filter: blur(24px) saturate(160%);
-  -webkit-backdrop-filter: blur(24px) saturate(160%);
-
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.85),
-    0 12px 32px rgba(48, 38, 56, 0.08);
-}
-
-/* Glass dropdowns */
-details {
-  background: rgba(255, 242, 178, 0.38) !important;
-  border: 1px solid rgba(255, 255, 255, 0.75);
-  border-radius: 16px;
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-}
-
-details[open] {
-  background: rgba(255, 242, 178, 0.52) !important;
-}
-
-/* Red-tinted glass buttons
-   Targets .button, which your website actually uses */
-.button,
-button {
-  background: linear-gradient(
-    135deg,
-    rgba(198, 40, 40, 0.78),
-    rgba(142, 23, 23, 0.88)
-  ) !important;
-
-  color: #fff !important;
-  border: 1px solid rgba(255, 255, 255, 0.62);
-  border-radius: 999px;
-
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.45),
-    0 8px 24px rgba(198, 40, 40, 0.15);
-
-  backdrop-filter: blur(16px) saturate(170%);
-  -webkit-backdrop-filter: blur(16px) saturate(170%);
-}
-
-/* Light-yellow glass for the promotion */
-.promo-section {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 242, 178, 0.90),
-    rgba(255, 253, 245, 0.96)
-  ) !important;
-
-  color: #302638 !important;
-}
-
-/* Red headings, green navigation stays green */
-.hero h1,
-.section-title,
-.stall-card h3 {
-  color: #C62828;
-}
-
-/* Glass-style form fields */
-input,
-select,
-textarea {
-  background: rgba(255, 255, 255, 0.48) !important;
-  border: 1px solid rgba(100, 135, 103, 0.32);
-  border-radius: 14px;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-}
-
-/* Give the header some breathing room */
-.header-inner {
-  padding-top: 24px !important;
-  padding-bottom: 24px !important;
-}
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
   </style>
 </head>
 
 <body>
 
-  <!-- HEADER -->
   <header>
     <div class="container header-inner">
 
-      <a href="#home" aria-label="Sense-ational home">
+      <a class="brand" href="#home" aria-label="Sense-ational home">
         <img
           class="logo"
           src="Sensational-%20logo.png"
-          alt="Sense-ational Market Day logo"
+          alt="Sense-ational logo"
         >
       </a>
 
@@ -765,88 +1261,100 @@ textarea {
         <a href="#stalls">Our Stalls</a>
         <a href="#promotion">R100 Special</a>
         <a href="#preorder">Preorder</a>
+
         <a
           href="https://bubbles020205.github.io/Sense-ational-card/"
           target="_blank"
           rel="noopener noreferrer"
-        >Digital Stamp Card</a>
+        >
+          Digital Stamp Card
+        </a>
       </nav>
 
     </div>
   </header>
 
-
-  <!-- HERO -->
   <main>
+
+    <!-- HERO -->
+
     <section class="hero" id="home">
       <div class="container">
 
-        <p class="tagline">Explore • Experience • Enjoy</p>
+        <p class="eyebrow">Explore · Experience · Enjoy</p>
 
-        <h1>Sense-ational Market Day</h1>
+        <h1>Sense-ational</h1>
 
         <p>
           Five exciting stalls. Five incredible senses.
-          One unforgettable experience!
+          One unforgettable experience.
         </p>
 
         <p>
-          Discover new flavours, explore amazing scents, test your
-          memory, challenge your coordination and treat yourself
-          to something special.
+          Discover new flavours, explore amazing scents,
+          test your memory and challenge your coordination.
         </p>
 
-        <a class="button" href="#stalls">Explore Our Stalls</a>
+        <div class="hero-actions">
+          <a class="button" href="#stalls">
+            Explore Our Stalls
+          </a>
 
-        <a class="button" href="#preorder">Preorder &amp; Collect</a>
+          <a class="button secondary" href="#preorder">
+            Preorder &amp; Collect
+          </a>
+        </div>
 
       </div>
     </section>
 
-
     <!-- ABOUT US -->
+
     <section id="about">
       <div class="container">
 
         <h2 class="section-title">About Us</h2>
 
         <p class="section-intro">
-          Get to know the people and passion behind Sense-ational
-          Market Day.
+          Discover the people and passion behind Sense-ational.
         </p>
 
-        <div class="about-card">
+        <div class="about-card glass-card">
+
           <h3>More Than Just a Market</h3>
 
           <p>
-            Sense-ational Market Day is an interactive experience
-            built around the five human senses: touch, taste, smell,
+            Sense-ational is an interactive experience built
+            around the five human senses: touch, taste, smell,
             sight and sound.
           </p>
 
           <p>
             Each stall offers a different activity or product,
-            giving visitors the opportunity to explore, participate
-            and have fun while learning about the world around them.
+            giving visitors the opportunity to explore,
+            participate and have fun while learning about
+            the world around them.
           </p>
 
           <p>
-            Whether you're creating your own body scrub, tasting
-            herbal iced tea or taking on one of our games, there's
-            something to discover at every stall.
+            Whether you're creating your own body scrub,
+            tasting herbal iced tea or taking on one of
+            our games, there's something to discover
+            at every stall.
           </p>
 
           <p>
-            Visit all five stalls, complete your digital stamp card
-            and qualify for our special Tea Bomb promotion!
+            Visit all five stalls, complete your digital
+            stamp card and qualify for our special
+            Tea Bomb promotion.
           </p>
+
         </div>
-
       </div>
     </section>
 
-
     <!-- FIVE STALLS -->
+
     <section id="stalls">
       <div class="container">
 
@@ -854,21 +1362,27 @@ textarea {
 
         <p class="section-intro">
           Each stall brings one of your senses to life.
-          Tap each dropdown to discover the products, activities
-          and prices.
+          Open a glass panel to discover the products,
+          activities and prices.
         </p>
 
         <div class="stalls-grid">
 
           <!-- TOUCH -->
-          <article class="stall-card">
-            <div class="stall-icon" aria-hidden="true">🤲</div>
 
-            <h3>1. Touch</h3>
+          <article class="stall-card">
+
+            <div class="stall-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" class="icon">
+                <path d="M8 12V5a1.5 1.5 0 0 1 3 0v6-8a1.5 1.5 0 0 1 3 0v8-6a1.5 1.5 0 0 1 3 0v7-3a1.5 1.5 0 0 1 3 0v6c0 4-2.5 7-6.5 7h-2c-2 0-3.5-1-4.5-2.5L3 14a1.7 1.7 0 0 1 2.5-2.2L8 14"/>
+              </svg>
+            </div>
+
+            <h3>Touch</h3>
 
             <p>
-              Get hands-on and create your own sensory experience
-              with a personalised body scrub.
+              Get hands-on and create your own sensory
+              experience with a personalised body scrub.
             </p>
 
             <p class="price">R35 per scrub</p>
@@ -876,48 +1390,56 @@ textarea {
             <details>
               <summary>Discover the Touch Stall</summary>
 
-              <h4>DIY Body Scrub</h4>
+              <div class="details-content">
 
-              <p>
-                Create a 100 ml body scrub and choose your preferred
-                scent from our available options.
-              </p>
+                <h4>DIY Body Scrub</h4>
 
-              <p><strong>Available scent options:</strong></p>
+                <p>
+                  Create a 100 ml body scrub and choose
+                  your preferred scent from our available options.
+                </p>
 
-              <ul>
-                <li>Vanilla</li>
-                <li>Cinnamon</li>
-                <li>Lavender</li>
-                <li>Peppermint</li>
-                <li>Hibiscus</li>
-              </ul>
+                <p><strong>Available scents:</strong></p>
 
-              <p>
-                <strong>Price:</strong> R35
-              </p>
+                <ul>
+                  <li>Vanilla</li>
+                  <li>Cinnamon</li>
+                  <li>Lavender</li>
+                  <li>Peppermint</li>
+                  <li>Hibiscus</li>
+                </ul>
 
-              <p>
-                <strong>Preorder:</strong> Available.
-              </p>
+                <p><strong>Price:</strong> R35</p>
+                <p><strong>Preorder:</strong> Available.</p>
 
-              <p class="small-print">
-                Follow the stall team's instructions and check
-                ingredient suitability before using your scrub.
-              </p>
+                <p class="small-print">
+                  Follow the stall team's instructions and
+                  check ingredient suitability before using
+                  your scrub.
+                </p>
+
+              </div>
             </details>
+
           </article>
 
-
           <!-- TASTE -->
-          <article class="stall-card">
-            <div class="stall-icon" aria-hidden="true">🍵</div>
 
-            <h3>2. Taste</h3>
+          <article class="stall-card">
+
+            <div class="stall-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" class="icon">
+                <path d="M4 8h16l-1.4 12H5.4L4 8Z"/>
+                <path d="M8 8a4 4 0 0 1 8 0"/>
+                <path d="M8 13h.01M12 13h.01M16 13h.01"/>
+              </svg>
+            </div>
+
+            <h3>Taste</h3>
 
             <p>
-              Explore herbal flavours with a refreshing iced tea
-              prepared for your taste buds.
+              Explore herbal flavours with a refreshing
+              iced tea prepared for your taste buds.
             </p>
 
             <p class="price">R25 per iced tea</p>
@@ -925,48 +1447,54 @@ textarea {
             <details>
               <summary>Discover the Taste Stall</summary>
 
-              <h4>Herbal Iced Tea</h4>
+              <div class="details-content">
 
-              <p>
-                Discover a refreshing drink inspired by the
-                flavours and aromas of herbs and botanicals.
-              </p>
+                <h4>Herbal Iced Tea</h4>
 
-              <p><strong>Available flavour options:</strong></p>
+                <p>
+                  Discover a refreshing drink inspired by
+                  the flavours and aromas of herbs and botanicals.
+                </p>
 
-              <ul>
-                <li>Lemon</li>
-                <li>Hibiscus</li>
-                <li>Camomile</li>
-                <li>Mint</li>
-                <li>Vanilla</li>
-                <li>Cinnamon</li>
-              </ul>
+                <p><strong>Available flavours:</strong></p>
 
-              <p>
-                <strong>Price:</strong> R25
-              </p>
+                <ul>
+                  <li>Lemon</li>
+                  <li>Hibiscus</li>
+                  <li>Camomile</li>
+                  <li>Mint</li>
+                  <li>Vanilla</li>
+                  <li>Cinnamon</li>
+                </ul>
 
-              <p>
-                <strong>Preorder:</strong> Available.
-              </p>
+                <p><strong>Price:</strong> R25</p>
+                <p><strong>Preorder:</strong> Available.</p>
 
-              <p class="small-print">
-                Please ask the stall team about ingredients and
-                possible allergens before purchasing.
-              </p>
+                <p class="small-print">
+                  Ask the stall team about ingredients
+                  and possible allergens before purchasing.
+                </p>
+
+              </div>
             </details>
+
           </article>
 
-
           <!-- SMELL -->
-          <article class="stall-card">
-            <div class="stall-icon" aria-hidden="true">🌿</div>
 
-            <h3>3. Smell</h3>
+          <article class="stall-card">
+
+            <div class="stall-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" class="icon">
+                <path d="M20.5 3.5C12 3 5 7 5 14a6 6 0 0 0 6 6c7 0 10-8 9.5-16.5Z"/>
+                <path d="M3 21c3-6 7-9 13-12"/>
+              </svg>
+            </div>
+
+            <h3>Smell</h3>
 
             <p>
-              Discover different botanical aromas and create
+              Discover botanical aromas and create
               a scented bracelet to take home.
             </p>
 
@@ -975,50 +1503,56 @@ textarea {
             <details>
               <summary>Discover the Smell Stall</summary>
 
-              <h4>Essential Oil Bracelet</h4>
+              <div class="details-content">
 
-              <p>
-                Explore a selection of scents and enjoy a
-                personalised aromatic accessory.
-              </p>
+                <h4>Essential Oil Bracelet</h4>
 
-              <p><strong>Available scent options:</strong></p>
+                <p>
+                  Explore a selection of scents and enjoy
+                  a personalised aromatic accessory.
+                </p>
 
-              <ul>
-                <li>Lavender</li>
-                <li>Cinnamon</li>
-                <li>Moringa</li>
-                <li>Eucalyptus</li>
-                <li>Tea Tree</li>
-                <li>Orange</li>
-                <li>Peppermint</li>
-              </ul>
+                <p><strong>Available scents:</strong></p>
 
-              <p>
-                <strong>Price:</strong> R20
-              </p>
+                <ul>
+                  <li>Lavender</li>
+                  <li>Cinnamon</li>
+                  <li>Moringa</li>
+                  <li>Eucalyptus</li>
+                  <li>Tea Tree</li>
+                  <li>Orange</li>
+                  <li>Peppermint</li>
+                </ul>
 
-              <p>
-                <strong>Preorder:</strong> Available.
-              </p>
+                <p><strong>Price:</strong> R20</p>
+                <p><strong>Preorder:</strong> Available.</p>
 
-              <p class="small-print">
-                Essential oils should be handled according to the
-                stall team's safety instructions.
-              </p>
+                <p class="small-print">
+                  Essential oils should be handled according
+                  to the stall team's safety instructions.
+                </p>
+
+              </div>
             </details>
+
           </article>
 
-
           <!-- SIGHT -->
-          <article class="stall-card">
-            <div class="stall-icon" aria-hidden="true">👀</div>
 
-            <h3>4. Sight</h3>
+          <article class="stall-card">
+
+            <div class="stall-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" class="icon">
+                <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </div>
+
+            <h3>Sight</h3>
 
             <p>
-              Put your observation skills and memory to the test
-              in our herb memory challenge.
+              Put your observation skills and memory
+              to the test in our herb memory challenge.
             </p>
 
             <p class="price">R10 entry</p>
@@ -1026,42 +1560,52 @@ textarea {
             <details>
               <summary>Discover the Sight Stall</summary>
 
-              <h4>Herb Memory Game</h4>
+              <div class="details-content">
 
-              <ol>
-                <li>Study a selection of herb cards for 20 seconds.</li>
-                <li>One card will be removed.</li>
-                <li>Identify the missing card.</li>
-                <li>Correct answers allow you to progress.</li>
-                <li>Earn an additional five points for each successful round.</li>
-              </ol>
+                <h4>Herb Memory Game</h4>
 
-              <p>
-                <strong>Entry:</strong> R10
-              </p>
+                <ol>
+                  <li>Study a selection of herb cards for 20 seconds.</li>
+                  <li>One card will be removed.</li>
+                  <li>Identify the missing card.</li>
+                  <li>Correct answers allow you to progress.</li>
+                  <li>Earn five points for each successful round.</li>
+                </ol>
 
-              <p>
-                The participant with the highest score at the end
-                of the day wins the main prize.
-              </p>
+                <p><strong>Entry:</strong> R10</p>
 
-              <p class="small-print">
-                Game entry must be purchased at the stall.
-                Game entries cannot be preordered through this website.
-              </p>
+                <p>
+                  The participant with the highest score
+                  at the end of the day wins the main prize.
+                </p>
+
+                <p class="small-print">
+                  Game entries must be purchased at the stall.
+                  They cannot be preordered through this website.
+                </p>
+
+              </div>
             </details>
+
           </article>
 
-
           <!-- SOUND -->
-          <article class="stall-card">
-            <div class="stall-icon" aria-hidden="true">🔊</div>
 
-            <h3>5. Sound</h3>
+          <article class="stall-card">
+
+            <div class="stall-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" class="icon">
+                <path d="M11 5 6 9H2v6h4l5 4V5Z"/>
+                <path d="M15.5 8.5a5 5 0 0 1 0 7"/>
+                <path d="M18.5 5.5a9 9 0 0 1 0 13"/>
+              </svg>
+            </div>
+
+            <h3>Sound</h3>
 
             <p>
-              Steady hands and concentration are essential in our
-              wire buzzing challenge.
+              Steady hands and concentration are essential
+              in our wire buzzing challenge.
             </p>
 
             <p class="price">R10 entry</p>
@@ -1069,117 +1613,160 @@ textarea {
             <details>
               <summary>Discover the Sound Stall</summary>
 
-              <h4>Wire Buzzing Game</h4>
+              <div class="details-content">
 
-              <p>
-                Navigate the wire challenge without triggering
-                a buzz and aim for the highest possible score.
-              </p>
+                <h4>Wire Buzzing Game</h4>
 
-              <ul>
-                <li>
-                  <strong>Round 1:</strong>
-                  30 seconds, starting with 15 points.
-                </li>
-                <li>
-                  Each buzz costs five points.
-                </li>
-                <li>
-                  You progress to the next round only if you finish
-                  without buzzing.
-                </li>
-                <li>
-                  <strong>Round 2:</strong>
-                  20 seconds, with another 15 points available.
-                </li>
-                <li>
-                  <strong>Round 3:</strong>
-                  10 seconds, with another 15 points available.
-                </li>
-              </ul>
+                <p>
+                  Navigate the wire challenge without
+                  triggering a buzz and aim for the highest score.
+                </p>
 
-              <p>
-                <strong>Entry:</strong> R10
-              </p>
+                <ul>
+                  <li><strong>Round 1:</strong> 30 seconds, starting with 15 points.</li>
+                  <li>Each buzz costs five points.</li>
+                  <li>Progress only if you finish without buzzing.</li>
+                  <li><strong>Round 2:</strong> 20 seconds, with another 15 points available.</li>
+                  <li><strong>Round 3:</strong> 10 seconds, with another 15 points available.</li>
+                </ul>
 
-              <p>
-                The top scorer wins the prize.
-              </p>
+                <p><strong>Entry:</strong> R10</p>
 
-              <p class="small-print">
-                Game entry must be purchased at the stall.
-                Game entries cannot be preordered through this website.
-              </p>
+                <p>The top scorer wins the prize.</p>
+
+                <p class="small-print">
+                  Game entries must be purchased at the stall.
+                  They cannot be preordered through this website.
+                </p>
+
+              </div>
             </details>
+
           </article>
 
         </div>
       </div>
     </section>
 
+    <!-- R100 SPECIAL -->
 
-    <!-- R100 PROMOTION -->
     <section class="promo-section" id="promotion">
       <div class="container">
 
-        <div class="promo-card">
+        <div class="promo-card glass-card">
 
-          <p class="tagline">The Ultimate Market Day Deal</p>
+          <p class="eyebrow">The Special Offer</p>
 
           <h2>Five Stalls. Five Senses.</h2>
 
-          <div class="promo-price">Only R100!</div>
+          <div class="promo-price">R100</div>
 
           <p>
-            Visit every stall, make a qualifying purchase at each
-            stall, complete your digital stamp card and receive
-            a <strong>FREE Tea Bomb!</strong>
+            Visit every stall, make a qualifying purchase
+            at each stall, complete your digital stamp card
+            and qualify for a <strong>free Tea Bomb.</strong>
           </p>
 
           <h3>Your R100 Breakdown</h3>
 
           <ul class="price-breakdown">
-            <li>🤲 Touch — DIY Body Scrub: <strong>R35</strong></li>
-            <li>🍵 Taste — Herbal Iced Tea: <strong>R25</strong></li>
-            <li>🌿 Smell — Essential Oil Bracelet: <strong>R20</strong></li>
-            <li>👀 Sight — Memory Game Entry: <strong>R10</strong></li>
-            <li>🔊 Sound — Wire Game Entry: <strong>R10</strong></li>
+
             <li>
-              <strong>Total minimum spend: R100</strong>
+              <span class="inline-icon" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24">
+                  <path d="M8 12V5a1.5 1.5 0 0 1 3 0v6-8a1.5 1.5 0 0 1 3 0v8-6a1.5 1.5 0 0 1 3 0v7-3a1.5 1.5 0 0 1 3 0v6c0 4-2.5 7-6.5 7h-2c-2 0-3.5-1-4.5-2.5L3 14a1.7 1.7 0 0 1 2.5-2.2L8 14"/>
+                </svg>
+              </span>
+              <span>Touch — DIY Body Scrub</span>
+              <strong>R35</strong>
             </li>
+
+            <li>
+              <span class="inline-icon" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24">
+                  <path d="M4 8h16l-1.4 12H5.4L4 8Z"/>
+                  <path d="M8 8a4 4 0 0 1 8 0"/>
+                </svg>
+              </span>
+              <span>Taste — Herbal Iced Tea</span>
+              <strong>R25</strong>
+            </li>
+
+            <li>
+              <span class="inline-icon" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24">
+                  <path d="M20.5 3.5C12 3 5 7 5 14a6 6 0 0 0 6 6c7 0 10-8 9.5-16.5Z"/>
+                  <path d="M3 21c3-6 7-9 13-12"/>
+                </svg>
+              </span>
+              <span>Smell — Essential Oil Bracelet</span>
+              <strong>R20</strong>
+            </li>
+
+            <li>
+              <span class="inline-icon" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24">
+                  <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+              </span>
+              <span>Sight — Memory Game Entry</span>
+              <strong>R10</strong>
+            </li>
+
+            <li>
+              <span class="inline-icon" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24">
+                  <path d="M11 5 6 9H2v6h4l5 4V5Z"/>
+                  <path d="M15.5 8.5a5 5 0 0 1 0 7"/>
+                </svg>
+              </span>
+              <span>Sound — Wire Game Entry</span>
+              <strong>R10</strong>
+            </li>
+
+            <li>
+              <span>Total minimum spend</span>
+              <strong>R100</strong>
+            </li>
+
           </ul>
 
           <div class="notice">
-            <strong>How to qualify:</strong>
+
+            <strong>How to qualify</strong>
 
             <p>
               Make a purchase at all five stalls with a combined
               minimum spend of R100. Complete your digital stamp
               card with assistance from the stall teams and follow
-              the team’s instructions to claim your free Tea Bomb.
+              the team's instructions to claim your free Tea Bomb.
             </p>
 
             <p>
               The R100 total assumes you purchase the listed
-              R35 scrub, R25 iced tea, R20 bracelet and both R10
-              game entries. Other purchases may change your total.
+              R35 scrub, R25 iced tea, R20 bracelet and both
+              R10 game entries. Other purchases may change your total.
             </p>
+
           </div>
 
           <div class="tea-bomb">
-            <h3>🍬 What Is a Tea Bomb?</h3>
+
+            <h3>What Is a Tea Bomb?</h3>
 
             <p>
-              A Tea Bomb is a hard candy shell containing loose-leaf
-              tea, herbs and dried edible flowers. Place it in a mug
-              or teapot and add hot water. As the shell melts or
-              cracks, the contents are released into the water,
-              creating a colourful, aromatic tea that is lightly
-              sweetened by the shell.
+              A Tea Bomb is a hard candy shell containing
+              loose-leaf tea, herbs and dried edible flowers.
+              Place it in a mug or teapot and add hot water.
+              As the shell melts or cracks, the contents are
+              released into the water, creating a colourful,
+              aromatic tea that is lightly sweetened by the shell.
             </p>
+
           </div>
 
-          <p>
+          <p style="margin-top: 28px;">
             <a
               class="button"
               href="https://bubbles020205.github.io/Sense-ational-card/"
@@ -1194,30 +1781,28 @@ textarea {
       </div>
     </section>
 
+    <!-- PREORDER -->
 
-    <!-- PREORDER AND COLLECT -->
     <section class="order-section" id="preorder">
       <div class="container">
 
         <h2 class="section-title">Preorder &amp; Collect</h2>
 
         <p class="section-intro">
-          Want to plan your purchases in advance?
-          Select your products, enter your details and prepare
-          your preorder summary.
+          Select your products, enter your details and
+          prepare a preorder summary.
         </p>
 
-        <div class="order-card">
-
-          <h3>Your Details</h3>
+        <div class="order-card glass-card">
 
           <form id="orderForm">
+
+            <h3>Your Details</h3>
 
             <div class="form-grid">
 
               <div class="form-group">
                 <label for="customerName">Full name *</label>
-
                 <input
                   id="customerName"
                   name="customerName"
@@ -1229,7 +1814,6 @@ textarea {
 
               <div class="form-group">
                 <label for="customerPhone">Contact number *</label>
-
                 <input
                   id="customerPhone"
                   name="customerPhone"
@@ -1241,7 +1825,6 @@ textarea {
 
               <div class="form-group full">
                 <label for="customerEmail">Email address (optional)</label>
-
                 <input
                   id="customerEmail"
                   name="customerEmail"
@@ -1255,14 +1838,12 @@ textarea {
             <h3>Select Your Products</h3>
 
             <p class="small-print">
-              Select the quantity you would like to preorder.
-              Leave a quantity at zero if you do not want that product.
+              Choose the quantities you want to preorder.
               Game entries must be purchased at the event.
             </p>
 
-
-            <!-- BODY SCRUB -->
             <div class="product-row">
+
               <div class="product-description">
                 <strong>DIY Body Scrub — R35</strong>
                 <small>100 ml body scrub</small>
@@ -1270,24 +1851,24 @@ textarea {
 
               <label>
                 <span class="small-print">Quantity</span>
-
                 <input
                   class="quantity"
                   type="number"
                   id="scrubQty"
                   min="0"
                   max="50"
+                  step="1"
                   value="0"
                   aria-label="Body scrub quantity"
                   data-name="DIY Body Scrub"
                   data-price="35"
                 >
               </label>
+
             </div>
 
-
-            <!-- ICED TEA -->
             <div class="product-row">
+
               <div class="product-description">
                 <strong>Herbal Iced Tea — R25</strong>
                 <small>Refreshing herbal iced tea</small>
@@ -1295,24 +1876,24 @@ textarea {
 
               <label>
                 <span class="small-print">Quantity</span>
-
                 <input
                   class="quantity"
                   type="number"
                   id="teaQty"
                   min="0"
                   max="50"
+                  step="1"
                   value="0"
                   aria-label="Herbal iced tea quantity"
                   data-name="Herbal Iced Tea"
                   data-price="25"
                 >
               </label>
+
             </div>
 
-
-            <!-- BRACELET -->
             <div class="product-row">
+
               <div class="product-description">
                 <strong>Essential Oil Bracelet — R20</strong>
                 <small>Scented bracelet</small>
@@ -1320,21 +1901,21 @@ textarea {
 
               <label>
                 <span class="small-print">Quantity</span>
-
                 <input
                   class="quantity"
                   type="number"
                   id="braceletQty"
                   min="0"
                   max="50"
+                  step="1"
                   value="0"
-                  aria-label="Essential oil bracelet quantity"
+                  aria-label="Bracelet quantity"
                   data-name="Essential Oil Bracelet"
                   data-price="20"
                 >
               </label>
-            </div>
 
+            </div>
 
             <div class="order-total">
               <span>Order Total</span>
@@ -1342,6 +1923,7 @@ textarea {
             </div>
 
             <div class="form-group">
+
               <label for="collectionNotes">
                 Product preferences or collection notes (optional)
               </label>
@@ -1352,9 +1934,11 @@ textarea {
                 rows="4"
                 placeholder="For example, your preferred scrub scent or iced tea flavour."
               ></textarea>
+
             </div>
 
             <div class="checkbox-row">
+
               <input
                 id="confirmOrder"
                 name="confirmOrder"
@@ -1363,12 +1947,13 @@ textarea {
               >
 
               <label for="confirmOrder">
-                I confirm that my contact details are correct and
-                understand that this form prepares a preorder
+                I confirm that my contact details are correct
+                and understand that this form prepares a preorder
                 summary. My order is not submitted to the organisers
                 until an official submission method has been connected
                 and the order has been acknowledged.
               </label>
+
             </div>
 
             <button type="submit">
@@ -1383,25 +1968,27 @@ textarea {
             ></p>
 
             <div class="notice">
-              <strong>Important:</strong>
 
-              This website currently prepares a downloadable order
-              summary on your device. It does not automatically send
-              your order to the organisers or confirm stock.
+              <strong>Important</strong>
 
-              EFT payment details and an online order-submission
-              service must be configured separately before this
-              form can accept confirmed orders.
+              <p>
+                This website currently prepares a downloadable
+                order summary on your device. It does not
+                automatically send your order to the organisers
+                or confirm stock. EFT payment details and an
+                online order-submission service must be configured
+                separately before this form can accept confirmed orders.
+              </p>
+
             </div>
 
           </form>
-
         </div>
       </div>
     </section>
 
-
     <!-- PAYMENT AND COLLECTION -->
+
     <section id="collection">
       <div class="container">
 
@@ -1413,99 +2000,119 @@ textarea {
 
         <div class="info-grid">
 
-          <div class="info-card">
-            <h3>💳 EFT Payments</h3>
+          <article class="info-card glass-card">
+
+            <h3>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="2" y="5" width="20" height="14" rx="2"/>
+                <path d="M2 10h20"/>
+              </svg>
+
+              EFT Payments
+            </h3>
 
             <p>
-              EFT payment instructions will be provided once the
-              organisers' verified banking details and payment
-              procedure have been added.
+              EFT payment instructions will be provided once
+              the organisers' verified banking details and
+              payment procedure have been added.
             </p>
 
             <p class="small-print">
               Always verify payment details with the organisers
-              before making a transfer. Do not make a payment based
-              on unverified banking information.
+              before making a transfer.
             </p>
-          </div>
 
-          <div class="info-card">
-            <h3>🛍️ Preorder &amp; Collect</h3>
+          </article>
+
+          <article class="info-card glass-card">
+
+            <h3>
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6 7h12l1 14H5L6 7Z"/>
+                <path d="M9 7a3 3 0 0 1 6 0"/>
+              </svg>
+
+              Preorder &amp; Collect
+            </h3>
 
             <p>
-              Preordering helps you plan your purchases ahead of
-              Market Day. Your collection arrangements, stock
-              availability and payment status must be confirmed
-              by the organisers.
+              Preordering helps you plan your purchases ahead
+              of Market Day. Your collection arrangements,
+              stock availability and payment status must be
+              confirmed by the organisers.
             </p>
 
             <p class="small-print">
-              Please keep your preorder summary until your order
+              Keep your preorder summary until your order
               has been acknowledged.
             </p>
-          </div>
+
+          </article>
 
         </div>
-
       </div>
     </section>
 
   </main>
 
-
   <!-- FOOTER -->
+
   <footer>
     <div class="container">
 
-      <h2>Sense-ational Market Day</h2>
+      <h2>Sense-ational</h2>
 
       <p>Five Stalls. Five Senses. One Amazing Experience.</p>
 
-      <p>
-        Ready to collect your digital stamps?
-      </p>
+      <p>Ready to collect your digital stamps?</p>
 
       <a
+        class="footer-link"
         href="https://bubbles020205.github.io/Sense-ational-card/"
         target="_blank"
         rel="noopener noreferrer"
       >
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="4" width="18" height="16" rx="2"/>
+          <path d="M8 4v16M16 4v16"/>
+          <path d="M3 9h5M16 9h5M3 15h5M16 15h5"/>
+        </svg>
+
         Visit the Digital Stamp Card
       </a>
 
       <p class="small-print">
-        &copy; <span id="currentYear"></span>
-        Sense-ational Market Day.
+        &copy; <span id="currentYear"></span> Sense-ational.
       </p>
 
     </div>
   </footer>
 
-
-  <!-- WEBSITE FUNCTIONALITY -->
   <script>
-    // Update the displayed year.
     document.getElementById("currentYear").textContent =
       new Date().getFullYear();
 
+    const quantityInputs =
+      document.querySelectorAll(".quantity");
 
-    // Calculate the preorder total.
-    const quantityInputs = document.querySelectorAll(".quantity");
-    const orderTotalDisplay = document.getElementById("orderTotal");
+    const orderTotalDisplay =
+      document.getElementById("orderTotal");
 
     function calculateOrderTotal() {
       let total = 0;
 
-      quantityInputs.forEach(function(input) {
+      quantityInputs.forEach((input) => {
         let quantity = Number.parseInt(input.value, 10);
 
         if (!Number.isFinite(quantity) || quantity < 0) {
           quantity = 0;
         }
 
-        const price = Number(input.dataset.price);
+        const max = Number.parseInt(input.max, 10) || 50;
 
-        total += quantity * price;
+        quantity = Math.min(quantity, max);
+
+        total += quantity * Number(input.dataset.price);
       });
 
       orderTotalDisplay.textContent =
@@ -1514,20 +2121,20 @@ textarea {
       return total;
     }
 
-    quantityInputs.forEach(function(input) {
+    quantityInputs.forEach((input) => {
       input.addEventListener("input", calculateOrderTotal);
     });
 
+    document
+      .getElementById("orderForm")
+      .addEventListener("submit", (event) => {
 
-    // Prepare a downloadable preorder summary.
-    // This does not submit an order to a server.
-    document.getElementById("orderForm").addEventListener(
-      "submit",
-      function(event) {
         event.preventDefault();
 
-        const message = document.getElementById("orderMessage");
         const form = event.currentTarget;
+
+        const message =
+          document.getElementById("orderMessage");
 
         if (!form.reportValidity()) {
           return;
@@ -1545,31 +2152,34 @@ textarea {
         const notes =
           document.getElementById("collectionNotes").value.trim();
 
-        const confirmation =
-          document.getElementById("confirmOrder").checked;
-
-        if (!confirmation) {
+        if (!document.getElementById("confirmOrder").checked) {
           message.textContent =
             "Please confirm the preorder conditions.";
+
           return;
         }
 
         const items = [];
         let total = 0;
 
-        quantityInputs.forEach(function(input) {
+        quantityInputs.forEach((input) => {
+
           const quantity =
             Number.parseInt(input.value, 10) || 0;
 
-          const price = Number(input.dataset.price);
+          const price =
+            Number(input.dataset.price);
 
           if (quantity > 0) {
+
             const subtotal = quantity * price;
 
             items.push(
               input.dataset.name +
-              " x " + quantity +
-              " — R" + subtotal.toFixed(2)
+              " x " +
+              quantity +
+              " — R" +
+              subtotal.toFixed(2)
             );
 
             total += subtotal;
@@ -1577,8 +2187,10 @@ textarea {
         });
 
         if (items.length === 0) {
+
           message.textContent =
             "Please select at least one product before preparing your preorder.";
+
           return;
         }
 
@@ -1586,7 +2198,8 @@ textarea {
           "SA-" + Date.now().toString().slice(-8);
 
         const orderText = [
-          "SENSE-ATIONAL MARKET DAY",
+
+          "SENSE-ATIONAL",
           "PREORDER SUMMARY",
           "==========================",
           "",
@@ -1612,6 +2225,7 @@ textarea {
           "arrangements and verified EFT payment instructions.",
           "",
           "Please retain this summary for your records."
+
         ].join("\n");
 
         const file = new Blob(
@@ -1619,27 +2233,32 @@ textarea {
           { type: "text/plain;charset=utf-8" }
         );
 
-        const downloadURL = URL.createObjectURL(file);
-        const downloadLink = document.createElement("a");
+        const downloadURL =
+          URL.createObjectURL(file);
+
+        const downloadLink =
+          document.createElement("a");
 
         downloadLink.href = downloadURL;
+
         downloadLink.download =
-          "Sense-ational-Preorder-" + orderNumber + ".txt";
+          "Sense-ational-Preorder-" +
+          orderNumber +
+          ".txt";
 
         document.body.appendChild(downloadLink);
+
         downloadLink.click();
         downloadLink.remove();
 
-        URL.revokeObjectURL(downloadURL);
+        setTimeout(() => {
+          URL.revokeObjectURL(downloadURL);
+        }, 1000);
 
         message.textContent =
-          "Your preorder summary has been prepared for download. " +
-          "Remember: your order has not yet been sent to the organisers.";
-      }
-    );
+          "Your preorder summary has been prepared for download. Remember: your order has not yet been sent to the organisers.";
+      });
 
-
-    // Initialise the total.
     calculateOrderTotal();
   </script>
 
