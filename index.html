@@ -583,13 +583,74 @@
       gap: 22px;
     }
 
-    .stall-card {
-      overflow: hidden;
-      padding: 25px;
+.stall-card {
+position: relative;
+overflow: visible;
+padding: 25px;
 
-      display: flex;
-      flex-direction: column;
-    }
+display: flex;
+flex-direction: column;
+
+background: rgba(255, 255, 255, 0.88);
+border: 1px solid rgba(91, 143, 91, 0.25);
+border-radius: 22px;
+
+box-shadow:
+0 0 12px rgba(71, 135, 82, 0.12),
+0 0 25px rgba(71, 135, 82, 0.08),
+0 12px 35px rgba(30, 57, 39, 0.08);
+
+transition:
+transform 0.3s ease,
+box-shadow 0.3s ease,
+border-color 0.3s ease;
+}
+
+.stall-card:hover {
+transform: translateY(-6px);
+
+border-color: rgba(71, 135, 82, 0.65);
+
+box-shadow:
+0 0 15px rgba(71, 135, 82, 0.28),
+0 0 35px rgba(71, 135, 82, 0.20),
+0 0 50px rgba(233, 199, 101, 0.12),
+0 18px 40px rgba(30, 57, 39, 0.12);
+}
+
+@media (max-width: 640px) {
+.stall-card {
+padding: 20px;
+border-radius: 18px;
+}
+}
+
+@media (max-width: 420px) {
+.stall-card {
+padding: 16px;
+border-radius: 15px;
+}
+}
+
+@media (prefers-reduced-motion: reduce) {
+.stall-card {
+transition: none;
+}
+
+.stall-card:hover {
+transform: none;
+border-color: rgba(91, 143, 91, 0.25);
+box-shadow:
+0 0 12px rgba(71, 135, 82, 0.12),
+0 0 25px rgba(71, 135, 82, 0.08),
+0 12px 35px rgba(30, 57, 39, 0.08);
+}
+
+.stall-card:focus-within {
+outline: 3px solid rgba(71, 135, 82, 0.65);
+outline-offset: 4px;
+}
+}
 
     .stall-card p {
       margin-bottom: 18px;
