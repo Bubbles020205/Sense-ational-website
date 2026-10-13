@@ -1377,28 +1377,27 @@
        RESPONSIVE DESIGN
     ========================================= */
 
-    @media (max-width: 1000px) {
-      .nav-links {
-        gap: 12px;
-      }
+   /* TABLET LAYOUT */
 
-      .nav-links a {
-        font-size: 0.77rem;
-      }
+@media (max-width: 900px) {
+  .stall-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
 
-      .hero-grid {
-        gap: 25px;
-      }
+/* MOBILE LAYOUT */
 
-      .stall-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
+@media (max-width: 600px) {
+  .stall-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
 
-    @media (max-width: 800px) {
-      section {
-        padding: 65px 18px;
-      }
+  .stall-card {
+    padding: 20px;
+  }
+}
 
       .nav-inner {
         min-height: 70px;
