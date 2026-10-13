@@ -573,12 +573,84 @@
       font-weight: 900;
     }
 
-    /* =========================================
-       STALLS
-    ========================================= */
+/* ========================================
+   STALL GRID
+======================================== */
 
-    .stall-grid {
-      /* STALL DETAILS DROPDOWN */
+.stall-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+
+/* ========================================
+   STALL CARDS
+======================================== */
+
+.stall-card {
+  overflow: hidden;
+  padding: 25px;
+
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+}
+
+.stall-card p {
+  margin-bottom: 18px;
+}
+
+.stall-card .icon-box {
+  margin-bottom: 17px;
+}
+
+.stall-card h3 {
+  font-size: 1.3rem;
+}
+
+
+/* ========================================
+   STALL PRODUCT LISTS
+======================================== */
+
+.stall-card ul {
+  list-style: none;
+
+  display: grid;
+  gap: 10px;
+
+  margin: 8px 0 20px;
+  padding: 0;
+}
+
+.stall-card li {
+  color: var(--muted);
+  font-size: 0.9rem;
+
+  padding-left: 18px;
+  position: relative;
+}
+
+.stall-card li::before {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  top: 10px;
+
+  width: 7px;
+  height: 7px;
+
+  background: var(--red);
+  border-radius: 50%;
+}
+
+
+/* ========================================
+   STALL DETAILS DROPDOWN
+======================================== */
 
 .stall-details {
   margin-top: 12px;
@@ -605,7 +677,7 @@
   justify-content: space-between;
   align-items: center;
 
-  transition: 0.25s ease;
+  transition: background 0.25s ease;
 }
 
 /* Remove default browser arrow */
@@ -614,15 +686,16 @@
   display: none;
 }
 
-/* Add our own arrow */
+/* Custom plus icon */
 
 .stall-details summary::after {
   content: "+";
+
   font-size: 1.3rem;
   font-weight: 900;
 }
 
-/* Change arrow when opened */
+/* Change plus to minus when opened */
 
 .stall-details[open] summary::after {
   content: "−";
@@ -631,112 +704,107 @@
 /* Hover effect */
 
 .stall-details summary:hover {
-  transform: translateY(-2px);
+  background: var(--red-light);
 }
 
-/* Dropdown content spacing */
+/* Spacing inside dropdown */
 
 .stall-details ul {
-  margin-top: 18px;
+  margin: 18px 0 20px;
 }
 
-/* Keep the price panel inside the dropdown */
+/* Dropdown paragraphs */
+
+.stall-details p {
+  margin-bottom: 10px;
+}
+
+
+/* ========================================
+   PRICE PANEL
+======================================== */
+
+.price-panel {
+  margin-top: auto;
+
+  background: var(--cream);
+  border-radius: 16px;
+
+  padding: 15px;
+}
+
+/* Keep price panel inside the dropdown */
 
 .stall-details .price-panel {
   margin-top: 15px;
 }
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 22px;
-    }
 
-    .stall-card {
-      overflow: hidden;
-      padding: 25px;
+/* Market price */
 
-      display: flex;
-      flex-direction: column;
-    }
+.market-price {
+  font-size: 0.86rem;
+  color: var(--muted);
+}
 
-    .stall-card p {
-      margin-bottom: 18px;
-    }
+.market-price s {
+  color: var(--red);
+  font-weight: 700;
+}
 
-    .stall-card .icon-box {
-      margin-bottom: 17px;
-    }
+/* Preorder price */
 
-    .stall-card h3 {
-      font-size: 1.3rem;
-    }
+.preorder-price {
+  font-size: 1.3rem;
+  color: var(--green);
+  font-weight: 900;
+}
 
-    .stall-card ul {
-      list-style: none;
-      display: grid;
-      gap: 10px;
-      margin: 8px 0 20px;
-    }
+/* Price note */
 
-    .stall-card li {
-      color: var(--muted);
-      font-size: 0.9rem;
-      padding-left: 18px;
-      position: relative;
-    }
+.price-note {
+  font-size: 0.74rem;
+  margin-top: 3px;
+}
 
-    .stall-card li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 10px;
 
-      width: 7px;
-      height: 7px;
+/* ========================================
+   MARKET DAY ONLY LABEL
+======================================== */
 
-      background: var(--red);
-      border-radius: 50%;
-    }
+.market-only {
+  display: inline-block;
 
-    .price-panel {
-      margin-top: auto;
-      background: var(--cream);
-      border-radius: 16px;
-      padding: 15px;
-    }
+  padding: 7px 11px;
 
-    .market-price {
-      font-size: 0.86rem;
-      color: var(--muted);
-    }
+  background: var(--red-light);
+  color: var(--red);
 
-    .market-price s {
-      color: var(--red);
-      font-weight: 700;
-    }
+  border-radius: 20px;
 
-    .preorder-price {
-      font-size: 1.3rem;
-      color: var(--green);
-      font-weight: 900;
-    }
+  font-weight: 800;
+  font-size: 0.76rem;
+}
 
-    .price-note {
-      font-size: 0.74rem;
-      margin-top: 3px;
-    }
 
-    .market-only {
-      display: inline-block;
-      padding: 7px 11px;
+/* ========================================
+   RESPONSIVE STALL GRID
+======================================== */
 
-      background: var(--red-light);
-      color: var(--red);
+@media (max-width: 900px) {
+  .stall-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
 
-      border-radius: 20px;
-      font-weight: 800;
-      font-size: 0.76rem;
-    }
+@media (max-width: 600px) {
+  .stall-grid {
+    grid-template-columns: 1fr;
+  }
 
+  .stall-card {
+    padding: 20px;
+  }
+}
     /* =========================================
        R100 SPECIAL
     ========================================= */
