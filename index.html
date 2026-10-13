@@ -1,3096 +1,4023 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sense-ational | Five Senses, One Experience</title>
+  <meta
+    name="description"
+    content="Discover Sense-ational: a celebration of the five senses through natural products, herbal tea, scented bracelets and interactive games."
+  >
 
-<meta name="description" content="Discover Sense-ational, a student-led sensory experience celebrating nature, herbs and the five senses. Explore our stalls and preorder your favourites.">
+  <meta name="theme-color" content="#214c37">
 
-<style>
-/* ========================================
-   SENSE-ATIONAL WEBSITE
-   Complete standalone stylesheet
-======================================== */
+  <title>Sense-ational | Experience Every Sense</title>
 
-:root {
-    --green: #426b46;
-    --green-dark: #294c31;
-    --green-light: #e5efe1;
-    --cream: #fffaf0;
-    --yellow: #e9c765;
-    --red: #c95148;
-    --blue: #729bb7;
-    --text: #29372b;
-    --muted: #687468;
-    --white: #ffffff;
-    --border: rgba(66, 107, 70, 0.2);
-    --shadow: 0 12px 35px rgba(30, 57, 39, 0.08);
-}
+  <style>
+    /* =========================================
+       SENSE-ATIONAL
+       Main colours and layout
+    ========================================= */
 
-* {
-    box-sizing: border-box;
-}
+    :root {
+      --green: #214c37;
+      --green-dark: #163525;
+      --green-light: #e6f0e5;
 
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 100px;
-}
+      --red: #b73b38;
+      --red-light: #f9e8e5;
 
-body {
-    margin: 0;
-    background:
+      --cream: #fffaf0;
+      --cream-dark: #f3ead6;
+
+      --yellow: #e9c765;
+      --blue: #c9e1e7;
+
+      --text: #27352b;
+      --muted: #6c766c;
+      --white: #ffffff;
+
+      --border: rgba(33, 76, 55, 0.14);
+
+      --shadow:
+        0 15px 45px rgba(30, 57, 39, 0.09);
+
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      background:
         radial-gradient(
-            circle at 10% 10%,
-            rgba(233, 199, 101, 0.12),
-            transparent 28%
+          circle at 10% 10%,
+          rgba(201, 225, 231, 0.35),
+          transparent 30%
         ),
         radial-gradient(
-            circle at 90% 35%,
-            rgba(114, 155, 183, 0.10),
-            transparent 30%
+          circle at 90% 30%,
+          rgba(233, 199, 101, 0.18),
+          transparent 25%
         ),
         var(--cream);
 
-    color: var(--text);
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.65;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-a {
-    color: var(--green);
-}
-
-button,
-input,
-select,
-textarea {
-    font: inherit;
-}
-
-button,
-a {
-    -webkit-tap-highlight-color: transparent;
-}
-
-button {
-    cursor: pointer;
-}
-
-.container {
-    width: min(1120px, 92%);
-    margin: 0 auto;
-}
-
-section {
-    padding: 75px 0;
-}
-
-.section-title {
-    margin: 0 0 12px;
-    color: var(--green-dark);
-    font-size: clamp(2rem, 5vw, 3rem);
-    line-height: 1.15;
-    text-align: center;
-}
-
-.section-intro {
-    max-width: 720px;
-    margin: 0 auto 38px;
-    color: var(--muted);
-    text-align: center;
-}
-
-.eyebrow {
-    display: inline-block;
-    margin-bottom: 12px;
-    color: var(--green);
-    font-size: 0.8rem;
-    font-weight: 800;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-}
-
-/* ========================================
-   SVG ICONS
-======================================== */
-
-.icon {
-    width: 25px;
-    height: 25px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 1.8;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.icon-large {
-    width: 38px;
-    height: 38px;
-}
-
-.icon-box {
-    width: 65px;
-    height: 65px;
-    display: grid;
-    place-items: center;
-    border-radius: 20px;
-    background: var(--green-light);
-    color: var(--green);
-    margin-bottom: 18px;
-}
-
-/* ========================================
-   NAVIGATION
-======================================== */
-
-.site-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: rgba(255, 250, 240, 0.95);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--border);
-}
-
-.nav-container {
-    width: min(1200px, 96%);
-    margin: 0 auto;
-    min-height: 76px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 18px;
-}
-
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-shrink: 0;
-    text-decoration: none;
-    color: var(--green-dark);
-    font-weight: 900;
-    font-size: 1.15rem;
-}
-
-.brand img {
-    width: 48px;
-    height: 48px;
-    object-fit: contain;
-    border-radius: 50%;
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 16px;
-    overflow-x: auto;
-    white-space: nowrap;
-    scrollbar-width: none;
-}
-
-.nav-links::-webkit-scrollbar {
-    display: none;
-}
-
-.nav-links a {
-    flex-shrink: 0;
-    text-decoration: none;
-    color: var(--text);
-    font-size: 0.83rem;
-    font-weight: 700;
-    transition: color 0.2s ease;
-}
-
-.nav-links a:hover {
-    color: var(--green);
-}
-
-.nav-links .nav-highlight {
-    padding: 9px 13px;
-    border-radius: 20px;
-    color: var(--white);
-    background: var(--green);
-}
-
-/* ========================================
-   BUTTONS
-======================================== */
-
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 12px 20px;
-    border: 1px solid transparent;
-    border-radius: 999px;
-    background: var(--green);
-    color: var(--white);
-    text-align: center;
-    text-decoration: none;
-    font-size: 0.93rem;
-    font-weight: 800;
-    transition:
-        transform 0.2s ease,
-        background 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-.btn:hover {
-    transform: translateY(-2px);
-    background: var(--green-dark);
-    box-shadow: 0 8px 22px rgba(41, 76, 49, 0.17);
-}
-
-.btn-secondary {
-    background: transparent;
-    color: var(--green-dark);
-    border-color: var(--green);
-}
-
-.btn-secondary:hover {
-    color: var(--white);
-}
-
-.btn-yellow {
-    background: var(--yellow);
-    color: var(--green-dark);
-}
-
-.btn-yellow:hover {
-    background: #f0d680;
-    color: var(--green-dark);
-}
-
-.btn-light {
-    background: var(--white);
-    color: var(--green-dark);
-}
-
-.btn-light:hover {
-    background: var(--green-light);
-    color: var(--green-dark);
-}
-
-.btn-block {
-    width: 100%;
-}
-
-/* ========================================
-   HERO
-======================================== */
-
-.hero {
-    padding: 75px 0 85px;
-    overflow: hidden;
-}
-
-.hero-grid {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    align-items: center;
-    gap: 45px;
-}
-
-.hero h1 {
-    max-width: 700px;
-    margin: 0 0 20px;
-    color: var(--green-dark);
-    font-size: clamp(2.7rem, 6vw, 5rem);
-    line-height: 1.02;
-    letter-spacing: -0.045em;
-}
-
-.hero h1 span {
-    color: var(--green);
-}
-
-.hero-copy {
-    max-width: 590px;
-    color: var(--muted);
-    font-size: 1.1rem;
-}
-
-.hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 25px;
-}
-
-.hero-image-wrap {
-    position: relative;
-    display: grid;
-    place-items: center;
-}
-
-.hero-image {
-    width: min(100%, 440px);
-    max-height: 440px;
-    object-fit: contain;
-    border-radius: 30px;
-    filter: drop-shadow(0 18px 30px rgba(30, 57, 39, 0.12));
-}
-
-.hero-note {
-    position: absolute;
-    right: 0;
-    bottom: 12px;
-    max-width: 210px;
-    padding: 15px 18px;
-    border-radius: 20px;
-    background: var(--white);
-    color: var(--green-dark);
-    font-size: 0.88rem;
-    font-weight: 800;
-    box-shadow: var(--shadow);
-}
-
-/* ========================================
-   QUICK FIVE-SENSE STRIP
-======================================== */
-
-.sense-strip {
-    padding: 24px 0;
-    background: rgba(229, 239, 225, 0.75);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-}
-
-.sense-strip-inner {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-}
-
-.sense-pill {
-    padding: 9px 16px;
-    border-radius: 999px;
-    background: var(--white);
-    border: 1px solid var(--border);
-    color: var(--green-dark);
-    font-size: 0.9rem;
-    font-weight: 800;
-}
-
-/* ========================================
-   ABOUT
-======================================== */
-
-.about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: stretch;
-    gap: 25px;
-}
-
-.glass-card {
-    background: rgba(255, 255, 255, 0.86);
-    border: 1px solid var(--border);
-    border-radius: 24px;
-    box-shadow: var(--shadow);
-}
-
-.about-card {
-    padding: 30px;
-}
-
-.about-card h3 {
-    color: var(--green-dark);
-    margin-top: 0;
-}
-
-.about-card p:last-child {
-    margin-bottom: 0;
-}
-
-.about-highlight {
-    background: var(--green-dark);
-    color: var(--white);
-}
-
-.about-highlight h3 {
-    color: var(--yellow);
-}
-
-.about-highlight p {
-    color: rgba(255, 255, 255, 0.9);
-}
-
-/* ========================================
-   STALL GRID AND GLOW
-======================================== */
-
-.stall-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 25px;
-    align-items: stretch;
-}
-
-.stall-card {
-    position: relative;
-    overflow: visible;
-    min-width: 0;
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-
-    background: rgba(255, 255, 255, 0.92);
-    border: 1px solid rgba(91, 143, 91, 0.3);
-    border-radius: 22px;
-
-    box-shadow:
-        0 0 12px rgba(71, 135, 82, 0.12),
-        0 0 25px rgba(71, 135, 82, 0.08),
-        0 12px 35px rgba(30, 57, 39, 0.08);
-
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        border-color 0.3s ease;
-}
-
-.stall-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(71, 135, 82, 0.65);
-
-    box-shadow:
-        0 0 15px rgba(71, 135, 82, 0.25),
-        0 0 30px rgba(71, 135, 82, 0.16),
-        0 0 45px rgba(233, 199, 101, 0.12),
-        0 18px 40px rgba(30, 57, 39, 0.12);
-}
-
-.stall-card h3 {
-    margin: 0 0 8px;
-    color: var(--green-dark);
-    font-size: 1.35rem;
-    line-height: 1.3;
-}
-
-.stall-item-name {
-    margin: 0 0 14px;
-    color: var(--muted);
-    font-weight: 700;
-}
-
-.stall-description {
-    color: var(--muted);
-}
-
-/* ========================================
-   PRICE BOXES
-======================================== */
-
-.stall-pricing {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-    margin: 16px 0;
-}
-
-.price-box {
-    min-width: 0;
-    padding: 12px 8px;
-    text-align: center;
-    border-radius: 14px;
-    background: rgba(91, 143, 91, 0.09);
-    border: 1px solid rgba(91, 143, 91, 0.2);
-}
-
-.price-box.preorder {
-    background: rgba(233, 199, 101, 0.16);
-    border-color: rgba(193, 153, 47, 0.3);
-}
-
-.price-label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 0.78rem;
-    font-weight: 700;
-    line-height: 1.35;
-}
-
-.price-value {
-    display: block;
-    color: var(--green-dark);
-    font-size: 1.4rem;
-    font-weight: 900;
-    line-height: 1.25;
-}
-
-.price-note {
-    grid-column: 1 / -1;
-    margin: 0;
-    color: var(--green);
-    font-size: 0.82rem;
-    font-weight: 700;
-    text-align: center;
-}
-
-.market-only-note {
-    grid-column: 1 / -1;
-    color: var(--muted);
-    font-size: 0.78rem;
-    text-align: center;
-}
-
-/* ========================================
-   DROPDOWN DETAILS
-======================================== */
-
-.stall-details {
-    margin: 8px 0 20px;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-}
-
-.stall-details summary {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    padding: 14px 2px;
-    color: var(--green);
-    font-weight: 800;
-    cursor: pointer;
-    list-style: none;
-}
-
-.stall-details summary::-webkit-details-marker {
-    display: none;
-}
-
-.stall-details summary::after {
-    content: "+";
-    font-size: 1.3rem;
-    line-height: 1;
-}
-
-.stall-details[open] summary::after {
-    content: "−";
-}
-
-.stall-details-content {
-    padding: 0 2px 15px;
-    color: var(--muted);
-    line-height: 1.65;
-}
-
-.stall-details-content p:first-child {
-    margin-top: 0;
-}
-
-.stall-details-content ul {
-    padding-left: 21px;
-}
-
-.stall-details-content li {
-    margin-bottom: 5px;
-}
-
-.stall-card > .btn {
-    width: 100%;
-    margin-top: auto;
-}
-
-/* ========================================
-   R100 SPECIAL
-======================================== */
-
-.special-section {
-    position: relative;
-    overflow: hidden;
-    background: var(--green-dark);
-    color: var(--white);
-}
-
-.special-grid {
-    display: grid;
-    grid-template-columns: 1fr 210px;
-    align-items: center;
-    gap: 35px;
-}
-
-.special-section .section-title {
-    color: var(--white);
-    text-align: left;
-}
-
-.special-section .section-intro {
-    margin: 0 0 22px;
-    color: rgba(255, 255, 255, 0.83);
-    text-align: left;
-}
-
-.special-kicker {
-    color: var(--yellow);
-    font-size: 0.85rem;
-    font-weight: 800;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-}
-
-.special-list {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-    margin: 24px 0;
-}
-
-.special-item {
-    padding: 11px 14px;
-    border: 1px solid rgba(255, 255, 255, 0.17);
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.07);
-    color: rgba(255, 255, 255, 0.94);
-    font-size: 0.92rem;
-}
-
-.special-badge {
-    width: 185px;
-    height: 185px;
-    aspect-ratio: 1 / 1;
-    padding: 18px;
-    margin: 0 auto;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-
-    overflow: hidden;
-    border-radius: 50%;
-    border: 5px solid var(--yellow);
-    background: var(--cream);
-    color: var(--green-dark);
-    text-align: center;
-    box-shadow:
-        0 0 0 8px rgba(233, 199, 101, 0.12),
-        0 0 35px rgba(233, 199, 101, 0.15);
-}
-
-.special-badge .badge-price {
-    display: block;
-    font-size: clamp(2.3rem, 4vw, 3rem);
-    font-weight: 900;
-    line-height: 1.05;
-    letter-spacing: -0.05em;
-}
-
-.special-badge small {
-    display: block;
-    max-width: 100%;
-    font-size: 0.75rem;
-    font-weight: 800;
-    line-height: 1.3;
-    overflow-wrap: anywhere;
-}
-
-.special-footnote {
-    color: rgba(255, 255, 255, 0.72);
-    font-size: 0.85rem;
-}
-
-/* ========================================
-   TEA BOMB
-======================================== */
-
-.tea-bomb-card {
-    padding: 30px;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 22px;
-    align-items: start;
-}
-
-.tea-bomb-card h3 {
-    margin-top: 0;
-    color: var(--green-dark);
-}
-
-.tea-bomb-card p {
-    color: var(--muted);
-}
-
-.free-label {
-    display: inline-block;
-    padding: 6px 12px;
-    border-radius: 999px;
-    background: var(--yellow);
-    color: var(--green-dark);
-    font-size: 0.8rem;
-    font-weight: 900;
-}
-
-/* ========================================
-   PREORDER SECTION
-======================================== */
-
-.order-layout {
-    display: grid;
-    grid-template-columns: 1fr 0.8fr;
-    gap: 25px;
-    align-items: start;
-}
-
-.order-card {
-    padding: 30px;
-}
-
-.order-card h3 {
-    margin-top: 0;
-    color: var(--green-dark);
-}
-
-.form-group {
-    margin-bottom: 18px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 7px;
-    color: var(--green-dark);
-    font-size: 0.9rem;
-    font-weight: 800;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    min-height: 46px;
-    padding: 11px 13px;
-    border: 1px solid rgba(66, 107, 70, 0.28);
-    border-radius: 12px;
-    background: var(--white);
-    color: var(--text);
-    outline: none;
-}
-
-.form-group textarea {
-    min-height: 90px;
-    resize: vertical;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    border-color: var(--green);
-    box-shadow: 0 0 0 3px rgba(66, 107, 70, 0.12);
-}
-
-.form-help {
-    margin-top: 5px;
-    color: var(--muted);
-    font-size: 0.8rem;
-}
-
-.order-product {
-    padding: 16px 0;
-    border-bottom: 1px solid var(--border);
-}
-
-.order-product:last-of-type {
-    border-bottom: 0;
-}
-
-.order-product-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 12px;
-    margin-bottom: 10px;
-}
-
-.order-product-top strong {
-    color: var(--green-dark);
-}
-
-.order-product-top span {
-    color: var(--green);
-    font-weight: 800;
-    white-space: nowrap;
-}
-
-.order-product-controls {
-    display: grid;
-    grid-template-columns: 1fr 95px;
-    gap: 12px;
-    align-items: end;
-}
-
-.order-product-controls .form-group {
-    margin-bottom: 0;
-}
-
-.order-product-controls label {
-    font-size: 0.8rem;
-}
-
-.order-product-controls select,
-.order-product-controls input {
-    min-width: 0;
-}
-
-.order-total {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-    padding: 20px 0;
-    margin-top: 8px;
-    border-top: 2px solid var(--green);
-    color: var(--green-dark);
-    font-size: 1.1rem;
-    font-weight: 900;
-}
-
-.order-total strong {
-    font-size: 1.65rem;
-}
-
-.order-note {
-    padding: 14px;
-    border-radius: 12px;
-    background: rgba(233, 199, 101, 0.16);
-    color: var(--text);
-    font-size: 0.85rem;
-}
-
-.form-error {
-    margin: 12px 0;
-    color: #a32d2d;
-    font-size: 0.9rem;
-    font-weight: 700;
-}
-
-.hidden {
-    display: none !important;
-}
-
-/* ========================================
-   ORDER CONFIRMATION
-======================================== */
-
-.confirmation {
-    margin-top: 25px;
-    padding: 24px;
-    border: 1px solid rgba(66, 107, 70, 0.3);
-    border-radius: 20px;
-    background: var(--green-light);
-}
-
-.confirmation h3 {
-    margin-top: 0;
-    color: var(--green-dark);
-}
-
-.reference-box {
-    padding: 15px;
-    margin: 16px 0;
-    border: 2px dashed var(--green);
-    border-radius: 14px;
-    background: var(--white);
-    text-align: center;
-}
-
-.reference-box span {
-    display: block;
-    color: var(--muted);
-    font-size: 0.8rem;
-}
-
-.reference-box strong {
-    display: block;
-    color: var(--green-dark);
-    font-size: 1.9rem;
-    letter-spacing: 0.08em;
-}
-
-.order-summary-list {
-    padding-left: 20px;
-}
-
-.order-summary-list li {
-    margin-bottom: 7px;
-}
-
-.confirmation-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 18px;
-}
-
-/* ========================================
-   EFT PAYMENT
-======================================== */
-
-.payment-card {
-    padding: 30px;
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 24px;
-    box-shadow: var(--shadow);
-}
-
-.payment-card h3 {
-    margin-top: 0;
-    color: var(--green-dark);
-}
-
-.bank-details {
-    margin: 18px 0;
-    border-top: 1px solid var(--border);
-}
-
-.bank-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    padding: 11px 0;
-    border-bottom: 1px solid var(--border);
-}
-
-.bank-row span:first-child {
-    color: var(--muted);
-    font-size: 0.87rem;
-}
-
-.bank-row strong {
-    overflow-wrap: anywhere;
-    text-align: right;
-    font-size: 0.9rem;
-}
-
-.payment-warning {
-    padding: 14px;
-    border-radius: 12px;
-    background: rgba(233, 199, 101, 0.18);
-    font-size: 0.86rem;
-}
-
-/* ========================================
-   STAMP CARD
-======================================== */
-
-.stamp-card-panel {
-    padding: 38px;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    gap: 25px;
-    border-radius: 26px;
-    background: var(--green-light);
-    border: 1px solid var(--border);
-}
-
-.stamp-card-panel h3 {
-    margin-top: 0;
-    color: var(--green-dark);
-    font-size: 1.65rem;
-}
-
-.stamp-card-panel p {
-    color: var(--muted);
-}
-
-/* ========================================
-   CONTACT
-======================================== */
-
-.contact-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 18px;
-}
-
-.contact-card {
-    padding: 24px;
-    text-align: center;
-    overflow-wrap: anywhere;
-}
-
-.contact-card .icon-box {
-    margin: 0 auto 15px;
-}
-
-.contact-card h3 {
-    margin: 0 0 8px;
-    color: var(--green-dark);
-}
-
-.contact-card p {
-    margin: 0 0 15px;
-    color: var(--muted);
-    font-size: 0.9rem;
-}
-
-.contact-card a:not(.btn) {
-    font-weight: 800;
-    overflow-wrap: anywhere;
-}
-
-/* ========================================
-   FOOTER
-======================================== */
-
-.site-footer {
-    padding: 32px 0;
-    background: var(--green-dark);
-    color: var(--white);
-    text-align: center;
-}
-
-.footer-brand {
-    margin-bottom: 8px;
-    font-size: 1.25rem;
-    font-weight: 900;
-}
-
-.site-footer p {
-    margin: 5px 0;
-    color: rgba(255, 255, 255, 0.78);
-    font-size: 0.85rem;
-}
-
-.footer-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 18px;
-    margin: 18px 0;
-}
-
-.footer-links a {
-    color: var(--yellow);
-    font-size: 0.88rem;
-    font-weight: 700;
-}
-
-/* ========================================
-   RESPONSIVE DESIGN
-======================================== */
-
-@media (max-width: 950px) {
-    .nav-container {
-        align-items: flex-start;
-        flex-direction: column;
-        padding: 12px 0;
-        gap: 10px;
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
     }
 
-    .nav-links {
-        width: 100%;
-        justify-content: flex-start;
-        padding-bottom: 5px;
+    img {
+      max-width: 100%;
+      display: block;
     }
 
-    .hero-grid {
-        grid-template-columns: 1fr 0.8fr;
-        gap: 25px;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .stall-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
     }
 
-    .order-layout {
-        grid-template-columns: 1fr;
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
     }
-}
 
-@media (max-width: 640px) {
+    button {
+      cursor: pointer;
+    }
+
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible,
+    select:focus-visible {
+      outline: 3px solid var(--yellow);
+      outline-offset: 4px;
+    }
+
     section {
-        padding: 55px 0;
+      padding: 85px 20px;
+      scroll-margin-top: 75px;
     }
 
-    .hero {
-        padding: 50px 0 60px;
-    }
-
-    .hero-grid,
-    .about-grid,
-    .special-grid,
-    .stamp-card-panel {
-        grid-template-columns: 1fr;
-    }
-
-    .hero-image-wrap {
-        margin-top: 15px;
-    }
-
-    .hero-image {
-        max-height: 300px;
-    }
-
-    .hero-note {
-        right: 0;
-        bottom: -8px;
-    }
-
-    .stall-grid,
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .stall-card {
-        padding: 20px;
-        border-radius: 18px;
-    }
-
-    .special-grid {
-        gap: 30px;
-    }
-
-    .special-section .section-title,
-    .special-section .section-intro {
-        text-align: center;
-    }
-
-    .special-list {
-        grid-template-columns: 1fr;
-    }
-
-    .special-badge {
-        width: 170px;
-        height: 170px;
-    }
-
-    .tea-bomb-card {
-        grid-template-columns: 1fr;
-    }
-
-    .order-card,
-    .payment-card {
-        padding: 22px;
-    }
-
-    .stamp-card-panel {
-        padding: 25px;
-        text-align: center;
-    }
-
-    .bank-row {
-        grid-template-columns: 0.85fr 1.15fr;
-    }
-
-    .bank-row strong {
-        font-size: 0.82rem;
-    }
-
-    .confirmation-actions {
-        flex-direction: column;
-    }
-
-    .confirmation-actions .btn {
-        width: 100%;
-    }
-}
-
-@media (max-width: 380px) {
     .container {
-        width: 94%;
+      max-width: 1150px;
+      margin: 0 auto;
     }
 
-    .stall-card {
-        padding: 16px;
+    .section-heading {
+      max-width: 720px;
+      margin: 0 auto 42px;
+      text-align: center;
     }
 
-    .stall-pricing {
-        gap: 7px;
+    .eyebrow {
+      display: inline-block;
+      color: var(--red);
+      text-transform: uppercase;
+      font-size: 0.77rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
     }
 
-    .price-value {
-        font-size: 1.2rem;
+    h1,
+    h2,
+    h3 {
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 7vw, 5rem);
+      letter-spacing: -2px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--green);
+      letter-spacing: -1px;
+      margin-bottom: 15px;
+    }
+
+    h3 {
+      color: var(--green);
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: var(--muted);
+    }
+
+    .section-heading p {
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    /* =========================================
+       SVG ICONS
+    ========================================= */
+
+    .icon {
+      width: 23px;
+      height: 23px;
+      flex-shrink: 0;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .icon-large {
+      width: 38px;
+      height: 38px;
+    }
+
+    .icon-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 60px;
+      height: 60px;
+
+      background: var(--green-light);
+      color: var(--green);
+
+      border-radius: 18px;
+      margin-bottom: 20px;
+    }
+
+    /* =========================================
+       NAVIGATION
+    ========================================= */
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+
+      background: rgba(255, 250, 240, 0.94);
+      backdrop-filter: blur(18px);
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 1250px;
+      margin: 0 auto;
+
+      min-height: 76px;
+      padding: 12px 22px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
     }
 
     .brand {
-        font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
     }
 
     .brand img {
-        width: 40px;
-        height: 40px;
+      width: 54px;
+      height: 54px;
+      object-fit: contain;
     }
-}
 
-@media (prefers-reduced-motion: reduce) {
-    html {
+    .brand-name {
+      color: var(--green);
+      font-size: 1.2rem;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+    }
+
+    .brand-tagline {
+      color: var(--muted);
+      font-size: 0.7rem;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--green);
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--red);
+    }
+
+    .nav-cta {
+      background: var(--green);
+      color: var(--white) !important;
+      padding: 10px 16px;
+      border-radius: 30px;
+    }
+
+    .nav-toggle {
+      display: none;
+
+      border: 1px solid var(--border);
+      background: var(--white);
+      color: var(--green);
+
+      border-radius: 12px;
+      padding: 10px;
+    }
+
+    /* =========================================
+       BUTTONS
+    ========================================= */
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+
+      border: 0;
+      border-radius: 30px;
+
+      padding: 13px 21px;
+
+      font-weight: 800;
+      font-size: 0.92rem;
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+
+      text-align: center;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 9px 22px rgba(20, 45, 30, 0.13);
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--green-dark);
+    }
+
+    .btn-red {
+      background: var(--red);
+      color: var(--white);
+    }
+
+    .btn-light {
+      background: var(--white);
+      color: var(--green);
+      border: 1px solid var(--border);
+    }
+
+    .btn-yellow {
+      background: var(--yellow);
+      color: var(--green-dark);
+    }
+
+    .btn-whatsapp {
+      background: #e0f2df;
+      color: #1c6337;
+    }
+
+    .btn-full {
+      width: 100%;
+    }
+
+    .btn:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    /* =========================================
+       GLASS CARDS
+    ========================================= */
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+
+      backdrop-filter: blur(12px);
+    }
+
+    /* =========================================
+       HERO
+    ========================================= */
+
+    .hero {
+      padding-top: 65px;
+      padding-bottom: 80px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      color: var(--green);
+      margin-bottom: 24px;
+    }
+
+    .hero h1 span {
+      color: var(--red);
+    }
+
+    .hero-description {
+      max-width: 580px;
+      font-size: 1.08rem;
+      margin-bottom: 27px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-bottom: 30px;
+    }
+
+    .hero-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .hero-point {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+
+      color: var(--green);
+      font-size: 0.83rem;
+      font-weight: 700;
+    }
+
+    .hero-art {
+      position: relative;
+      padding: 20px;
+    }
+
+    .hero-art-card {
+      min-height: 430px;
+      border-radius: 35px;
+
+      padding: 30px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(230, 240, 229, 0.95),
+          rgba(255, 250, 240, 0.96)
+        );
+
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+
+      overflow: hidden;
+    }
+
+    .hero-logo {
+      width: min(250px, 80%);
+      max-height: 210px;
+      object-fit: contain;
+      margin-bottom: 22px;
+    }
+
+    .hero-art-card h3 {
+      font-size: 1.7rem;
+      margin-bottom: 8px;
+    }
+
+    .hero-art-card p {
+      max-width: 270px;
+    }
+
+    .floating-label {
+      position: absolute;
+      padding: 12px 17px;
+
+      border-radius: 18px;
+      background: var(--white);
+
+      color: var(--green);
+      font-weight: 800;
+      font-size: 0.84rem;
+
+      box-shadow: var(--shadow);
+    }
+
+    .floating-label.one {
+      top: 5px;
+      right: 0;
+    }
+
+    .floating-label.two {
+      bottom: 5px;
+      left: 0;
+      background: var(--yellow);
+    }
+
+    /* =========================================
+       ABOUT
+    ========================================= */
+
+    .about-section {
+      background: rgba(230, 240, 229, 0.55);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 35px;
+      align-items: center;
+    }
+
+    .about-copy p {
+      margin-bottom: 16px;
+    }
+
+    .about-panel {
+      padding: 32px;
+    }
+
+    .about-panel h3 {
+      font-size: 1.5rem;
+    }
+
+    .sense-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .sense-row {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+
+      padding: 13px;
+      border-radius: 15px;
+      background: var(--cream);
+    }
+
+    .sense-row strong {
+      display: block;
+      color: var(--green);
+    }
+
+    .sense-row small {
+      color: var(--muted);
+    }
+
+    .sense-number {
+      width: 43px;
+      height: 43px;
+      flex-shrink: 0;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 14px;
+      background: var(--green-light);
+      color: var(--green);
+
+      font-weight: 900;
+    }
+
+    /* =========================================
+       STALLS
+    ========================================= */
+
+    .stall-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .stall-card {
+      overflow: hidden;
+      padding: 25px;
+
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stall-card p {
+      margin-bottom: 18px;
+    }
+
+    .stall-card .icon-box {
+      margin-bottom: 17px;
+    }
+
+    .stall-card h3 {
+      font-size: 1.3rem;
+    }
+
+    .stall-card ul {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      margin: 8px 0 20px;
+    }
+
+    .stall-card li {
+      color: var(--muted);
+      font-size: 0.9rem;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .stall-card li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 10px;
+
+      width: 7px;
+      height: 7px;
+
+      background: var(--red);
+      border-radius: 50%;
+    }
+
+    .price-panel {
+      margin-top: auto;
+      background: var(--cream);
+      border-radius: 16px;
+      padding: 15px;
+    }
+
+    .market-price {
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .market-price s {
+      color: var(--red);
+      font-weight: 700;
+    }
+
+    .preorder-price {
+      font-size: 1.3rem;
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    .price-note {
+      font-size: 0.74rem;
+      margin-top: 3px;
+    }
+
+    .market-only {
+      display: inline-block;
+      padding: 7px 11px;
+
+      background: var(--red-light);
+      color: var(--red);
+
+      border-radius: 20px;
+      font-weight: 800;
+      font-size: 0.76rem;
+    }
+
+    /* =========================================
+       R100 SPECIAL
+    ========================================= */
+
+    .special-section {
+      padding-top: 55px;
+      padding-bottom: 55px;
+    }
+
+    .special-card {
+      position: relative;
+      overflow: hidden;
+
+      padding: 42px;
+      border-radius: 30px;
+
+      background:
+        linear-gradient(
+          125deg,
+          var(--green),
+          #32694a
+        );
+
+      color: var(--white);
+
+      box-shadow: var(--shadow);
+
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .special-card h2 {
+      color: var(--white);
+      font-size: clamp(2.4rem, 6vw, 4.5rem);
+      margin-bottom: 10px;
+    }
+
+    .special-card p {
+      color: rgba(255, 255, 255, 0.85);
+      max-width: 680px;
+    }
+
+    .special-badge {
+      width: 150px;
+      height: 150px;
+
+      border-radius: 50%;
+      background: var(--yellow);
+      color: var(--green-dark);
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 2.4rem;
+      font-weight: 950;
+
+      transform: rotate(8deg);
+    }
+
+    .special-badge small {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .special-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .special-item {
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 7px 12px;
+      border-radius: 20px;
+
+      color: var(--white);
+      font-size: 0.8rem;
+    }
+
+    /* =========================================
+       PREORDER
+    ========================================= */
+
+    .order-section {
+      background: rgba(230, 240, 229, 0.48);
+    }
+
+    .order-layout {
+      display: grid;
+      grid-template-columns: 1fr 0.85fr;
+      gap: 25px;
+      align-items: start;
+    }
+
+    .order-card {
+      padding: 28px;
+    }
+
+    .order-card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 7px;
+    }
+
+    .form-intro {
+      margin-bottom: 23px;
+      font-size: 0.91rem;
+    }
+
+    .form-group {
+      margin-bottom: 17px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 7px;
+
+      font-weight: 800;
+      color: var(--green);
+      font-size: 0.87rem;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      min-height: 46px;
+
+      border: 1px solid var(--border);
+      border-radius: 12px;
+
+      background: var(--white);
+      color: var(--text);
+
+      padding: 11px 13px;
+    }
+
+    .form-group input::placeholder {
+      color: #9ba39b;
+    }
+
+    .product-order-list {
+      display: grid;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .order-product {
+      padding: 17px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(255, 250, 240, 0.7);
+    }
+
+    .order-product-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .order-product h4 {
+      color: var(--green);
+      font-size: 0.95rem;
+    }
+
+    .order-product small {
+      display: block;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .product-price {
+      font-weight: 900;
+      color: var(--green);
+      white-space: nowrap;
+    }
+
+    .order-product select,
+    .order-product input {
+      width: 100%;
+      min-height: 42px;
+      padding: 9px;
+
+      border: 1px solid var(--border);
+      border-radius: 10px;
+
+      background: var(--white);
+      margin-top: 9px;
+    }
+
+    .quantity-row {
+      display: grid;
+      grid-template-columns: 1fr 95px;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .quantity-row label {
+      color: var(--muted);
+      font-size: 0.83rem;
+    }
+
+    .quantity-row input {
+      text-align: center;
+      font-weight: 800;
+    }
+
+    .cart-summary {
+      background: var(--green);
+      color: var(--white);
+      border-radius: 18px;
+
+      padding: 22px;
+      margin-bottom: 20px;
+    }
+
+    .cart-summary h3 {
+      color: var(--white);
+    }
+
+    .cart-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 0.9rem;
+
+      margin: 9px 0;
+    }
+
+    .cart-total {
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+      margin-top: 16px;
+      padding-top: 15px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      font-size: 1.2rem;
+      font-weight: 900;
+    }
+
+    .empty-cart {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+    }
+
+    .notice {
+      padding: 15px;
+      border-radius: 13px;
+
+      background: var(--blue);
+      color: var(--green-dark);
+
+      font-size: 0.84rem;
+      margin-bottom: 18px;
+    }
+
+    .notice strong {
+      color: var(--green-dark);
+    }
+
+    .form-error {
+      color: var(--red);
+      font-weight: 700;
+      font-size: 0.86rem;
+      margin-top: 12px;
+    }
+
+    .terms-note {
+      font-size: 0.78rem;
+      margin-top: 13px;
+    }
+
+    /* =========================================
+       ORDER CONFIRMATION
+    ========================================= */
+
+    .confirmation {
+      display: none;
+      margin-top: 30px;
+    }
+
+    .confirmation.visible {
+      display: block;
+      animation: riseIn 0.35s ease both;
+    }
+
+    @keyframes riseIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .confirmation-card {
+      padding: 28px;
+      border: 2px solid rgba(33, 76, 55, 0.15);
+    }
+
+    .confirmation-title {
+      display: flex;
+      gap: 15px;
+      align-items: flex-start;
+      margin-bottom: 23px;
+    }
+
+    .success-mark {
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+      background: var(--green-light);
+      color: var(--green);
+    }
+
+    .success-mark svg {
+      width: 25px;
+      height: 25px;
+    }
+
+    .confirmation-title h3 {
+      margin-bottom: 5px;
+    }
+
+    .order-reference {
+      background: var(--cream);
+      border: 1px dashed var(--green);
+
+      padding: 19px;
+      border-radius: 16px;
+
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .order-reference small {
+      display: block;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .order-reference strong {
+      display: block;
+      color: var(--green);
+      font-size: 2rem;
+      letter-spacing: 2px;
+      margin: 5px 0 12px;
+    }
+
+    .order-details {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .order-detail-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      font-size: 0.88rem;
+    }
+
+    .order-detail-line span:first-child {
+      color: var(--muted);
+    }
+
+    .order-detail-line strong {
+      text-align: right;
+    }
+
+    .payment-box {
+      padding: 21px;
+      border-radius: 17px;
+
+      background: var(--green-light);
+      margin-bottom: 20px;
+    }
+
+    .payment-box h4 {
+      color: var(--green);
+      margin-bottom: 14px;
+    }
+
+    .bank-detail {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(33, 76, 55, 0.12);
+
+      font-size: 0.84rem;
+    }
+
+    .bank-detail:last-child {
+      border-bottom: 0;
+    }
+
+    .bank-detail span {
+      color: var(--muted);
+    }
+
+    .bank-detail strong {
+      text-align: right;
+      overflow-wrap: anywhere;
+    }
+
+    .payment-warning {
+      background: var(--yellow);
+      color: var(--green-dark);
+
+      padding: 13px;
+      border-radius: 12px;
+
+      font-size: 0.84rem;
+      margin-bottom: 20px;
+    }
+
+    .confirmation-actions {
+      display: grid;
+      gap: 10px;
+    }
+
+    .confirmation-actions .btn {
+      width: 100%;
+    }
+
+    .new-order-btn {
+      margin-top: 18px;
+    }
+
+    /* =========================================
+       STAMP CARD
+    ========================================= */
+
+    .stamp-card {
+      padding: 36px;
+      text-align: center;
+    }
+
+    .stamp-card p {
+      max-width: 620px;
+      margin: 0 auto 24px;
+    }
+
+    .stamp-steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 15px;
+
+      margin: 28px 0;
+    }
+
+    .stamp-step {
+      padding: 20px;
+      background: var(--cream);
+      border-radius: 17px;
+    }
+
+    .stamp-step strong {
+      display: block;
+      color: var(--green);
+      margin: 9px 0 5px;
+    }
+
+    .stamp-step small {
+      color: var(--muted);
+    }
+
+    /* =========================================
+       CONTACT
+    ========================================= */
+
+    .contact-section {
+      background: rgba(230, 240, 229, 0.48);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .contact-card {
+      padding: 25px;
+    }
+
+    .contact-card h3 {
+      margin-bottom: 8px;
+    }
+
+    .contact-card p {
+      margin-bottom: 16px;
+      overflow-wrap: anywhere;
+    }
+
+    .contact-card .btn {
+      width: 100%;
+    }
+
+    /* =========================================
+       FOOTER
+    ========================================= */
+
+    footer {
+      background: var(--green-dark);
+      color: var(--white);
+      padding: 38px 20px;
+    }
+
+    .footer-inner {
+      max-width: 1150px;
+      margin: 0 auto;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .footer-brand {
+      font-size: 1.2rem;
+      font-weight: 900;
+    }
+
+    footer p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.83rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 17px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.82rem;
+      color: var(--white);
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      max-width: 1150px;
+      margin: 24px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    /* =========================================
+       RESPONSIVE DESIGN
+    ========================================= */
+
+    @media (max-width: 1000px) {
+      .nav-links {
+        gap: 12px;
+      }
+
+      .nav-links a {
+        font-size: 0.77rem;
+      }
+
+      .hero-grid {
+        gap: 25px;
+      }
+
+      .stall-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 800px) {
+      section {
+        padding: 65px 18px;
+      }
+
+      .nav-inner {
+        min-height: 70px;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .nav-links {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 100%;
+
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+
+        padding: 15px 22px 23px;
+        gap: 4px;
+
+        background: rgba(255, 250, 240, 0.98);
+        border-bottom: 1px solid var(--border);
+
+        box-shadow: var(--shadow);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 11px 8px;
+        font-size: 0.95rem;
+      }
+
+      .nav-cta {
+        text-align: center;
+        margin-top: 6px;
+      }
+
+      .hero-grid,
+      .about-grid,
+      .order-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-art {
+        max-width: 550px;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      .hero-art-card {
+        min-height: 350px;
+      }
+
+      .special-card {
+        grid-template-columns: 1fr;
+      }
+
+      .special-badge {
+        width: 120px;
+        height: 120px;
+        font-size: 2rem;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .brand img {
+        width: 44px;
+        height: 44px;
+      }
+
+      .brand-name {
+        font-size: 1.02rem;
+      }
+
+      .brand-tagline {
+        font-size: 0.63rem;
+      }
+
+      .hero {
+        padding-top: 45px;
+      }
+
+      .hero h1 {
+        letter-spacing: -1px;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .hero-art {
+        padding: 10px;
+      }
+
+      .hero-art-card {
+        min-height: 320px;
+        padding: 22px;
+      }
+
+      .floating-label {
+        font-size: 0.7rem;
+        padding: 9px 11px;
+      }
+
+      .stall-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stall-card,
+      .order-card {
+        padding: 21px;
+      }
+
+      .special-card {
+        padding: 27px;
+      }
+
+      .stamp-card {
+        padding: 24px;
+      }
+
+      .stamp-steps {
+        grid-template-columns: 1fr;
+      }
+
+      .order-product-top {
+        flex-direction: column;
+      }
+
+      .bank-detail {
+        flex-direction: column;
+        gap: 3px;
+      }
+
+      .bank-detail strong {
+        text-align: left;
+      }
+
+      .order-detail-line {
+        font-size: 0.81rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
         scroll-behavior: auto;
-    }
+      }
 
-    *,
-    *::before,
-    *::after {
-        transition-duration: 0.01ms !important;
+      *,
+      *::before,
+      *::after {
         animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
     }
-
-    .stall-card:hover {
-        transform: none;
-    }
-}
-</style>
+  </style>
 </head>
 
 <body>
 
-<!-- ========================================
-     SVG ICON LIBRARY
-======================================== -->
+  <!-- SVG SYMBOL LIBRARY -->
 
-<svg xmlns="http://www.w3.org/2000/svg"
-     style="position:absolute;width:0;height:0;overflow:hidden"
-     aria-hidden="true">
-
-    <symbol id="icon-cup" viewBox="0 0 24 24">
-        <path d="M5 8h12v9a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3z"/>
-        <path d="M17 10h2a2 2 0 0 1 0 4h-2"/>
-        <path d="M8 4c-1 1 1 2 0 3"/>
-        <path d="M12 3c-1 1 1 2 0 4"/>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    style="position:absolute;width:0;height:0;overflow:hidden"
+    aria-hidden="true"
+  >
+    <symbol id="icon-leaf" viewBox="0 0 24 24">
+      <path
+        d="M20 4C11 4 5 7 5 14a6 6 0 0 0 6 6c7 0 9-8 9-16Z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M3 21c4-6 7-9 13-13"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+      />
     </symbol>
 
-    <symbol id="icon-hand" viewBox="0 0 24 24">
-        <path d="M8 12V5a1.5 1.5 0 0 1 3 0v6"/>
-        <path d="M11 10V4a1.5 1.5 0 0 1 3 0v7"/>
-        <path d="M14 10V6a1.5 1.5 0 0 1 3 0v7"/>
-        <path d="M8 11l-1-1a1.7 1.7 0 0 0-2.4 2.4l4 6A4 4 0 0 0 12 20h3a4 4 0 0 0 4-4v-3a1.5 1.5 0 0 0-3 0"/>
-    </symbol>
-
-    <symbol id="icon-flower" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="2.3"/>
-        <path d="M12 9c-4-5-8 0-3 3"/>
-        <path d="M14 12c6-3 8 3 2 4"/>
-        <path d="M12 14c1 6-5 7-5 1"/>
-        <path d="M10 12c-6 2-7-4-2-5"/>
-        <path d="M12 14v7"/>
+    <symbol id="icon-heart" viewBox="0 0 24 24">
+      <path
+        d="M20.8 8.6C20.8 15 12 21 12 21S3.2 15 3.2 8.6A4.6 4.6 0 0 1 12 6.2a4.6 4.6 0 0 1 8.8 2.4Z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linejoin="round"
+      />
     </symbol>
 
     <symbol id="icon-eye" viewBox="0 0 24 24">
-        <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/>
-        <circle cx="12" cy="12" r="3"/>
+      <path
+        d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+      />
+      <circle
+        cx="12"
+        cy="12"
+        r="3"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+      />
     </symbol>
 
     <symbol id="icon-sound" viewBox="0 0 24 24">
-        <path d="M4 10v4h4l5 4V6l-5 4z"/>
-        <path d="M16 9a4 4 0 0 1 0 6"/>
-        <path d="M18 6a8 8 0 0 1 0 12"/>
+      <path
+        d="M3 9v6h4l5 4V5L7 9H3Z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M16 9a5 5 0 0 1 0 6M18.5 6a9 9 0 0 1 0 12"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+      />
     </symbol>
 
-    <symbol id="icon-leaf" viewBox="0 0 24 24">
-        <path d="M20 4C10 4 4 8 4 15a5 5 0 0 0 5 5c7 0 11-6 11-16z"/>
-        <path d="M3 21c4-6 8-9 14-13"/>
+    <symbol id="icon-hand" viewBox="0 0 24 24">
+      <path
+        d="M8 12V5a1.5 1.5 0 0 1 3 0v6-8a1.5 1.5 0 0 1 3 0v8-6a1.5 1.5 0 0 1 3 0v7-4a1.5 1.5 0 0 1 3 0v8c0 4-2 6-6 6h-3c-2 0-3-1-4-3l-3-4a1.7 1.7 0 0 1 2.6-2.2L8 15"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.7"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
     </symbol>
 
-    <symbol id="icon-mail" viewBox="0 0 24 24">
-        <rect x="3" y="5" width="18" height="14" rx="2"/>
-        <path d="m4 7 8 6 8-6"/>
+    <symbol id="icon-cup" viewBox="0 0 24 24">
+      <path
+        d="M4 8h14v7a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8ZM18 10h2a2 2 0 0 1 0 4h-2M8 4c-2-2 2-2 0-4M13 4c-2-2 2-2 0-4"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </symbol>
+
+    <symbol id="icon-sparkles" viewBox="0 0 24 24">
+      <path
+        d="m12 2 2.3 7.7L22 12l-7.7 2.3L12 22l-2.3-7.7L2 12l7.7-2.3L12 2Z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.7"
+        stroke-linejoin="round"
+      />
     </symbol>
 
     <symbol id="icon-phone" viewBox="0 0 24 24">
-        <path d="M6 3h4l2 5-3 2a15 15 0 0 0 5 5l2-3 5 2v4c0 2-2 3-4 2C9 18 6 14 4 7 3 5 4 3 6 3z"/>
+      <path
+        d="M6 2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+      />
+      <path
+        d="M10 18h4"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+      />
     </symbol>
 
-    <symbol id="icon-card" viewBox="0 0 24 24">
-        <rect x="3" y="5" width="18" height="14" rx="2"/>
-        <path d="M3 10h18"/>
-        <path d="M7 15h4"/>
+    <symbol id="icon-mail" viewBox="0 0 24 24">
+      <rect
+        x="3"
+        y="5"
+        width="18"
+        height="14"
+        rx="2"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+      />
+      <path
+        d="m4 7 8 6 8-6"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
     </symbol>
 
-    <symbol id="icon-sparkle" viewBox="0 0 24 24">
-        <path d="m12 2 2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5z"/>
+    <symbol id="icon-check" viewBox="0 0 24 24">
+      <path
+        d="m5 12 5 5L20 7"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
     </symbol>
 
-</svg>
+    <symbol id="icon-menu" viewBox="0 0 24 24">
+      <path
+        d="M4 6h16M4 12h16M4 18h16"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+      />
+    </symbol>
+
+    <symbol id="icon-cart" viewBox="0 0 24 24">
+      <path
+        d="M3 3h2l2.4 12.1a2 2 0 0 0 2 1.6h8.8a2 2 0 0 0 2-1.6L22 7H6"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <circle cx="10" cy="20" r="1.5" fill="currentColor"/>
+      <circle cx="18" cy="20" r="1.5" fill="currentColor"/>
+    </symbol>
+
+    <symbol id="icon-calendar" viewBox="0 0 24 24">
+      <rect
+        x="3"
+        y="5"
+        width="18"
+        height="16"
+        rx="2"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+      />
+      <path
+        d="M7 3v4M17 3v4M3 10h18"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+      />
+    </symbol>
+
+    <symbol id="icon-location" viewBox="0 0 24 24">
+      <path
+        d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+      />
+      <circle
+        cx="12"
+        cy="10"
+        r="2.5"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+      />
+    </symbol>
+  </svg>
 
 
-<!-- ========================================
-     HEADER AND NAVIGATION
-======================================== -->
+  <!-- NAVIGATION -->
 
-<header class="site-header">
+  <header class="navbar">
+    <nav class="nav-inner" aria-label="Main navigation">
 
-    <div class="nav-container">
+      <a href="#home" class="brand" aria-label="Sense-ational home">
 
-        <a class="brand" href="#home" aria-label="Sense-ational home">
+        <img
+          src="Sensational-%20logo.png"
+          alt="Sense-ational logo"
+        >
 
-            <img
-                src="Sensational-%20logo.png"
-                alt="Sense-ational logo"
-                onerror="this.style.display='none'"
-            >
+        <span>
+          <span class="brand-name">Sense-ational</span>
+          <span class="brand-tagline">Experience every sense</span>
+        </span>
 
-            <span>Sense-ational</span>
+      </a>
 
-        </a>
+      <button
+        class="nav-toggle"
+        id="navToggle"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+      >
+        <svg class="icon">
+          <use href="#icon-menu"></use>
+        </svg>
+      </button>
 
-        <nav class="nav-links" aria-label="Main navigation">
+      <ul class="nav-links" id="navLinks">
 
-            <a href="#home">Home</a>
-            <a href="#about">About Us</a>
-            <a href="#stalls">Our Stalls</a>
-            <a href="#special">R100 Special</a>
-            <a href="#preorder">Pre-order</a>
-            <a href="#stamp-card">Stamp Card</a>
-            <a href="#contact">Contact Us</a>
+        <li><a href="#home">Home</a></li>
 
-        </nav>
+        <li><a href="#about">About Us</a></li>
 
-    </div>
+        <li><a href="#stalls">Our Stalls</a></li>
 
-</header>
+        <li><a href="#special">R100 Special</a></li>
+
+        <li>
+          <a href="#preorder" class="nav-cta">
+            <svg class="icon" style="width:17px;height:17px">
+              <use href="#icon-cart"></use>
+            </svg>
+            Pre-order
+          </a>
+        </li>
+
+        <li><a href="#contact">Contact Us</a></li>
+
+        <li><a href="#stamp-card">Stamp Card</a></li>
+
+        <li>
+          <a
+            href="https://www.instagram.com/sense.ational_/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Instagram
+          </a>
+        </li>
+
+      </ul>
+    </nav>
+  </header>
 
 
-<main>
+  <main>
 
-<!-- ========================================
-     HERO
-======================================== -->
+    <!-- HERO -->
 
-<section class="hero" id="home">
+    <section class="hero" id="home">
 
-    <div class="container hero-grid">
+      <div class="container hero-grid">
 
         <div>
 
-            <span class="eyebrow">
-                A sensory experience inspired by nature
-            </span>
+          <span class="eyebrow">
+            Five senses. Endless experiences.
+          </span>
 
-            <h1>
-                Discover the world through
-                <span>your senses.</span>
-            </h1>
+          <h1>
+            Discover the world through
+            <span>every sense.</span>
+          </h1>
 
-            <p class="hero-copy">
-                Welcome to Sense-ational, where herbs, natural
-                ingredients and creativity come together to
-                celebrate the five senses.
-            </p>
+          <p class="hero-description">
+            Welcome to Sense-ational, where nature, creativity
+            and curiosity come together. Explore handmade-inspired
+            products, discover botanical aromas, sip herbal tea
+            and challenge your senses through interactive games.
+          </p>
 
-            <p class="hero-copy">
-                Explore our stalls, try our interactive games
-                and discover products designed to make your
-                Market Day experience memorable.
-            </p>
+          <div class="hero-actions">
 
-            <div class="hero-actions">
+            <a href="#stalls" class="btn btn-primary">
+              Explore Our Stalls
+            </a>
 
-                <a href="#stalls" class="btn">
-                    Explore Our Stalls
-                </a>
+            <a href="#preorder" class="btn btn-light">
+              Pre-order &amp; Collect
+              <svg class="icon">
+                <use href="#icon-cart"></use>
+              </svg>
+            </a>
 
-                <a href="#preorder" class="btn btn-secondary">
-                    Pre-order &amp; Collect
-                </a>
+          </div>
 
+          <div class="hero-points">
+
+            <div class="hero-point">
+              <svg class="icon">
+                <use href="#icon-leaf"></use>
+              </svg>
+              Nature-inspired
             </div>
+
+            <div class="hero-point">
+              <svg class="icon">
+                <use href="#icon-heart"></use>
+              </svg>
+              Made with care
+            </div>
+
+            <div class="hero-point">
+              <svg class="icon">
+                <use href="#icon-sparkles"></use>
+              </svg>
+              Sensory experiences
+            </div>
+
+          </div>
 
         </div>
 
-        <div class="hero-image-wrap">
+        <div class="hero-art">
+
+          <div class="hero-art-card">
 
             <img
-                class="hero-image"
-                src="Sensational-%20logo.png"
-                alt="Sense-ational Market Day branding"
-                onerror="this.style.display='none'"
+              class="hero-logo"
+              src="Sensational-%20logo.png"
+              alt="Sense-ational brand logo"
             >
 
-            <div class="hero-note">
-                Five stalls.<br>
-                Five senses.<br>
-                One memorable experience.
-            </div>
+            <h3>Awaken your senses.</h3>
+
+            <p>
+              Touch. Taste. Smell. Sight. Sound.
+              Which sense will you explore first?
+            </p>
+
+          </div>
+
+          <div class="floating-label one">
+            Nature meets creativity
+          </div>
+
+          <div class="floating-label two">
+            Your senses, your adventure
+          </div>
 
         </div>
 
-    </div>
+      </div>
 
-</section>
-
-
-<!-- ========================================
-     FIVE SENSES STRIP
-======================================== -->
-
-<div class="sense-strip">
-
-    <div class="container sense-strip-inner">
-
-        <span class="sense-pill">Touch</span>
-        <span class="sense-pill">Taste</span>
-        <span class="sense-pill">Smell</span>
-        <span class="sense-pill">Sight</span>
-        <span class="sense-pill">Sound</span>
-
-    </div>
-
-</div>
+    </section>
 
 
-<!-- ========================================
-     ABOUT US
-======================================== -->
+    <!-- ABOUT -->
 
-<section id="about">
+    <section class="about-section" id="about">
 
-    <div class="container">
+      <div class="container">
 
-        <span class="eyebrow" style="display:block;text-align:center">
-            Meet the project
-        </span>
+        <div class="section-heading">
 
-        <h2 class="section-title">
-            About Sense-ational
-        </h2>
+          <span class="eyebrow">Our story</span>
 
-        <p class="section-intro">
-            A student-led bioentrepreneurship project that
-            brings science, nature and sensory discovery together.
-        </p>
+          <h2>A little curiosity goes a long way.</h2>
+
+          <p>
+            Sense-ational brings together sensory discovery,
+            natural ingredients, creativity and interactive fun
+            in one unforgettable experience.
+          </p>
+
+        </div>
 
         <div class="about-grid">
 
-            <article class="glass-card about-card">
+          <div class="about-copy">
 
-                <div class="icon-box">
-                    <svg class="icon icon-large">
-                        <use href="#icon-leaf"></use>
-                    </svg>
+            <h3>More than just a market stall.</h3>
+
+            <p>
+              Our idea is simple: everyday experiences become
+              extraordinary when you take the time to explore
+              them through your senses.
+            </p>
+
+            <p>
+              From the feel of a sugar body scrub to the aroma
+              of botanical bracelets and the flavour of herbal
+              iced tea, each experience invites you to slow down,
+              discover something new and have fun.
+            </p>
+
+            <p>
+              We also bring the senses to life through interactive
+              sight and sound challenges, turning curiosity into
+              a playful experience for everyone.
+            </p>
+
+          </div>
+
+          <div class="glass-card about-panel">
+
+            <h3>Meet the five senses.</h3>
+
+            <p>
+              Every stall has its own way of making you curious.
+            </p>
+
+            <div class="sense-list">
+
+              <div class="sense-row">
+
+                <div class="sense-number">01</div>
+
+                <div>
+                  <strong>Touch</strong>
+                  <small>Discover our sugar body scrub.</small>
                 </div>
 
-                <h3>Our Story</h3>
+              </div>
 
-                <p>
-                    Sense-ational was created to make the five
-                    senses part of a fun, interactive experience.
-                    Our concept connects everyday sensory
-                    experiences with herbs, natural ingredients
-                    and creative activities.
-                </p>
+              <div class="sense-row">
 
-                <p>
-                    From handmade body scrubs and herbal iced tea
-                    to memory and coordination challenges, each
-                    stall offers a different way to explore the
-                    world around us.
-                </p>
+                <div class="sense-number">02</div>
 
-            </article>
-
-            <article class="glass-card about-card about-highlight">
-
-                <div class="icon-box">
-                    <svg class="icon icon-large">
-                        <use href="#icon-sparkle"></use>
-                    </svg>
+                <div>
+                  <strong>Taste</strong>
+                  <small>Explore herbal iced tea.</small>
                 </div>
 
-                <h3>Our Mission</h3>
+              </div>
 
-                <p>
-                    Our mission is to create an engaging sensory
-                    experience that encourages discovery,
-                    creativity and appreciation for nature.
-                </p>
+              <div class="sense-row">
 
-                <p>
-                    We want every visitor to learn something,
-                    have fun and leave with a memorable
-                    Sense-ational experience.
-                </p>
+                <div class="sense-number">03</div>
 
-            </article>
+                <div>
+                  <strong>Smell</strong>
+                  <small>Find your favourite scented bracelet.</small>
+                </div>
+
+              </div>
+
+              <div class="sense-row">
+
+                <div class="sense-number">04</div>
+
+                <div>
+                  <strong>Sight</strong>
+                  <small>Put your observation skills to the test.</small>
+                </div>
+
+              </div>
+
+              <div class="sense-row">
+
+                <div class="sense-number">05</div>
+
+                <div>
+                  <strong>Sound</strong>
+                  <small>Challenge yourself with our buzzing game.</small>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
 
         </div>
 
-    </div>
+      </div>
 
-</section>
+    </section>
 
 
-<!-- ========================================
-     OUR FIVE STALLS
-======================================== -->
+    <!-- STALLS -->
 
-<section id="stalls">
+    <section id="stalls">
 
-    <div class="container">
+      <div class="container">
 
-        <span class="eyebrow" style="display:block;text-align:center">
-            Explore every sense
-        </span>
+        <div class="section-heading">
 
-        <h2 class="section-title">
-            Our Five Stalls
-        </h2>
+          <span class="eyebrow">Explore the experience</span>
 
-        <p class="section-intro">
-            Discover the products and experiences available
-            at each stall. Product prices are displayed below,
-            and you can open each dropdown to learn more.
-        </p>
+          <h2>Five senses. Five adventures.</h2>
+
+          <p>
+            Explore our stalls, discover the products and
+            see which experiences are waiting for you.
+          </p>
+
+        </div>
 
         <div class="stall-grid">
 
+          <!-- TOUCH -->
 
-            <!-- TOUCH -->
+          <article class="glass-card stall-card">
 
-            <article class="glass-card stall-card">
+            <div class="icon-box">
+              <svg class="icon icon-large">
+                <use href="#icon-hand"></use>
+              </svg>
+            </div>
 
-                <div class="icon-box">
-                    <svg class="icon icon-large">
-                        <use href="#icon-hand"></use>
-                    </svg>
-                </div>
+            <h3>Touch — Body Scrub</h3>
 
-                <h3>Touch — Body Scrub</h3>
-
-                <p class="stall-item-name">
-                    DIY Sugar Body Scrub · 100 ml
-                </p>
-
-                <p class="stall-description">
-                    Experience a handmade sugar scrub inspired
-                    by natural ingredients and the sense of touch.
-                </p>
-
-                <div class="stall-pricing">
-
-                    <div class="price-box">
-                        <span class="price-label">Market Day</span>
-                        <span class="price-value">R35</span>
-                    </div>
-
-                    <div class="price-box preorder">
-                        <span class="price-label">Pre-order</span>
-                        <span class="price-value">R30</span>
-                    </div>
-
-                    <p class="price-note">
-                        Save R5 when you pre-order.
-                    </p>
-
-                </div>
-
-                <details class="stall-details">
-
-                    <summary>Discover the details</summary>
-
-                    <div class="stall-details-content">
-
-                        <p>
-                            Our 100 ml sugar scrub offers a
-                            tactile sensory experience inspired
-                            by nature.
-                        </p>
-
-                        <p><strong>Available scents:</strong></p>
-
-                        <ul>
-                            <li>Vanilla</li>
-                            <li>Cinnamon</li>
-                            <li>Lavender</li>
-                            <li>Peppermint</li>
-                            <li>Hibiscus</li>
-                        </ul>
-
-                        <p>
-                            Select your preferred scent in the
-                            preorder form, subject to availability.
-                        </p>
-
-                    </div>
-
-                </details>
-
-                <a href="#preorder" class="btn">
-                    Pre-order Body Scrub
-                </a>
-
-            </article>
-
-
-            <!-- TASTE -->
-
-            <article class="glass-card stall-card">
-
-                <div class="icon-box">
-                    <svg class="icon icon-large">
-                        <use href="#icon-cup"></use>
-                    </svg>
-                </div>
-
-                <h3>Taste — Herbal Iced Tea</h3>
-
-                <p class="stall-item-name">
-                    Refreshing Herbal Iced Tea
-                </p>
-
-                <p class="stall-description">
-                    Cool down with herbal-inspired iced tea
-                    created for a refreshing sensory experience.
-                </p>
-
-                <div class="stall-pricing">
-
-                    <div class="price-box">
-                        <span class="price-label">Market Day</span>
-                        <span class="price-value">R25</span>
-                    </div>
-
-                    <div class="price-box preorder">
-                        <span class="price-label">Pre-order</span>
-                        <span class="price-value">R20</span>
-                    </div>
-
-                    <p class="price-note">
-                        Save R5 when you pre-order.
-                    </p>
-
-                </div>
-
-                <details class="stall-details">
-
-                    <summary>Discover the flavours</summary>
-
-                    <div class="stall-details-content">
-
-                        <p>
-                            Explore different herbal-inspired
-                            flavours and discover your favourite.
-                        </p>
-
-                        <p><strong>Available flavours:</strong></p>
-
-                        <ul>
-                            <li>Lemon</li>
-                            <li>Hibiscus</li>
-                            <li>Camomile</li>
-                            <li>Mint</li>
-                            <li>Vanilla</li>
-                            <li>Cinnamon</li>
-                        </ul>
-
-                        <p>
-                            Flavour availability may vary on
-                            Market Day.
-                        </p>
-
-                    </div>
-
-                </details>
-
-                <a href="#preorder" class="btn">
-                    Pre-order Herbal Iced Tea
-                </a>
-
-            </article>
-
-
-            <!-- SMELL -->
-
-            <article class="glass-card stall-card">
-
-                <div class="icon-box">
-                    <svg class="icon icon-large">
-                        <use href="#icon-flower"></use>
-                    </svg>
-                </div>
-
-                <h3>Smell — Scented Bracelet</h3>
-
-                <p class="stall-item-name">
-                    Essential Oil Scented Bracelet
-                </p>
-
-                <p class="stall-description">
-                    Explore botanical-inspired scents with
-                    a bracelet designed around the sense of smell.
-                </p>
-
-                <div class="stall-pricing">
-
-                    <div class="price-box">
-                        <span class="price-label">Market Day</span>
-                        <span class="price-value">R20</span>
-                    </div>
-
-                    <div class="price-box preorder">
-                        <span class="price-label">Pre-order</span>
-                        <span class="price-value">R15</span>
-                    </div>
-
-                    <p class="price-note">
-                        Save R5 when you pre-order.
-                    </p>
-
-                </div>
-
-                <details class="stall-details">
-
-                    <summary>Discover the scents</summary>
-
-                    <div class="stall-details-content">
-
-                        <p>
-                            Discover scents inspired by herbs,
-                            plants and nature.
-                        </p>
-
-                        <p><strong>Available scents:</strong></p>
-
-                        <ul>
-                            <li>Lavender</li>
-                            <li>Cinnamon</li>
-                            <li>Moringa</li>
-                            <li>Eucalyptus</li>
-                            <li>Tea Tree</li>
-                            <li>Orange</li>
-                            <li>Peppermint</li>
-                        </ul>
-
-                        <p>
-                            Select your preferred scent when
-                            placing your preorder, subject
-                            to availability.
-                        </p>
-
-                    </div>
-
-                </details>
-
-                <a href="#preorder" class="btn">
-                    Pre-order Scented Bracelet
-                </a>
-
-            </article>
-
-
-            <!-- SIGHT -->
-
-            <article class="glass-card stall-card">
-
-                <div class="icon-box">
-                    <svg class="icon icon-large">
-                        <use href="#icon-eye"></use>
-                    </svg>
-                </div>
-
-                <h3>Sight — Memory Challenge</h3>
-
-                <p class="stall-item-name">
-                    Herb Memory Game
-                </p>
-
-                <p class="stall-description">
-                    Test your observation skills and discover
-                    how much you can remember.
-                </p>
-
-                <div class="stall-pricing">
-
-                    <div class="price-box">
-                        <span class="price-label">Market Day</span>
-                        <span class="price-value">R10</span>
-                    </div>
-
-                    <div class="price-box preorder">
-                        <span class="price-label">Availability</span>
-                        <span class="price-value">Market Day</span>
-                    </div>
-
-                    <p class="market-only-note">
-                        Market Day only · No preorder
-                    </p>
-
-                </div>
-
-                <details class="stall-details">
-
-                    <summary>Discover the challenge</summary>
-
-                    <div class="stall-details-content">
-
-                        <p>
-                            Put your memory and observation
-                            skills to the test.
-                        </p>
-
-                        <p><strong>How to play:</strong></p>
-
-                        <ul>
-                            <li>Observe the cards for 20 seconds.</li>
-                            <li>Remember as many details as possible.</li>
-                            <li>Identify the card that was removed.</li>
-                            <li>Progress through the challenge.</li>
-                        </ul>
-
-                        <p>
-                            Earn 5 points for every successful round.
-                        </p>
-
-                    </div>
-
-                </details>
-
-            </article>
-
-
-            <!-- SOUND -->
-
-            <article class="glass-card stall-card">
-
-                <div class="icon-box">
-                    <svg class="icon icon-large">
-                        <use href="#icon-sound"></use>
-                    </svg>
-                </div>
-
-                <h3>Sound — Wire Challenge</h3>
-
-                <p class="stall-item-name">
-                    Wire Buzzing Game
-                </p>
-
-                <p class="stall-description">
-                    Keep your hands steady and your focus sharp
-                    as you navigate the wire challenge.
-                </p>
-
-                <div class="stall-pricing">
-
-                    <div class="price-box">
-                        <span class="price-label">Market Day</span>
-                        <span class="price-value">R10</span>
-                    </div>
-
-                    <div class="price-box preorder">
-                        <span class="price-label">Availability</span>
-                        <span class="price-value">Market Day</span>
-                    </div>
-
-                    <p class="market-only-note">
-                        Market Day only · No preorder
-                    </p>
-
-                </div>
-
-                <details class="stall-details">
-
-                    <summary>Discover the challenge</summary>
-
-                    <div class="stall-details-content">
-
-                        <p>
-                            Can you complete the course without
-                            touching the wire?
-                        </p>
-
-                        <p><strong>How to play:</strong></p>
-
-                        <ul>
-                            <li>Round 1: 30 seconds.</li>
-                            <li>Round 2: 20 seconds.</li>
-                            <li>Round 3: 10 seconds.</li>
-                            <li>Buzzing costs 5 points.</li>
-                            <li>Complete a round without buzzing to advance.</li>
-                        </ul>
-
-                        <p>
-                            Keep your hands steady and see how
-                            far you can get!
-                        </p>
-
-                    </div>
-
-                </details>
-
-            </article>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ========================================
-     R100 MARKET DAY SPECIAL
-======================================== -->
-
-<section class="special-section" id="special">
-
-    <div class="container special-grid">
-
-        <div>
-
-            <span class="special-kicker">
-                The ultimate sensory experience
-            </span>
-
-            <h2 class="section-title">
-                Five Stalls. Five Senses. Only R100!
-            </h2>
-
-            <p class="section-intro">
-                Visit all five stalls and experience everything
-                Sense-ational has to offer with our special
-                R100 Market Day bundle.
+            <p>
+              Treat your senses to a textured sugar body scrub
+              designed for a refreshing, hands-on experience.
             </p>
 
-            <div class="special-list">
+            <ul>
 
-                <div class="special-item">
-                    <strong>Touch</strong><br>
-                    Body Scrub — R35
-                </div>
+              <li>100 ml body scrub</li>
 
-                <div class="special-item">
-                    <strong>Taste</strong><br>
-                    Herbal Iced Tea — R25
-                </div>
+              <li>Vanilla</li>
 
-                <div class="special-item">
-                    <strong>Smell</strong><br>
-                    Scented Bracelet — R20
-                </div>
+              <li>Cinnamon</li>
 
-                <div class="special-item">
-                    <strong>Sight</strong><br>
-                    Memory Game — R10
-                </div>
+              <li>Lavender</li>
 
-                <div class="special-item">
-                    <strong>Sound</strong><br>
-                    Wire Challenge — R10
-                </div>
+              <li>Peppermint</li>
+
+              <li>Hibiscus</li>
+
+            </ul>
+
+            <div class="price-panel">
+
+              <div class="market-price">
+                On the Day:
+                <s>R35</s>
+              </div>
+
+              <div class="preorder-price">
+                Pre-order: R30
+              </div>
+
+              <p class="price-note">
+                Save R5 when you pre-order.
+              </p>
 
             </div>
 
-            <p class="special-footnote">
-                The R100 special uses Market Day pricing and
-                includes all five experiences. It is separate
-                from the preorder basket.
+          </article>
+
+
+          <!-- TASTE -->
+
+          <article class="glass-card stall-card">
+
+            <div class="icon-box">
+              <svg class="icon icon-large">
+                <use href="#icon-cup"></use>
+              </svg>
+            </div>
+
+            <h3>Taste — Herbal Iced Tea</h3>
+
+            <p>
+              Cool down with our selection of herbal-inspired
+              iced teas, created for a refreshing sensory experience.
             </p>
 
-            <a href="#stalls" class="btn btn-yellow">
-                Explore the Five Stalls
-            </a>
+            <ul>
+
+              <li>Lemon</li>
+
+              <li>Hibiscus</li>
+
+              <li>Camomile</li>
+
+              <li>Mint</li>
+
+              <li>Vanilla</li>
+
+              <li>Cinnamon</li>
+
+            </ul>
+
+            <div class="price-panel">
+
+              <div class="market-price">
+                On the Day:
+                <s>R25</s>
+              </div>
+
+              <div class="preorder-price">
+                Pre-order: R20
+              </div>
+
+              <p class="price-note">
+                Save R5 when you pre-order.
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <!-- SMELL -->
+
+          <article class="glass-card stall-card">
+
+            <div class="icon-box">
+              <svg class="icon icon-large">
+                <use href="#icon-leaf"></use>
+              </svg>
+            </div>
+
+            <h3>Smell — Scented Bracelets</h3>
+
+            <p>
+              Discover botanical-inspired scents with our
+              scented bracelets. Choose an aroma that suits you.
+            </p>
+
+            <ul>
+
+              <li>Lavender</li>
+
+              <li>Cinnamon</li>
+
+              <li>Moringa</li>
+
+              <li>Eucalyptus</li>
+
+              <li>Tea tree</li>
+
+              <li>Orange</li>
+
+              <li>Peppermint</li>
+
+            </ul>
+
+            <div class="price-panel">
+
+              <div class="market-price">
+                On the Day:
+                <s>R20</s>
+              </div>
+
+              <div class="preorder-price">
+                Pre-order: R15
+              </div>
+
+              <p class="price-note">
+                Save R5 when you pre-order.
+              </p>
+
+            </div>
+
+          </article>
+
+
+          <!-- SIGHT -->
+
+          <article class="glass-card stall-card">
+
+            <div class="icon-box">
+              <svg class="icon icon-large">
+                <use href="#icon-eye"></use>
+              </svg>
+            </div>
+
+            <h3>Sight — Memory Challenge</h3>
+
+            <p>
+              Think you notice every detail? Test your memory,
+              sharpen your observation skills and challenge
+              yourself to identify what has changed.
+            </p>
+
+            <ul>
+
+              <li>Observe the cards for 20 seconds.</li>
+
+              <li>Identify the missing card.</li>
+
+              <li>Progress through the rounds.</li>
+
+              <li>Earn five points for each successful round.</li>
+
+            </ul>
+
+            <div class="price-panel">
+
+              <div class="market-price">
+                Market Day price
+              </div>
+
+              <div class="preorder-price">
+                R10
+              </div>
+
+              <span class="market-only">
+                Market Day only
+              </span>
+
+            </div>
+
+          </article>
+
+
+          <!-- SOUND -->
+
+          <article class="glass-card stall-card">
+
+            <div class="icon-box">
+              <svg class="icon icon-large">
+                <use href="#icon-sound"></use>
+              </svg>
+            </div>
+
+            <h3>Sound — Wire Buzzing Game</h3>
+
+            <p>
+              Keep your hand steady and your concentration sharp.
+              Navigate the wire without triggering the buzzer.
+            </p>
+
+            <ul>
+
+              <li>Round 1: 30 seconds for 15 points.</li>
+
+              <li>Buzzing costs five points.</li>
+
+              <li>Complete the round without buzzing to advance.</li>
+
+              <li>Round 2: 20 seconds.</li>
+
+              <li>Round 3: 10 seconds.</li>
+
+            </ul>
+
+            <div class="price-panel">
+
+              <div class="market-price">
+                Market Day price
+              </div>
+
+              <div class="preorder-price">
+                R10
+              </div>
+
+              <span class="market-only">
+                Market Day only
+              </span>
+
+            </div>
+
+          </article>
+
+
+          <!-- TEA BOMBS -->
+
+          <article class="glass-card stall-card">
+
+            <div class="icon-box">
+              <svg class="icon icon-large">
+                <use href="#icon-sparkles"></use>
+              </svg>
+            </div>
+
+            <h3>Tea Bombs — A Special Treat</h3>
+
+            <p>
+              Tea bombs feature a hard candy shell containing
+              loose-leaf tea, herbs and dried edible flowers.
+              Place one into hot water and watch your tea unfold.
+            </p>
+
+            <ul>
+
+              <li>A fun tea-making experience.</li>
+
+              <li>Herbal and floral inspiration.</li>
+
+              <li>A special reward for eligible stamp-card holders.</li>
+
+            </ul>
+
+            <div class="price-panel">
+
+              <div class="preorder-price">
+                A little sensory surprise
+              </div>
+
+              <p class="price-note">
+                Complete the eligible digital stamp card
+                to qualify for your free Tea Bomb.
+              </p>
+
+            </div>
+
+          </article>
 
         </div>
 
-        <div class="special-badge" aria-label="Five experiences for R100">
+      </div>
 
-            <small>MARKET DAY</small>
+    </section>
 
-            <span class="badge-price">R100</span>
+
+    <!-- R100 SPECIAL -->
+
+    <section class="special-section" id="special">
+
+      <div class="container">
+
+        <div class="special-card">
+
+          <div>
+
+            <span class="eyebrow" style="color:var(--yellow)">
+              Market Day exclusive
+            </span>
+
+            <h2>The R100 Special.</h2>
+
+            <p>
+              Experience all five sense-based stalls with
+              our Market Day bundle. It's a little taste,
+              touch, smell, sight and sound — all in one.
+            </p>
+
+            <div class="special-items">
+
+              <span class="special-item">Body Scrub — R35</span>
+
+              <span class="special-item">Iced Tea — R25</span>
+
+              <span class="special-item">Bracelet — R20</span>
+
+              <span class="special-item">Sight Game — R10</span>
+
+              <span class="special-item">Sound Game — R10</span>
+
+            </div>
+
+            <p style="margin-top:18px;font-size:0.83rem">
+              The five individual Market Day prices add up
+              to R100. This special is based on Market Day
+              pricing, not preorder pricing.
+            </p>
+
+            <a
+              href="#stalls"
+              class="btn btn-yellow"
+              style="margin-top:24px"
+            >
+              Explore the Five Senses
+            </a>
+
+          </div>
+
+          <div class="special-badge" aria-label="100 rand special">
+
+            <small>Only</small>
+
+            R100
 
             <small>Five experiences</small>
 
+          </div>
+
         </div>
 
-    </div>
+      </div>
 
-</section>
-
-
-<!-- ========================================
-     TEA BOMB
-======================================== -->
-
-<section id="tea-bomb">
-
-    <div class="container">
-
-        <article class="glass-card tea-bomb-card">
-
-            <div class="icon-box">
-                <svg class="icon icon-large">
-                    <use href="#icon-cup"></use>
-                </svg>
-            </div>
-
-            <div>
-
-                <span class="free-label">
-                    Digital Stamp Card Reward
-                </span>
-
-                <h3>Discover the Tea Bomb</h3>
-
-                <p>
-                    Our Tea Bomb is a hard candy shell containing
-                    loose-leaf tea, herbs and dried edible flowers.
-                    Add it to hot water and enjoy the experience
-                    as the shell dissolves.
-                </p>
-
-                <p>
-                    Complete the eligible digital stamp card
-                    to qualify for your free Tea Bomb.
-                </p>
-
-                <a href="#stamp-card" class="btn">
-                    View Digital Stamp Card
-                </a>
-
-            </div>
-
-        </article>
-
-    </div>
-
-</section>
+    </section>
 
 
-<!-- ========================================
-     PREORDER AND COLLECT
-======================================== -->
+    <!-- PREORDER -->
 
-<section id="preorder">
+    <section class="order-section" id="preorder">
 
-    <div class="container">
+      <div class="container">
 
-        <span class="eyebrow" style="display:block;text-align:center">
-            Plan your collection
-        </span>
+        <div class="section-heading">
 
-        <h2 class="section-title">
-            Pre-order &amp; Collect
-        </h2>
+          <span class="eyebrow">Skip the last-minute rush</span>
 
-        <p class="section-intro">
-            Select your products, enter your details and prepare
-            your order summary. Preorder prices apply to the
-            three products listed below.
-        </p>
+          <h2>Pre-order &amp; Collect.</h2>
+
+          <p>
+            Choose your products, select your preferred scents
+            and flavours, then prepare your order. Your order
+            reference will also be your EFT payment reference.
+          </p>
+
+        </div>
 
         <div class="order-layout">
 
-            <!-- ORDER FORM -->
+          <!-- CUSTOMER DETAILS AND BASKET -->
+
+          <div class="glass-card order-card">
+
+            <h3>Your order details</h3>
+
+            <p class="form-intro">
+              Fill in your details and choose your products.
+            </p>
+
+            <form id="orderForm">
+
+              <div class="form-group">
+
+                <label for="customerName">Full name *</label>
+
+                <input
+                  type="text"
+                  id="customerName"
+                  name="customerName"
+                  autocomplete="name"
+                  placeholder="Enter your full name"
+                  maxlength="100"
+                  required
+                >
+
+              </div>
+
+              <div class="form-group">
+
+                <label for="customerEmail">Email address *</label>
+
+                <input
+                  type="email"
+                  id="customerEmail"
+                  name="customerEmail"
+                  autocomplete="email"
+                  placeholder="you@example.com"
+                  maxlength="150"
+                  required
+                >
+
+              </div>
+
+              <div class="form-group">
+
+                <label for="customerPhone">
+                  WhatsApp number *
+                </label>
+
+                <input
+                  type="tel"
+                  id="customerPhone"
+                  name="customerPhone"
+                  autocomplete="tel"
+                  placeholder="e.g. 082 123 4567"
+                  maxlength="30"
+                  required
+                >
+
+              </div>
+
+
+              <h3 style="margin-top:27px">
+                Choose your products
+              </h3>
+
+              <p class="form-intro">
+                Market Day prices are shown for comparison.
+                The lower preorder price is used in your basket.
+              </p>
+
+
+              <div class="product-order-list">
+
+                <!-- SCRUB -->
+
+                <div class="order-product">
+
+                  <div class="order-product-top">
+
+                    <div>
+
+                      <h4>Touch — Body Scrub</h4>
+
+                      <small>
+                        Market Day: R35 |
+                        Pre-order: R30
+                      </small>
+
+                    </div>
+
+                    <div class="product-price">
+                      R30 each
+                    </div>
+
+                  </div>
+
+                  <label for="scrubScent">
+                    Choose your scent
+                  </label>
+
+                  <select id="scrubScent" name="scrubScent">
+
+                    <option value="Vanilla">Vanilla</option>
+
+                    <option value="Cinnamon">Cinnamon</option>
+
+                    <option value="Lavender">Lavender</option>
+
+                    <option value="Peppermint">Peppermint</option>
+
+                    <option value="Hibiscus">Hibiscus</option>
+
+                  </select>
+
+                  <div class="quantity-row">
+
+                    <label for="scrubQty">
+                      Quantity
+                    </label>
+
+                    <input
+                      type="number"
+                      id="scrubQty"
+                      min="0"
+                      max="50"
+                      step="1"
+                      value="0"
+                    >
+
+                  </div>
+
+                </div>
+
+
+                <!-- TEA -->
+
+                <div class="order-product">
+
+                  <div class="order-product-top">
+
+                    <div>
+
+                      <h4>Taste — Herbal Iced Tea</h4>
+
+                      <small>
+                        Market Day: R25 |
+                        Pre-order: R20
+                      </small>
+
+                    </div>
+
+                    <div class="product-price">
+                      R20 each
+                    </div>
+
+                  </div>
+
+                  <label for="teaFlavor">
+                    Choose your flavour
+                  </label>
+
+                  <select id="teaFlavor" name="teaFlavor">
+
+                    <option value="Lemon">Lemon</option>
+
+                    <option value="Hibiscus">Hibiscus</option>
+
+                    <option value="Camomile">Camomile</option>
+
+                    <option value="Mint">Mint</option>
+
+                    <option value="Vanilla">Vanilla</option>
+
+                    <option value="Cinnamon">Cinnamon</option>
+
+                  </select>
+
+                  <div class="quantity-row">
+
+                    <label for="teaQty">
+                      Quantity
+                    </label>
+
+                    <input
+                      type="number"
+                      id="teaQty"
+                      min="0"
+                      max="50"
+                      step="1"
+                      value="0"
+                    >
+
+                  </div>
+
+                </div>
+
+
+                <!-- BRACELET -->
+
+                <div class="order-product">
+
+                  <div class="order-product-top">
+
+                    <div>
+
+                      <h4>Smell — Scented Bracelet</h4>
+
+                      <small>
+                        Market Day: R20 |
+                        Pre-order: R15
+                      </small>
+
+                    </div>
+
+                    <div class="product-price">
+                      R15 each
+                    </div>
+
+                  </div>
+
+                  <label for="braceletScent">
+                    Choose your scent
+                  </label>
+
+                  <select
+                    id="braceletScent"
+                    name="braceletScent"
+                  >
+
+                    <option value="Lavender">Lavender</option>
+
+                    <option value="Cinnamon">Cinnamon</option>
+
+                    <option value="Moringa">Moringa</option>
+
+                    <option value="Eucalyptus">Eucalyptus</option>
+
+                    <option value="Tea Tree">Tea Tree</option>
+
+                    <option value="Orange">Orange</option>
+
+                    <option value="Peppermint">Peppermint</option>
+
+                  </select>
+
+                  <div class="quantity-row">
+
+                    <label for="braceletQty">
+                      Quantity
+                    </label>
+
+                    <input
+                      type="number"
+                      id="braceletQty"
+                      min="0"
+                      max="50"
+                      step="1"
+                      value="0"
+                    >
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <!-- LIVE BASKET -->
+
+              <div class="cart-summary" aria-live="polite">
+
+                <h3>
+
+                  <svg
+                    class="icon"
+                    style="margin-right:5px"
+                  >
+                    <use href="#icon-cart"></use>
+                  </svg>
+
+                  Your basket
+
+                </h3>
+
+                <div id="cartLines" style="margin-top:15px">
+
+                  <p class="empty-cart">
+                    Your basket is empty. Add a product to begin.
+                  </p>
+
+                </div>
+
+                <div class="cart-total">
+
+                  <span>Total</span>
+
+                  <span id="cartTotal">R0.00</span>
+
+                </div>
+
+              </div>
+
+
+              <div class="notice">
+
+                <strong>How preorder works:</strong>
+
+                <br>
+
+                Submit your order, save your SEN reference,
+                pay using EFT and send proof of payment.
+                Your order is only marked as paid after
+                payment has been manually verified.
+
+              </div>
+
+
+              <button
+                type="submit"
+                class="btn btn-primary btn-full"
+                id="submitOrder"
+              >
+
+                Confirm My Order
+
+                <svg class="icon">
+                  <use href="#icon-check"></use>
+                </svg>
+
+              </button>
+
+              <p class="terms-note">
+                Submitting this form prepares an order summary
+                on your device. It does not automatically send
+                your order to the Sense-ational team.
+              </p>
+
+              <p
+                class="form-error"
+                id="formError"
+                role="alert"
+              ></p>
+
+            </form>
+
+          </div>
+
+
+          <!-- HOW IT WORKS -->
+
+          <div>
 
             <div class="glass-card order-card">
 
-                <h3>Your Order</h3>
+              <div class="icon-box">
 
-                <p>
-                    Complete the form to calculate your preorder
-                    total and generate an order reference.
-                </p>
+                <svg class="icon icon-large">
+                  <use href="#icon-calendar"></use>
+                </svg>
 
-                <form id="orderForm">
+              </div>
 
-                    <div class="form-group">
+              <h3>How it works</h3>
 
-                        <label for="customerName">
-                            Full Name *
-                        </label>
+              <p class="form-intro">
+                Four simple steps to get your preorder ready.
+              </p>
 
-                        <input
-                            type="text"
-                            id="customerName"
-                            name="customerName"
-                            autocomplete="name"
-                            required
-                            maxlength="100"
-                            placeholder="Enter your full name"
-                        >
+              <div class="sense-list">
 
-                    </div>
+                <div class="sense-row">
 
-                    <div class="form-group">
+                  <div class="sense-number">01</div>
 
-                        <label for="customerEmail">
-                            Email Address *
-                        </label>
+                  <div>
 
-                        <input
-                            type="email"
-                            id="customerEmail"
-                            name="customerEmail"
-                            autocomplete="email"
-                            required
-                            maxlength="150"
-                            placeholder="you@example.com"
-                        >
+                    <strong>Choose your products</strong>
 
-                    </div>
+                    <small>
+                      Select quantities, scents and flavours.
+                    </small>
 
-                    <div class="form-group">
-
-                        <label for="customerPhone">
-                            WhatsApp Number *
-                        </label>
-
-                        <input
-                            type="tel"
-                            id="customerPhone"
-                            name="customerPhone"
-                            autocomplete="tel"
-                            required
-                            maxlength="30"
-                            placeholder="Your contact number"
-                        >
-
-                    </div>
-
-
-                    <!-- BODY SCRUB -->
-
-                    <div class="order-product">
-
-                        <div class="order-product-top">
-
-                            <strong>DIY Sugar Body Scrub</strong>
-
-                            <span>R30 each</span>
-
-                        </div>
-
-                        <div class="order-product-controls">
-
-                            <div class="form-group">
-
-                                <label for="scrubScent">
-                                    Preferred scent
-                                </label>
-
-                                <select id="scrubScent" name="scrubScent">
-
-                                    <option value="Vanilla">Vanilla</option>
-                                    <option value="Cinnamon">Cinnamon</option>
-                                    <option value="Lavender">Lavender</option>
-                                    <option value="Peppermint">Peppermint</option>
-                                    <option value="Hibiscus">Hibiscus</option>
-
-                                </select>
-
-                            </div>
-
-                            <div class="form-group">
-
-                                <label for="scrubQty">
-                                    Quantity
-                                </label>
-
-                                <input
-                                    type="number"
-                                    id="scrubQty"
-                                    name="scrubQty"
-                                    min="0"
-                                    max="99"
-                                    value="0"
-                                    inputmode="numeric"
-                                >
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- HERBAL ICED TEA -->
-
-                    <div class="order-product">
-
-                        <div class="order-product-top">
-
-                            <strong>Herbal Iced Tea</strong>
-
-                            <span>R20 each</span>
-
-                        </div>
-
-                        <div class="order-product-controls">
-
-                            <div class="form-group">
-
-                                <label for="teaFlavour">
-                                    Preferred flavour
-                                </label>
-
-                                <select id="teaFlavour" name="teaFlavour">
-
-                                    <option value="Lemon">Lemon</option>
-                                    <option value="Hibiscus">Hibiscus</option>
-                                    <option value="Camomile">Camomile</option>
-                                    <option value="Mint">Mint</option>
-                                    <option value="Vanilla">Vanilla</option>
-                                    <option value="Cinnamon">Cinnamon</option>
-
-                                </select>
-
-                            </div>
-
-                            <div class="form-group">
-
-                                <label for="teaQty">
-                                    Quantity
-                                </label>
-
-                                <input
-                                    type="number"
-                                    id="teaQty"
-                                    name="teaQty"
-                                    min="0"
-                                    max="99"
-                                    value="0"
-                                    inputmode="numeric"
-                                >
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- SCENTED BRACELET -->
-
-                    <div class="order-product">
-
-                        <div class="order-product-top">
-
-                            <strong>Scented Bracelet</strong>
-
-                            <span>R15 each</span>
-
-                        </div>
-
-                        <div class="order-product-controls">
-
-                            <div class="form-group">
-
-                                <label for="braceletScent">
-                                    Preferred scent
-                                </label>
-
-                                <select
-                                    id="braceletScent"
-                                    name="braceletScent"
-                                >
-
-                                    <option value="Lavender">Lavender</option>
-                                    <option value="Cinnamon">Cinnamon</option>
-                                    <option value="Moringa">Moringa</option>
-                                    <option value="Eucalyptus">Eucalyptus</option>
-                                    <option value="Tea Tree">Tea Tree</option>
-                                    <option value="Orange">Orange</option>
-                                    <option value="Peppermint">Peppermint</option>
-
-                                </select>
-
-                            </div>
-
-                            <div class="form-group">
-
-                                <label for="braceletQty">
-                                    Quantity
-                                </label>
-
-                                <input
-                                    type="number"
-                                    id="braceletQty"
-                                    name="braceletQty"
-                                    min="0"
-                                    max="99"
-                                    value="0"
-                                    inputmode="numeric"
-                                >
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="orderNotes">
-                            Additional Notes (Optional)
-                        </label>
-
-                        <textarea
-                            id="orderNotes"
-                            name="orderNotes"
-                            maxlength="500"
-                            placeholder="Any additional information about your order?"
-                        ></textarea>
-
-                    </div>
-
-                    <div class="order-total">
-
-                        <span>Order Total</span>
-
-                        <strong id="orderTotal">R0.00</strong>
-
-                    </div>
-
-                    <p class="order-note">
-                        Sight and Sound games are paid for on
-                        Market Day and are not available for preorder.
-                        The R100 Special is also separate from this basket.
-                    </p>
-
-                    <p id="formError" class="form-error hidden" role="alert"></p>
-
-                    <button type="submit" class="btn btn-block">
-                        Generate My Order
-                    </button>
-
-                </form>
-
-
-                <!-- ORDER CONFIRMATION -->
-
-                <div
-                    id="orderConfirmation"
-                    class="confirmation hidden"
-                    aria-live="polite"
-                >
-
-                    <h3>Your Order Summary</h3>
-
-                    <p>
-                        Your order summary has been prepared.
-                        Save your reference and use it when making
-                        your EFT payment.
-                    </p>
-
-                    <div class="reference-box">
-
-                        <span>Your order reference</span>
-
-                        <strong id="orderReference">SEN-1234</strong>
-
-                    </div>
-
-                    <div id="confirmationCustomer"></div>
-
-                    <ul
-                        id="orderSummaryList"
-                        class="order-summary-list"
-                    ></ul>
-
-                    <div class="order-total">
-
-                        <span>Total to Pay</span>
-
-                        <strong id="confirmationTotal">R0.00</strong>
-
-                    </div>
-
-                    <p class="order-note">
-                        Please use your order reference as the EFT
-                        payment reference. Send your proof of payment
-                        through WhatsApp or email. Your order must
-                        be verified before collection.
-                    </p>
-
-                    <div class="confirmation-actions">
-
-                        <button
-                            type="button"
-                            class="btn"
-                            id="copyReferenceButton"
-                        >
-                            Copy Reference
-                        </button>
-
-                        <a
-                            id="whatsappOrderButton"
-                            class="btn"
-                            href="#"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            WhatsApp Order
-                        </a>
-
-                        <a
-                            id="emailOrderButton"
-                            class="btn btn-secondary"
-                            href="#"
-                        >
-                            Email Order
-                        </a>
-
-                    </div>
+                  </div>
 
                 </div>
+
+                <div class="sense-row">
+
+                  <div class="sense-number">02</div>
+
+                  <div>
+
+                    <strong>Receive your reference</strong>
+
+                    <small>
+                      Your order reference looks like SEN-1234.
+                    </small>
+
+                  </div>
+
+                </div>
+
+                <div class="sense-row">
+
+                  <div class="sense-number">03</div>
+
+                  <div>
+
+                    <strong>Pay by EFT</strong>
+
+                    <small>
+                      Use your SEN reference as the payment reference.
+                    </small>
+
+                  </div>
+
+                </div>
+
+                <div class="sense-row">
+
+                  <div class="sense-number">04</div>
+
+                  <div>
+
+                    <strong>Send proof of payment</strong>
+
+                    <small>
+                      WhatsApp your payment confirmation.
+                    </small>
+
+                  </div>
+
+                </div>
+
+              </div>
 
             </div>
 
 
-            <!-- EFT PAYMENT DETAILS -->
+            <!-- CONFIRMATION APPEARS HERE -->
 
-            <aside class="payment-card">
+            <div
+              class="confirmation"
+              id="confirmation"
+              aria-live="polite"
+            >
 
-                <h3>Pay by EFT</h3>
+              <div class="glass-card confirmation-card">
 
-                <p>
-                    Once you've generated your order reference,
-                    use the details below to make your payment
-                    through your banking app.
-                </p>
+                <div class="confirmation-title">
 
-                <div class="bank-details">
+                  <div class="success-mark">
 
-                    <div class="bank-row">
-                        <span>Bank</span>
-                        <strong>Standard Bank</strong>
-                    </div>
+                    <svg>
+                      <use href="#icon-check"></use>
+                    </svg>
 
-                    <div class="bank-row">
-                        <span>Branch Name</span>
-                        <strong>ONLINE BANKING</strong>
-                    </div>
+                  </div>
 
-                    <div class="bank-row">
-                        <span>Branch Code</span>
-                        <strong>7654</strong>
-                    </div>
+                  <div>
 
-                    <div class="bank-row">
-                        <span>Account Holder</span>
-                        <strong>MR SAIHIL S MOODLEY</strong>
-                    </div>
+                    <h3>Your order summary is ready!</h3>
 
-                    <div class="bank-row">
-                        <span>Account Number</span>
-                        <strong>10179968791</strong>
-                    </div>
+                    <p>
+                      Keep your reference safe for payment
+                      and collection.
+                    </p>
 
-                    <div class="bank-row">
-                        <span>Account Type</span>
-                        <strong>SAVINGS</strong>
-                    </div>
+                  </div>
 
                 </div>
 
-                <button
-                    type="button"
-                    class="btn btn-secondary btn-block"
-                    id="copyBankButton"
-                >
-                    Copy Bank Details
-                </button>
 
-                <p id="bankCopyMessage" class="form-help" aria-live="polite"></p>
+                <div class="order-reference">
+
+                  <small>YOUR ORDER REFERENCE</small>
+
+                  <strong id="orderReference">SEN-0000</strong>
+
+                  <button
+                    type="button"
+                    class="btn btn-light"
+                    id="copyReference"
+                  >
+                    Copy Reference
+                  </button>
+
+                </div>
+
+
+                <div class="order-details" id="orderDetails"></div>
+
+
+                <div class="payment-box">
+
+                  <h4>Standard Bank EFT details</h4>
+
+                  <div class="bank-detail">
+
+                    <span>Bank</span>
+
+                    <strong>Standard Bank</strong>
+
+                  </div>
+
+                  <div class="bank-detail">
+
+                    <span>Branch name</span>
+
+                    <strong>ONLINE BANKING</strong>
+
+                  </div>
+
+                  <div class="bank-detail">
+
+                    <span>Branch code</span>
+
+                    <strong>7654</strong>
+
+                  </div>
+
+                  <div class="bank-detail">
+
+                    <span>Account holder</span>
+
+                    <strong>MR SAIHIL S MOODLEY</strong>
+
+                  </div>
+
+                  <div class="bank-detail">
+
+                    <span>Account number</span>
+
+                    <strong>10179968791</strong>
+
+                  </div>
+
+                  <div class="bank-detail">
+
+                    <span>Account type</span>
+
+                    <strong>SAVINGS</strong>
+
+                  </div>
+
+                  <div class="bank-detail">
+
+                    <span>Amount</span>
+
+                    <strong id="paymentAmount">R0.00</strong>
+
+                  </div>
+
+                  <div class="bank-detail">
+
+                    <span>Payment reference</span>
+
+                    <strong id="paymentReference">SEN-0000</strong>
+
+                  </div>
+
+                </div>
+
 
                 <div class="payment-warning">
 
-                    <strong>Remember:</strong>
+                  <strong>Important:</strong>
 
-                    <p>
-                        Use your generated order reference as the
-                        EFT payment reference. Send your proof of
-                        payment to us through WhatsApp or email.
-                    </p>
-
-                    <p>
-                        Preorders are subject to confirmation.
-                        Keep your reference for collection.
-                    </p>
+                  Your order is not automatically paid or confirmed
+                  just because this summary appears. Complete the
+                  EFT, send proof of payment and wait for manual
+                  payment verification.
 
                 </div>
 
-            </aside>
 
-        </div>
+                <div class="confirmation-actions">
 
-    </div>
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    id="copyBankDetails"
+                  >
+                    Copy EFT Details
+                  </button>
 
-</section>
-
-
-<!-- ========================================
-     DIGITAL STAMP CARD
-======================================== -->
-
-<section id="stamp-card">
-
-    <div class="container">
-
-        <div class="stamp-card-panel">
-
-            <div>
-
-                <span class="eyebrow">
-                    Your sensory journey continues
-                </span>
-
-                <h3>
-                    Your Digital Stamp Card
-                </h3>
-
-                <p>
-                    Access our existing digital stamp card to
-                    continue your Sense-ational experience.
-                    Follow the instructions on the stamp card
-                    page when visiting the stalls.
-                </p>
-
-                <p>
-                    Remember to show your completed eligible
-                    stamp card to qualify for your free Tea Bomb.
-                </p>
-
-                <a
-                    href="https://bubbles020205.github.io/Sense-ational-card/"
-                    class="btn"
+                  <a
+                    class="btn btn-whatsapp"
+                    id="whatsappProof"
+                    href="#"
                     target="_blank"
                     rel="noopener noreferrer"
+                  >
+
+                    <svg class="icon">
+                      <use href="#icon-phone"></use>
+                    </svg>
+
+                    Send Proof of Payment
+
+                  </a>
+
+                  <a
+                    class="btn btn-light"
+                    id="emailOrder"
+                    href="#"
+                  >
+
+                    <svg class="icon">
+                      <use href="#icon-mail"></use>
+                    </svg>
+
+                    Email Order Details
+
+                  </a>
+
+                </div>
+
+
+                <button
+                  type="button"
+                  class="btn btn-light btn-full new-order-btn"
+                  id="newOrder"
                 >
-                    Open Digital Stamp Card
-                </a>
+                  Start Another Order
+                </button>
+
+                <p class="terms-note">
+                  The WhatsApp button prepares a message for you
+                  to send. The email button opens your email app.
+                  Neither action independently verifies payment.
+                </p>
+
+              </div>
 
             </div>
 
-            <div class="icon-box" style="width:100px;height:100px;margin:0 auto">
-
-                <svg class="icon" style="width:55px;height:55px">
-                    <use href="#icon-card"></use>
-                </svg>
-
-            </div>
+          </div>
 
         </div>
 
-    </div>
+      </div>
 
-</section>
+    </section>
 
 
-<!-- ========================================
-     CONTACT US
-======================================== -->
+    <!-- DIGITAL STAMP CARD -->
 
-<section id="contact">
+    <section id="stamp-card">
 
-    <div class="container">
+      <div class="container">
 
-        <span class="eyebrow" style="display:block;text-align:center">
-            We'd love to hear from you
-        </span>
+        <div class="glass-card stamp-card">
 
-        <h2 class="section-title">
-            Contact Us
-        </h2>
+          <span class="eyebrow">A little something extra</span>
 
-        <p class="section-intro">
-            Have a question about a product, preorder or
-            Market Day? Get in touch with the Sense-ational team.
-        </p>
+          <h2>Your senses deserve a reward.</h2>
+
+          <p>
+            Keep track of your sensory adventures with our
+            Digital Stamp Card. Visit the card page and follow
+            the instructions to collect your stamps and discover
+            the reward available to eligible participants.
+          </p>
+
+          <div class="stamp-steps">
+
+            <div class="stamp-step">
+
+              <svg class="icon icon-large" style="color:var(--green)">
+                <use href="#icon-sparkles"></use>
+              </svg>
+
+              <strong>Explore</strong>
+
+              <small>
+                Discover the Sense-ational experiences.
+              </small>
+
+            </div>
+
+            <div class="stamp-step">
+
+              <svg class="icon icon-large" style="color:var(--green)">
+                <use href="#icon-check"></use>
+              </svg>
+
+              <strong>Collect stamps</strong>
+
+              <small>
+                Follow the digital stamp-card instructions.
+              </small>
+
+            </div>
+
+            <div class="stamp-step">
+
+              <svg class="icon icon-large" style="color:var(--green)">
+                <use href="#icon-heart"></use>
+              </svg>
+
+              <strong>Enjoy your reward</strong>
+
+              <small>
+                Complete the requirements to qualify for a free Tea Bomb.
+              </small>
+
+            </div>
+
+          </div>
+
+          <a
+            class="btn btn-primary"
+            href="https://sense-ational.github.io/Sense-ational-card/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+
+            Open Digital Stamp Card
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section class="contact-section" id="contact">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <span class="eyebrow">Let's connect</span>
+
+          <h2>Get in touch.</h2>
+
+          <p>
+            Questions about the products, your preorder
+            or the Market Day experience? We'd love to hear from you.
+          </p>
+
+        </div>
 
         <div class="contact-grid">
 
-            <article class="glass-card contact-card">
+          <div class="glass-card contact-card">
 
-                <div class="icon-box">
+            <div class="icon-box">
 
-                    <svg class="icon icon-large">
-                        <use href="#icon-phone"></use>
-                    </svg>
+              <svg class="icon icon-large">
+                <use href="#icon-phone"></use>
+              </svg>
 
-                </div>
+            </div>
 
-                <h3>WhatsApp</h3>
+            <h3>WhatsApp</h3>
 
-                <p>
-                    Contact us about your order or send
-                    your proof of payment.
-                </p>
+            <p>
+              Contact us about orders, payments and collection.
+            </p>
 
-                <a
-                    class="btn btn-block"
-                    href="https://wa.me/27686430043"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Chat on WhatsApp
-                </a>
+            <a
+              class="btn btn-primary"
+              href="https://wa.me/27686430043"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Chat on WhatsApp
+            </a>
 
-            </article>
-
-
-            <article class="glass-card contact-card">
-
-                <div class="icon-box">
-
-                    <svg class="icon icon-large">
-                        <use href="#icon-mail"></use>
-                    </svg>
-
-                </div>
-
-                <h3>Email</h3>
-
-                <p>
-                    Send us your questions, order details
-                    or proof of payment.
-                </p>
-
-                <a
-                    class="btn btn-block"
-                    href="mailto:sense.ational26@gmail.com"
-                >
-                    Email Us
-                </a>
-
-            </article>
+          </div>
 
 
-            <article class="glass-card contact-card">
+          <div class="glass-card contact-card">
 
-                <div class="icon-box">
+            <div class="icon-box">
 
-                    <svg class="icon icon-large">
-                        <use href="#icon-sparkle"></use>
-                    </svg>
+              <svg class="icon icon-large">
+                <use href="#icon-mail"></use>
+              </svg>
 
-                </div>
+            </div>
 
-                <h3>Instagram</h3>
+            <h3>Email</h3>
 
-                <p>
-                    Follow our journey and discover
-                    more about Sense-ational.
-                </p>
+            <p>
+              Send us your questions or enquiries.
+            </p>
 
-                <a
-                    class="btn btn-block"
-                    href="https://www.instagram.com/sense.ational_/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Visit Instagram
-                </a>
+            <a
+              class="btn btn-primary"
+              href="mailto:sense.ational26@gmail.com"
+            >
+              Email Sense-ational
+            </a>
 
-            </article>
+          </div>
+
+
+          <div class="glass-card contact-card">
+
+            <div class="icon-box">
+
+              <svg class="icon icon-large">
+                <use href="#icon-sparkles"></use>
+              </svg>
+
+            </div>
+
+            <h3>Instagram</h3>
+
+            <p>
+              Follow our journey and keep an eye out
+              for Sense-ational updates.
+            </p>
+
+            <a
+              class="btn btn-primary"
+              href="https://www.instagram.com/sense.ational_/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Follow Us
+            </a>
+
+          </div>
 
         </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="footer-inner">
+
+      <div>
+
+        <div class="footer-brand">Sense-ational</div>
+
+        <p>
+          Experience every sense.
+        </p>
+
+      </div>
+
+      <ul class="footer-links">
+
+        <li><a href="#home">Home</a></li>
+
+        <li><a href="#about">About Us</a></li>
+
+        <li><a href="#stalls">Our Stalls</a></li>
+
+        <li><a href="#preorder">Pre-order</a></li>
+
+        <li><a href="#contact">Contact</a></li>
+
+      </ul>
 
     </div>
 
-</section>
+    <div class="footer-bottom">
 
-</main>
+      <p>
+        &copy; <span id="currentYear"></span> Sense-ational.
+        All rights reserved.
+      </p>
 
-
-<!-- ========================================
-     FOOTER
-======================================== -->
-
-<footer class="site-footer">
-
-    <div class="container">
-
-        <div class="footer-brand">
-            Sense-ational
-        </div>
-
-        <p>
-            Five stalls. Five senses. One memorable experience.
-        </p>
-
-        <div class="footer-links">
-
-            <a href="#home">Home</a>
-            <a href="#about">About Us</a>
-            <a href="#stalls">Our Stalls</a>
-            <a href="#special">R100 Special</a>
-            <a href="#preorder">Pre-order</a>
-            <a href="#contact">Contact Us</a>
-
-        </div>
-
-        <p>
-            &copy; <span id="currentYear"></span> Sense-ational.
-            All rights reserved.
-        </p>
+      <p style="margin-top:6px">
+        A sensory experience inspired by nature and creativity.
+      </p>
 
     </div>
 
-</footer>
+  </footer>
 
 
-<!-- ========================================
-     PREORDER JAVASCRIPT
-======================================== -->
+  <!-- JAVASCRIPT -->
 
-<script>
-(function () {
+  <script>
     "use strict";
 
-    const prices = {
-        scrub: 30,
-        tea: 20,
-        bracelet: 15
+    /* =========================================
+       SETTINGS
+    ========================================= */
+
+    const CONFIG = {
+      whatsappNumber: "27686430043",
+      emailAddress: "sense.ational26@gmail.com"
     };
 
-    const form = document.getElementById("orderForm");
 
-    const scrubQty = document.getElementById("scrubQty");
-    const teaQty = document.getElementById("teaQty");
-    const braceletQty = document.getElementById("braceletQty");
+    const PRODUCTS = {
+      scrub: {
+        name: "Body Scrub",
+        unitPrice: 30,
+        marketPrice: 35,
+        quantityId: "scrubQty",
+        optionId: "scrubScent",
+        optionLabel: "Scent"
+      },
 
-    const orderTotal = document.getElementById("orderTotal");
-    const formError = document.getElementById("formError");
+      tea: {
+        name: "Herbal Iced Tea",
+        unitPrice: 20,
+        marketPrice: 25,
+        quantityId: "teaQty",
+        optionId: "teaFlavor",
+        optionLabel: "Flavour"
+      },
 
-    const confirmation = document.getElementById("orderConfirmation");
-    const confirmationCustomer = document.getElementById("confirmationCustomer");
-    const orderSummaryList = document.getElementById("orderSummaryList");
+      bracelet: {
+        name: "Scented Bracelet",
+        unitPrice: 15,
+        marketPrice: 20,
+        quantityId: "braceletQty",
+        optionId: "braceletScent",
+        optionLabel: "Scent"
+      }
+    };
 
-    const orderReference = document.getElementById("orderReference");
-    const confirmationTotal = document.getElementById("confirmationTotal");
-
-    const whatsappOrderButton = document.getElementById("whatsappOrderButton");
-    const emailOrderButton = document.getElementById("emailOrderButton");
-
-    const bankDetailsText =
-        "Bank: Standard Bank\n" +
-        "Branch Name: ONLINE BANKING\n" +
-        "Branch Code: 7654\n" +
-        "Account Holder: MR SAIHIL S MOODLEY\n" +
-        "Account Number: 10179968791\n" +
-        "Account Type: SAVINGS";
 
     let currentOrder = null;
 
+
+    /* =========================================
+       HELPERS
+    ========================================= */
+
     function money(amount) {
-        return "R" + Number(amount).toFixed(2);
+      return new Intl.NumberFormat("en-ZA", {
+        style: "currency",
+        currency: "ZAR"
+      }).format(amount);
     }
 
-    function getQuantity(input) {
-        const raw = input.value.trim();
 
-        if (raw === "") {
-            return 0;
-        }
+    function getQuantity(productKey) {
+      const product = PRODUCTS[productKey];
 
-        const number = Number(raw);
+      const input = document.getElementById(product.quantityId);
 
-        if (!Number.isInteger(number) || number < 0 || number > 99) {
-            return null;
-        }
+      const rawValue = Number(input.value);
 
-        return number;
+      if (!Number.isFinite(rawValue)) {
+        return 0;
+      }
+
+      return Math.min(
+        50,
+        Math.max(0, Math.floor(rawValue))
+      );
     }
 
-    function getOrderValues() {
-        const scrub = getQuantity(scrubQty);
-        const tea = getQuantity(teaQty);
-        const bracelet = getQuantity(braceletQty);
 
-        if (scrub === null || tea === null || bracelet === null) {
-            return null;
-        }
+    function getSelectedOption(productKey) {
+      const product = PRODUCTS[productKey];
 
-        const total =
-            scrub * prices.scrub +
-            tea * prices.tea +
-            bracelet * prices.bracelet;
-
-        return {
-            scrub,
-            tea,
-            bracelet,
-            total
-        };
+      return document.getElementById(product.optionId).value;
     }
 
-    function updateTotal() {
-        const values = getOrderValues();
 
-        if (!values) {
-            orderTotal.textContent = "Check quantities";
-            return;
+    function getBasket() {
+      const basket = [];
+
+      Object.keys(PRODUCTS).forEach(function(key) {
+
+        const product = PRODUCTS[key];
+
+        const quantity = getQuantity(key);
+
+        if (quantity > 0) {
+
+          const option = getSelectedOption(key);
+
+          basket.push({
+            key: key,
+            name: product.name,
+            quantity: quantity,
+            option: option,
+            optionLabel: product.optionLabel,
+            unitPrice: product.unitPrice,
+            marketPrice: product.marketPrice,
+            subtotal: quantity * product.unitPrice
+          });
+
         }
 
-        orderTotal.textContent = money(values.total);
+      });
+
+      return basket;
     }
 
-    [scrubQty, teaQty, braceletQty].forEach(function (input) {
-        input.addEventListener("input", updateTotal);
-        input.addEventListener("change", updateTotal);
+
+    function getBasketTotal(basket) {
+      return basket.reduce(function(total, item) {
+        return total + item.subtotal;
+      }, 0);
+    }
+
+
+    /* =========================================
+       LIVE BASKET
+    ========================================= */
+
+    function updateBasket() {
+
+      const basket = getBasket();
+
+      const cartLines = document.getElementById("cartLines");
+
+      const cartTotal = document.getElementById("cartTotal");
+
+      if (basket.length === 0) {
+
+        cartLines.innerHTML =
+          '<p class="empty-cart">' +
+          'Your basket is empty. Add a product to begin.' +
+          '</p>';
+
+        cartTotal.textContent = money(0);
+
+        return;
+      }
+
+
+      cartLines.replaceChildren();
+
+
+      basket.forEach(function(item) {
+
+        const row = document.createElement("div");
+
+        row.className = "cart-line";
+
+
+        const description = document.createElement("span");
+
+        description.textContent =
+          item.name +
+          " × " +
+          item.quantity +
+          " (" +
+          item.option +
+          ")";
+
+
+        const price = document.createElement("strong");
+
+        price.textContent = money(item.subtotal);
+
+
+        row.append(description, price);
+
+        cartLines.appendChild(row);
+
+      });
+
+
+      cartTotal.textContent = money(getBasketTotal(basket));
+
+    }
+
+
+    Object.keys(PRODUCTS).forEach(function(key) {
+
+      const product = PRODUCTS[key];
+
+      document
+        .getElementById(product.quantityId)
+        .addEventListener("input", function() {
+
+          const input = this;
+
+          if (input.value !== "") {
+
+            const value = Number(input.value);
+
+            if (Number.isFinite(value)) {
+
+              input.value = Math.min(
+                50,
+                Math.max(0, Math.floor(value))
+              );
+
+            }
+
+          }
+
+          updateBasket();
+
+      });
+
+
+      document
+        .getElementById(product.optionId)
+        .addEventListener("change", updateBasket);
+
     });
 
-    function makeReference() {
-        /*
-         * This reference is generated in the customer's browser.
-         * Without a server or database, global uniqueness cannot
-         * be guaranteed.
-         */
-        const digits = Math.floor(1000 + Math.random() * 9000);
-        return "SEN-" + digits;
+
+    /* =========================================
+       ORDER REFERENCES
+    ========================================= */
+
+    function generateOrderReference() {
+
+      const randomNumber = Math.floor(
+        Math.random() * 10000
+      );
+
+      return "SEN-" + String(randomNumber).padStart(4, "0");
+
     }
 
-    function addSummaryItem(label, quantity, unitPrice, preference) {
-        if (quantity <= 0) {
-            return null;
+
+    /*
+      Important:
+      This static website cannot guarantee globally unique
+      order references. A backend database is needed to
+      generate and store unique references reliably.
+    */
+
+
+    /* =========================================
+       ORDER SUMMARY
+    ========================================= */
+
+    function addDetailLine(container, label, value) {
+
+      const row = document.createElement("div");
+
+      row.className = "order-detail-line";
+
+
+      const labelElement = document.createElement("span");
+
+      labelElement.textContent = label;
+
+
+      const valueElement = document.createElement("strong");
+
+      valueElement.textContent = value;
+
+
+      row.append(labelElement, valueElement);
+
+      container.appendChild(row);
+
+    }
+
+
+    function formatOrderText(order) {
+
+      const lines = [];
+
+      lines.push("SENSE-ATIONAL ORDER SUMMARY");
+
+      lines.push("");
+
+      lines.push("Order reference: " + order.reference);
+
+      lines.push("Customer: " + order.customerName);
+
+      lines.push("Email: " + order.customerEmail);
+
+      lines.push("WhatsApp: " + order.customerPhone);
+
+      lines.push("");
+
+      lines.push("ITEMS");
+
+      order.items.forEach(function(item) {
+
+        lines.push(
+          item.name +
+          " x " +
+          item.quantity +
+          " (" +
+          item.optionLabel +
+          ": " +
+          item.option +
+          ") - " +
+          money(item.subtotal)
+        );
+
+      });
+
+      lines.push("");
+
+      lines.push("TOTAL: " + money(order.total));
+
+      lines.push("");
+
+      lines.push("BANK: Standard Bank");
+
+      lines.push("BRANCH: ONLINE BANKING");
+
+      lines.push("BRANCH CODE: 7654");
+
+      lines.push("ACCOUNT HOLDER: MR SAIHIL S MOODLEY");
+
+      lines.push("ACCOUNT NUMBER: 10179968791");
+
+      lines.push("ACCOUNT TYPE: SAVINGS");
+
+      lines.push("EFT PAYMENT REFERENCE: " + order.reference);
+
+      lines.push("");
+
+      lines.push(
+        "Payment must be manually verified. " +
+        "This summary is not proof of payment."
+      );
+
+      return lines.join("\n");
+
+    }
+
+
+    function showConfirmation(order) {
+
+      const confirmation = document.getElementById("confirmation");
+
+      const details = document.getElementById("orderDetails");
+
+      document.getElementById("orderReference").textContent =
+        order.reference;
+
+      document.getElementById("paymentReference").textContent =
+        order.reference;
+
+      document.getElementById("paymentAmount").textContent =
+        money(order.total);
+
+
+      details.replaceChildren();
+
+
+      addDetailLine(
+        details,
+        "Customer",
+        order.customerName
+      );
+
+      addDetailLine(
+        details,
+        "Email",
+        order.customerEmail
+      );
+
+      addDetailLine(
+        details,
+        "WhatsApp",
+        order.customerPhone
+      );
+
+
+      order.items.forEach(function(item) {
+
+        addDetailLine(
+          details,
+          item.name +
+          " × " +
+          item.quantity +
+          " (" +
+          item.option +
+          ")",
+          money(item.subtotal)
+        );
+
+      });
+
+
+      addDetailLine(
+        details,
+        "Total due",
+        money(order.total)
+      );
+
+
+      const whatsappMessage = [
+        "Hi Sense-ational!",
+        "",
+        "I have placed a preorder and would like to send my proof of payment.",
+        "",
+        "Order reference: " + order.reference,
+        "Customer: " + order.customerName,
+        "Total: " + money(order.total),
+        "",
+        "I will attach my proof of payment here.",
+        "",
+        "Please confirm once my payment has been verified."
+      ].join("\n");
+
+
+      document.getElementById("whatsappProof").href =
+        "https://wa.me/" +
+        CONFIG.whatsappNumber +
+        "?text=" +
+        encodeURIComponent(whatsappMessage);
+
+
+      const emailSubject =
+        "Sense-ational Order " + order.reference;
+
+
+      const emailBody = formatOrderText(order);
+
+
+      document.getElementById("emailOrder").href =
+        "mailto:" +
+        CONFIG.emailAddress +
+        "?subject=" +
+        encodeURIComponent(emailSubject) +
+        "&body=" +
+        encodeURIComponent(emailBody);
+
+
+      confirmation.classList.add("visible");
+
+
+      confirmation.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+    }
+
+
+    /* =========================================
+       COPY TO CLIPBOARD
+    ========================================= */
+
+    async function copyText(text) {
+
+      try {
+
+        if (navigator.clipboard && window.isSecureContext) {
+
+          await navigator.clipboard.writeText(text);
+
+        } else {
+
+          const textarea = document.createElement("textarea");
+
+          textarea.value = text;
+
+          textarea.style.position = "fixed";
+
+          textarea.style.opacity = "0";
+
+          document.body.appendChild(textarea);
+
+          textarea.select();
+
+          const successful = document.execCommand("copy");
+
+          textarea.remove();
+
+          if (!successful) {
+            throw new Error("Copy failed");
+          }
+
         }
 
-        return {
-            label,
-            quantity,
-            unitPrice,
-            preference,
-            subtotal: quantity * unitPrice
-        };
+        return true;
+
+      } catch (error) {
+
+        return false;
+
+      }
+
     }
 
-    function createOrderItems(values) {
-        return [
-            addSummaryItem(
-                "DIY Sugar Body Scrub",
-                values.scrub,
-                prices.scrub,
-                document.getElementById("scrubScent").value
-            ),
 
-            addSummaryItem(
-                "Herbal Iced Tea",
-                values.tea,
-                prices.tea,
-                document.getElementById("teaFlavour").value
-            ),
+    document
+      .getElementById("copyReference")
+      .addEventListener("click", async function() {
 
-            addSummaryItem(
-                "Scented Bracelet",
-                values.bracelet,
-                prices.bracelet,
-                document.getElementById("braceletScent").value
-            )
-        ].filter(Boolean);
-    }
-
-    function renderOrderSummary(order) {
-        orderReference.textContent = order.reference;
-
-        confirmationCustomer.replaceChildren();
-
-        const customerParagraph = document.createElement("p");
-        customerParagraph.textContent =
-            "Customer: " + order.name +
-            " | Email: " + order.email +
-            " | WhatsApp: " + order.phone;
-
-        confirmationCustomer.appendChild(customerParagraph);
-
-        orderSummaryList.replaceChildren();
-
-        order.items.forEach(function (item) {
-            const li = document.createElement("li");
-
-            li.textContent =
-                item.label +
-                " × " + item.quantity +
-                " (" + item.preference + ")" +
-                " — " + money(item.subtotal);
-
-            orderSummaryList.appendChild(li);
-        });
-
-        if (order.notes) {
-            const noteItem = document.createElement("li");
-            noteItem.textContent = "Notes: " + order.notes;
-            orderSummaryList.appendChild(noteItem);
+        if (!currentOrder) {
+          return;
         }
 
-        confirmationTotal.textContent = money(order.total);
+        const success = await copyText(currentOrder.reference);
 
-        const itemLines = order.items.map(function (item) {
-            return (
-                item.label +
-                " x " + item.quantity +
-                " (" + item.preference + ")" +
-                " = " + money(item.subtotal)
-            );
-        });
+        if (success) {
 
-        const message = [
-            "Hello Sense-ational!",
-            "",
-            "I would like to place a preorder.",
-            "",
-            "Order reference: " + order.reference,
-            "Name: " + order.name,
-            "Email: " + order.email,
-            "WhatsApp: " + order.phone,
-            "",
-            "Order:",
-            ...itemLines,
-            "",
-            "Total: " + money(order.total),
-            order.notes ? "Notes: " + order.notes : "",
-            "",
-            "I will use " + order.reference +
-                " as my EFT payment reference.",
-            "I will send proof of payment once the transfer is made."
-        ].filter(Boolean).join("\n");
+          this.textContent = "Copied!";
 
-        whatsappOrderButton.href =
-            "https://wa.me/27686430043?text=" +
-            encodeURIComponent(message);
+        } else {
 
-        const emailSubject =
-            "Sense-ational Preorder — " + order.reference;
+          window.prompt(
+            "Copy your order reference:",
+            currentOrder.reference
+          );
 
-        const emailBody = message;
+        }
 
-        emailOrderButton.href =
-            "mailto:sense.ational26@gmail.com" +
-            "?subject=" + encodeURIComponent(emailSubject) +
-            "&body=" + encodeURIComponent(emailBody);
+        const button = this;
 
-        confirmation.classList.remove("hidden");
-    }
+        window.setTimeout(function() {
+          button.textContent = "Copy Reference";
+        }, 1800);
 
-    form.addEventListener("submit", function (event) {
+      });
+
+
+    document
+      .getElementById("copyBankDetails")
+      .addEventListener("click", async function() {
+
+        if (!currentOrder) {
+          return;
+        }
+
+
+        const bankDetails = [
+          "Sense-ational EFT Payment Details",
+          "",
+          "Bank: Standard Bank",
+          "Branch: ONLINE BANKING",
+          "Branch code: 7654",
+          "Account holder: MR SAIHIL S MOODLEY",
+          "Account number: 10179968791",
+          "Account type: SAVINGS",
+          "Amount: " + money(currentOrder.total),
+          "Payment reference: " + currentOrder.reference
+        ].join("\n");
+
+
+        const success = await copyText(bankDetails);
+
+
+        if (success) {
+
+          this.textContent = "EFT Details Copied!";
+
+        } else {
+
+          window.prompt(
+            "Copy the EFT details below:",
+            bankDetails
+          );
+
+        }
+
+
+        const button = this;
+
+        window.setTimeout(function() {
+
+          button.textContent = "Copy EFT Details";
+
+        }, 2000);
+
+      });
+
+
+    /* =========================================
+       SUBMIT ORDER
+    ========================================= */
+
+    document
+      .getElementById("orderForm")
+      .addEventListener("submit", function(event) {
+
         event.preventDefault();
 
-        formError.classList.add("hidden");
-        formError.textContent = "";
 
-        if (!form.reportValidity()) {
-            return;
+        const errorElement = document.getElementById("formError");
+
+        errorElement.textContent = "";
+
+
+        const customerName =
+          document.getElementById("customerName").value.trim();
+
+        const customerEmail =
+          document.getElementById("customerEmail").value.trim();
+
+        const customerPhone =
+          document.getElementById("customerPhone").value.trim();
+
+
+        const basket = getBasket();
+
+
+        if (!customerName || !customerEmail || !customerPhone) {
+
+          errorElement.textContent =
+            "Please complete all your contact details.";
+
+          return;
+
         }
 
-        const values = getOrderValues();
 
-        if (!values) {
-            formError.textContent =
-                "Please enter a whole number between 0 and 99 for each quantity.";
+        if (!document.getElementById("customerEmail").checkValidity()) {
 
-            formError.classList.remove("hidden");
-            return;
+          errorElement.textContent =
+            "Please enter a valid email address.";
+
+          return;
+
         }
 
-        const items = createOrderItems(values);
 
-        if (items.length === 0) {
-            formError.textContent =
-                "Please select at least one product by setting its quantity to 1 or more.";
+        if (basket.length === 0) {
 
-            formError.classList.remove("hidden");
-            return;
+          errorElement.textContent =
+            "Please select at least one product before confirming your order.";
+
+          return;
+
         }
 
-        const name = document.getElementById("customerName").value.trim();
-        const email = document.getElementById("customerEmail").value.trim();
-        const phone = document.getElementById("customerPhone").value.trim();
-        const notes = document.getElementById("orderNotes").value.trim();
 
-        if (!name || !email || !phone) {
-            formError.textContent =
-                "Please complete your name, email address and WhatsApp number.";
+        const total = getBasketTotal(basket);
 
-            formError.classList.remove("hidden");
-            return;
+
+        if (total <= 0) {
+
+          errorElement.textContent =
+            "Your basket total must be greater than zero.";
+
+          return;
+
         }
+
 
         currentOrder = {
-            reference: makeReference(),
-            name,
-            email,
-            phone,
-            notes,
-            items,
-            total: values.total
+
+          reference: generateOrderReference(),
+
+          customerName: customerName,
+
+          customerEmail: customerEmail,
+
+          customerPhone: customerPhone,
+
+          items: basket,
+
+          total: total,
+
+          createdAt: new Date().toISOString()
+
         };
 
-        renderOrderSummary(currentOrder);
 
-        confirmation.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
+        showConfirmation(currentOrder);
+
+      });
+
+
+    /* =========================================
+       START A NEW ORDER
+    ========================================= */
+
+    document
+      .getElementById("newOrder")
+      .addEventListener("click", function() {
+
+        currentOrder = null;
+
+
+        document.getElementById("orderForm").reset();
+
+
+        document.getElementById("formError").textContent = "";
+
+
+        document
+          .getElementById("confirmation")
+          .classList.remove("visible");
+
+
+        updateBasket();
+
+
+        document.getElementById("preorder").scrollIntoView({
+          behavior: "smooth",
+          block: "start"
         });
+
+      });
+
+
+    /* =========================================
+       MOBILE NAVIGATION
+    ========================================= */
+
+    const navToggle = document.getElementById("navToggle");
+
+    const navLinks = document.getElementById("navLinks");
+
+
+    navToggle.addEventListener("click", function() {
+
+      const isOpen = navLinks.classList.toggle("open");
+
+      navToggle.setAttribute("aria-expanded", String(isOpen));
+
     });
 
-    document.getElementById("copyReferenceButton")
-        .addEventListener("click", async function () {
 
-            if (!currentOrder) {
-                return;
-            }
+    navLinks.querySelectorAll("a").forEach(function(link) {
 
-            const button = this;
+      link.addEventListener("click", function() {
 
-            try {
-                await navigator.clipboard.writeText(currentOrder.reference);
-                button.textContent = "Reference Copied!";
-            } catch (error) {
-                window.prompt(
-                    "Copy your order reference:",
-                    currentOrder.reference
-                );
+        navLinks.classList.remove("open");
 
-                button.textContent = "Reference Shown";
-            }
+        navToggle.setAttribute("aria-expanded", "false");
 
-            window.setTimeout(function () {
-                button.textContent = "Copy Reference";
-            }, 2200);
-        });
+      });
 
-    document.getElementById("copyBankButton")
-        .addEventListener("click", async function () {
+    });
 
-            const button = this;
-            const message = document.getElementById("bankCopyMessage");
 
-            try {
-                await navigator.clipboard.writeText(bankDetailsText);
-
-                message.textContent = "Bank details copied.";
-                button.textContent = "Bank Details Copied!";
-
-            } catch (error) {
-
-                window.prompt(
-                    "Copy the bank details below:",
-                    bankDetailsText
-                );
-
-                message.textContent =
-                    "Copy the details shown in the prompt.";
-
-            }
-
-            window.setTimeout(function () {
-                button.textContent = "Copy Bank Details";
-            }, 2200);
-        });
+    /* =========================================
+       FOOTER YEAR
+    ========================================= */
 
     document.getElementById("currentYear").textContent =
-        new Date().getFullYear();
+      new Date().getFullYear();
 
-    updateTotal();
 
-})();
-</script>
+    /* =========================================
+       INITIALISE
+    ========================================= */
+
+    updateBasket();
+
+  </script>
 
 </body>
 </html>
