@@ -609,6 +609,26 @@
       gap: 10px;
       margin: 8px 0 20px;
     }
+    /* Expandable product details */
+
+.stall-details {
+  margin-bottom: 18px;
+}
+
+.stall-details summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--green);
+  padding: 10px 0;
+}
+
+.stall-details summary:hover {
+  opacity: 0.8;
+}
+
+.stall-details[open] summary {
+  margin-bottom: 10px;
+}
 
     .stall-card li {
       color: var(--muted);
@@ -1980,6 +2000,10 @@
 
             <h3>Touch — Body Scrub</h3>
 
+                      <details class="stall-details">
+
+            <summary>View Details</summary>
+
             <p>
               Treat your senses to a textured sugar body scrub
               designed for a refreshing, hands-on experience.
@@ -2001,6 +2025,7 @@
 
             </ul>
 
+          </details>
             <div class="price-panel">
 
               <div class="market-price">
