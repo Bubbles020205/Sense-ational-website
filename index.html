@@ -573,243 +573,103 @@
       font-weight: 900;
     }
 
-/* ========================================
-   STALL GRID
-======================================== */
+    /* =========================================
+       STALLS
+    ========================================= */
+
+    .stall-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .stall-card {
+      overflow: hidden;
+      padding: 25px;
+
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stall-card p {
+      margin-bottom: 18px;
+    }
+
+    .stall-card .icon-box {
+      margin-bottom: 17px;
+    }
+
+    .stall-card h3 {
+      font-size: 1.3rem;
+    }
+
+    .stall-card ul {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      margin: 8px 0 20px;
+    }
+
+    .stall-card li {
+      color: var(--muted);
+      font-size: 0.9rem;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .stall-card li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 10px;
+
+      width: 7px;
+      height: 7px;
+
+      background: var(--red);
+      border-radius: 50%;
+    }
+
+    .price-panel {
+      margin-top: auto;
+      background: var(--cream);
+      border-radius: 16px;
+      padding: 15px;
+    }
+
+    .market-price {
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .market-price s {
+      color: var(--red);
+      font-weight: 700;
+    }
+
+    .preorder-price {
+      font-size: 1.3rem;
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    .price-note {
+      font-size: 0.74rem;
+      margin-top: 3px;
+    }
+
+    .market-only {
+      display: inline-block;
+      padding: 7px 11px;
+
+      background: var(--red-light);
+      color: var(--red);
+
+      border-radius: 20px;
+      font-weight: 800;
+      font-size: 0.76rem;
+    }
 
-/* STALL GRID — DESKTOP */
-
-.stall-grid {
-  display: grid;
-
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-
-  gap: 20px;
-
-  width: 100%;
-  max-width: 1200px;
-
-  margin: 0 auto;
-}
-
-/* ========================================
-   STALL CARDS
-======================================== */
-
-.stall-card {
-  overflow: hidden;
-  padding: 25px;
-
-  display: flex;
-  flex-direction: column;
-
-  height: 100%;
-}
-
-.stall-card p {
-  margin-bottom: 18px;
-}
-
-.stall-card .icon-box {
-  margin-bottom: 17px;
-}
-
-.stall-card h3 {
-  font-size: 1.3rem;
-}
-
-
-/* ========================================
-   STALL PRODUCT LISTS
-======================================== */
-
-.stall-card ul {
-  list-style: none;
-
-  display: grid;
-  gap: 10px;
-
-  margin: 8px 0 20px;
-  padding: 0;
-}
-
-.stall-card li {
-  color: var(--muted);
-  font-size: 0.9rem;
-
-  padding-left: 18px;
-  position: relative;
-}
-
-.stall-card li::before {
-  content: "";
-
-  position: absolute;
-  left: 0;
-  top: 10px;
-
-  width: 7px;
-  height: 7px;
-
-  background: var(--red);
-  border-radius: 50%;
-}
-
-
-/* ========================================
-   STALL DETAILS DROPDOWN
-======================================== */
-
-.stall-details {
-  margin-top: 12px;
-}
-
-/* Clickable dropdown heading */
-
-.stall-details summary {
-  cursor: pointer;
-
-  padding: 12px 16px;
-
-  background: var(--cream);
-  color: var(--green);
-
-  border-radius: 12px;
-
-  font-weight: 800;
-  font-size: 0.9rem;
-
-  list-style: none;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  transition: background 0.25s ease;
-}
-
-/* Remove default browser arrow */
-
-.stall-details summary::-webkit-details-marker {
-  display: none;
-}
-
-/* Custom plus icon */
-
-.stall-details summary::after {
-  content: "+";
-
-  font-size: 1.3rem;
-  font-weight: 900;
-}
-
-/* Change plus to minus when opened */
-
-.stall-details[open] summary::after {
-  content: "−";
-}
-
-/* Hover effect */
-
-.stall-details summary:hover {
-  background: var(--red-light);
-}
-
-/* Spacing inside dropdown */
-
-.stall-details ul {
-  margin: 18px 0 20px;
-}
-
-/* Dropdown paragraphs */
-
-.stall-details p {
-  margin-bottom: 10px;
-}
-
-
-/* ========================================
-   PRICE PANEL
-======================================== */
-
-.price-panel {
-  margin-top: auto;
-
-  background: var(--cream);
-  border-radius: 16px;
-
-  padding: 15px;
-}
-
-/* Keep price panel inside the dropdown */
-
-.stall-details .price-panel {
-  margin-top: 15px;
-}
-
-/* Market price */
-
-.market-price {
-  font-size: 0.86rem;
-  color: var(--muted);
-}
-
-.market-price s {
-  color: var(--red);
-  font-weight: 700;
-}
-
-/* Preorder price */
-
-.preorder-price {
-  font-size: 1.3rem;
-  color: var(--green);
-  font-weight: 900;
-}
-
-/* Price note */
-
-.price-note {
-  font-size: 0.74rem;
-  margin-top: 3px;
-}
-
-
-/* ========================================
-   MARKET DAY ONLY LABEL
-======================================== */
-
-.market-only {
-  display: inline-block;
-
-  padding: 7px 11px;
-
-  background: var(--red-light);
-  color: var(--red);
-
-  border-radius: 20px;
-
-  font-weight: 800;
-  font-size: 0.76rem;
-}
-
-
-/* ========================================
-   STALL GRID — RESPONSIVE LAYOUT
-======================================== */
-
-.stall-grid {
-  display: grid;
-
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-
-  gap: 28px;
-
-  width: 100%;
-  max-width: 1050px;
-
-  margin: 0 auto;
-}
     /* =========================================
        R100 SPECIAL
     ========================================= */
@@ -1385,27 +1245,28 @@
        RESPONSIVE DESIGN
     ========================================= */
 
-   /* TABLET LAYOUT */
+    @media (max-width: 1000px) {
+      .nav-links {
+        gap: 12px;
+      }
 
-@media (max-width: 900px) {
-  .stall-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
-  }
-}
+      .nav-links a {
+        font-size: 0.77rem;
+      }
 
-/* MOBILE LAYOUT */
+      .hero-grid {
+        gap: 25px;
+      }
 
-@media (max-width: 600px) {
-  .stall-grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
+      .stall-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
 
-  .stall-card {
-    padding: 20px;
-  }
-}
+    @media (max-width: 800px) {
+      section {
+        padding: 65px 18px;
+      }
 
       .nav-inner {
         min-height: 70px;
@@ -2107,44 +1968,37 @@
 
         <div class="stall-grid">
 
-    <!-- STALL GRID -->
+          <!-- TOUCH -->
 
-<section class="stalls-section" id="stalls">
+          <article class="glass-card stall-card">
 
-  <div class="container">
+            <div class="icon-box">
+              <svg class="icon icon-large">
+                <use href="#icon-hand"></use>
+              </svg>
+            </div>
 
-    <div class="stall-grid">
+            <h3>Touch — Body Scrub</h3>
 
-      <!-- TOUCH -->
-
-      <article class="glass-card stall-card">
-
-        <div class="icon-box">
-          <svg class="icon icon-large">
-            <use href="#icon-hand"></use>
-          </svg>
-        </div>
-
-        <h3>Touch — Body Scrub</h3>
-
-        <p>
-          Treat your senses to a textured sugar body scrub
-          designed for a refreshing, hands-on experience.
-        </p>
-
-        <details class="stall-details">
-
-          <summary>View Products &amp; Prices</summary>
-
-          <div class="stall-details-content">
+            <p>
+              Treat your senses to a textured sugar body scrub
+              designed for a refreshing, hands-on experience.
+            </p>
 
             <ul>
+
               <li>100 ml body scrub</li>
+
               <li>Vanilla</li>
+
               <li>Cinnamon</li>
+
               <li>Lavender</li>
+
               <li>Peppermint</li>
+
               <li>Hibiscus</li>
+
             </ul>
 
             <div class="price-panel">
@@ -2164,43 +2018,40 @@
 
             </div>
 
-          </div>
-
-        </details>
-
-      </article>
+          </article>
 
 
-      <!-- TASTE -->
+          <!-- TASTE -->
 
-      <article class="glass-card stall-card">
+          <article class="glass-card stall-card">
 
-        <div class="icon-box">
-          <svg class="icon icon-large">
-            <use href="#icon-cup"></use>
-          </svg>
-        </div>
+            <div class="icon-box">
+              <svg class="icon icon-large">
+                <use href="#icon-cup"></use>
+              </svg>
+            </div>
 
-        <h3>Taste — Herbal Iced Tea</h3>
+            <h3>Taste — Herbal Iced Tea</h3>
 
-        <p>
-          Cool down with our selection of herbal-inspired
-          iced teas, created for a refreshing sensory experience.
-        </p>
-
-        <details class="stall-details">
-
-          <summary>View Flavours &amp; Prices</summary>
-
-          <div class="stall-details-content">
+            <p>
+              Cool down with our selection of herbal-inspired
+              iced teas, created for a refreshing sensory experience.
+            </p>
 
             <ul>
+
               <li>Lemon</li>
+
               <li>Hibiscus</li>
+
               <li>Camomile</li>
+
               <li>Mint</li>
+
               <li>Vanilla</li>
+
               <li>Cinnamon</li>
+
             </ul>
 
             <div class="price-panel">
@@ -2220,44 +2071,42 @@
 
             </div>
 
-          </div>
-
-        </details>
-
-      </article>
+          </article>
 
 
-      <!-- SMELL -->
+          <!-- SMELL -->
 
-      <article class="glass-card stall-card">
+          <article class="glass-card stall-card">
 
-        <div class="icon-box">
-          <svg class="icon icon-large">
-            <use href="#icon-leaf"></use>
-          </svg>
-        </div>
+            <div class="icon-box">
+              <svg class="icon icon-large">
+                <use href="#icon-leaf"></use>
+              </svg>
+            </div>
 
-        <h3>Smell — Scented Bracelets</h3>
+            <h3>Smell — Scented Bracelets</h3>
 
-        <p>
-          Discover botanical-inspired scents with our
-          scented bracelets. Choose an aroma that suits you.
-        </p>
-
-        <details class="stall-details">
-
-          <summary>View Scents &amp; Prices</summary>
-
-          <div class="stall-details-content">
+            <p>
+              Discover botanical-inspired scents with our
+              scented bracelets. Choose an aroma that suits you.
+            </p>
 
             <ul>
+
               <li>Lavender</li>
+
               <li>Cinnamon</li>
+
               <li>Moringa</li>
+
               <li>Eucalyptus</li>
+
               <li>Tea tree</li>
+
               <li>Orange</li>
+
               <li>Peppermint</li>
+
             </ul>
 
             <div class="price-panel">
@@ -2277,42 +2126,37 @@
 
             </div>
 
-          </div>
-
-        </details>
-
-      </article>
+          </article>
 
 
-      <!-- SIGHT -->
+          <!-- SIGHT -->
 
-      <article class="glass-card stall-card">
+          <article class="glass-card stall-card">
 
-        <div class="icon-box">
-          <svg class="icon icon-large">
-            <use href="#icon-eye"></use>
-          </svg>
-        </div>
+            <div class="icon-box">
+              <svg class="icon icon-large">
+                <use href="#icon-eye"></use>
+              </svg>
+            </div>
 
-        <h3>Sight — Memory Challenge</h3>
+            <h3>Sight — Memory Challenge</h3>
 
-        <p>
-          Think you notice every detail? Test your memory,
-          sharpen your observation skills and challenge
-          yourself to identify what has changed.
-        </p>
-
-        <details class="stall-details">
-
-          <summary>View Game Rules &amp; Price</summary>
-
-          <div class="stall-details-content">
+            <p>
+              Think you notice every detail? Test your memory,
+              sharpen your observation skills and challenge
+              yourself to identify what has changed.
+            </p>
 
             <ul>
+
               <li>Observe the cards for 20 seconds.</li>
+
               <li>Identify the missing card.</li>
+
               <li>Progress through the rounds.</li>
+
               <li>Earn five points for each successful round.</li>
+
             </ul>
 
             <div class="price-panel">
@@ -2331,42 +2175,38 @@
 
             </div>
 
-          </div>
-
-        </details>
-
-      </article>
+          </article>
 
 
-      <!-- SOUND -->
+          <!-- SOUND -->
 
-      <article class="glass-card stall-card">
+          <article class="glass-card stall-card">
 
-        <div class="icon-box">
-          <svg class="icon icon-large">
-            <use href="#icon-sound"></use>
-          </svg>
-        </div>
+            <div class="icon-box">
+              <svg class="icon icon-large">
+                <use href="#icon-sound"></use>
+              </svg>
+            </div>
 
-        <h3>Sound — Wire Buzzing Game</h3>
+            <h3>Sound — Wire Buzzing Game</h3>
 
-        <p>
-          Keep your hand steady and your concentration sharp.
-          Navigate the wire without triggering the buzzer.
-        </p>
-
-        <details class="stall-details">
-
-          <summary>View Game Rules &amp; Price</summary>
-
-          <div class="stall-details-content">
+            <p>
+              Keep your hand steady and your concentration sharp.
+              Navigate the wire without triggering the buzzer.
+            </p>
 
             <ul>
+
               <li>Round 1: 30 seconds for 15 points.</li>
+
               <li>Buzzing costs five points.</li>
+
               <li>Complete the round without buzzing to advance.</li>
+
               <li>Round 2: 20 seconds.</li>
+
               <li>Round 3: 10 seconds.</li>
+
             </ul>
 
             <div class="price-panel">
@@ -2385,41 +2225,35 @@
 
             </div>
 
-          </div>
-
-        </details>
-
-      </article>
+          </article>
 
 
-      <!-- TEA BOMBS -->
+          <!-- TEA BOMBS -->
 
-      <article class="glass-card stall-card">
+          <article class="glass-card stall-card">
 
-        <div class="icon-box">
-          <svg class="icon icon-large">
-            <use href="#icon-sparkles"></use>
-          </svg>
-        </div>
+            <div class="icon-box">
+              <svg class="icon icon-large">
+                <use href="#icon-sparkles"></use>
+              </svg>
+            </div>
 
-        <h3>Tea Bombs — A Special Treat</h3>
+            <h3>Tea Bombs — A Special Treat</h3>
 
-        <p>
-          Tea bombs feature a hard candy shell containing
-          loose-leaf tea, herbs and dried edible flowers.
-          Place one into hot water and watch your tea unfold.
-        </p>
-
-        <details class="stall-details">
-
-          <summary>Discover Your Sensory Surprise</summary>
-
-          <div class="stall-details-content">
+            <p>
+              Tea bombs feature a hard candy shell containing
+              loose-leaf tea, herbs and dried edible flowers.
+              Place one into hot water and watch your tea unfold.
+            </p>
 
             <ul>
+
               <li>A fun tea-making experience.</li>
+
               <li>Herbal and floral inspiration.</li>
+
               <li>A special reward for eligible stamp-card holders.</li>
+
             </ul>
 
             <div class="price-panel">
@@ -2435,17 +2269,14 @@
 
             </div>
 
-          </div>
+          </article>
 
-        </details>
+        </div>
 
-      </article>
+      </div>
 
-    </div>
+    </section>
 
-  </div>
-
-</section>
 
     <!-- R100 SPECIAL -->
 
