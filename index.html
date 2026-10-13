@@ -100,10 +100,11 @@ background:
       outline-offset: 4px;
     }
 
-    .container {
-      width: min(1160px, 92%);
-      margin-inline: auto;
-    }
+.container {
+width: min(1160px, 92%);
+margin-inline: auto;
+box-sizing: border-box;
+}
 
     /* ==============================
        HEADER AND SPACED NAVIGATION
@@ -113,6 +114,8 @@ background:
       position: sticky;
       top: 0;
       z-index: 100;
+        width: 100%;
+  box-sizing: border-box;
 
       background: rgba(255, 253, 245, 0.76);
 
