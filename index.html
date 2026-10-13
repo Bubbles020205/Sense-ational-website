@@ -578,6 +578,73 @@
     ========================================= */
 
     .stall-grid {
+      /* STALL DETAILS DROPDOWN */
+
+.stall-details {
+  margin-top: 12px;
+}
+
+/* Clickable dropdown heading */
+
+.stall-details summary {
+  cursor: pointer;
+
+  padding: 12px 16px;
+
+  background: var(--cream);
+  color: var(--green);
+
+  border-radius: 12px;
+
+  font-weight: 800;
+  font-size: 0.9rem;
+
+  list-style: none;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  transition: 0.25s ease;
+}
+
+/* Remove default browser arrow */
+
+.stall-details summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Add our own arrow */
+
+.stall-details summary::after {
+  content: "+";
+  font-size: 1.3rem;
+  font-weight: 900;
+}
+
+/* Change arrow when opened */
+
+.stall-details[open] summary::after {
+  content: "−";
+}
+
+/* Hover effect */
+
+.stall-details summary:hover {
+  transform: translateY(-2px);
+}
+
+/* Dropdown content spacing */
+
+.stall-details ul {
+  margin-top: 18px;
+}
+
+/* Keep the price panel inside the dropdown */
+
+.stall-details .price-panel {
+  margin-top: 15px;
+}
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 22px;
