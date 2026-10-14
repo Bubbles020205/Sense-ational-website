@@ -746,7 +746,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 5px;
 
   font-size: 2.4rem;
   font-weight: 950;
@@ -757,11 +757,16 @@
 
 .special-badge small {
   display: block;
-  font-size: 0.65rem;
+  font-size: 0.58rem;
   line-height: 1.2;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0;
   white-space: nowrap;
+}
+
+.special-badge small:last-child {
+  font-size: 0.52rem;
+  letter-spacing: -0.3px;
 }
     .special-items {
       display: flex;
