@@ -2520,68 +2520,109 @@
                 </div>
 
 
-                <!-- TEA -->
+               <!-- TEA -->
 
-                <div class="order-product">
+<div class="order-product">
 
-                  <div class="order-product-top">
+  <div class="order-product-top">
+    <div>
+      <h4>Taste — Herbal Iced Tea</h4>
+      <small>
+        Market Day: R25–R35 |
+        Pre-order: R20–R30
+      </small>
+    </div>
 
-                    <div>
+    <div class="product-price">
+      From R20
+    </div>
+  </div>
 
-                      <h4>Taste — Herbal Iced Tea</h4>
+  <!-- TEA BASE -->
 
-                      <small>
-                        Market Day: R25 |
-                        Pre-order: R20
-                      </small>
+  <label for="teaBase">
+    Choose your tea base
+  </label>
 
-                    </div>
+  <select id="teaBase" name="teaBase">
+    <option value="" selected disabled>
+      Select a tea base
+    </option>
+    <option value="Rooibos">Rooibos</option>
+    <option value="Five Roses">Five Roses</option>
+  </select>
 
-                    <div class="product-price">
-                      R20 each
-                    </div>
+  <!-- FLAVOUR -->
 
-                  </div>
+  <label for="teaFlavor">
+    Choose your flavour
+  </label>
 
-                  <label for="teaFlavor">
-                    Choose your flavour
-                  </label>
+  <select id="teaFlavor" name="teaFlavor">
+    <option value="" selected disabled>
+      Select a flavour
+    </option>
+    <option value="Blueberry Hibiscus">
+      Blueberry Hibiscus
+    </option>
+    <option value="Lime & Lemongrass">
+      Lime &amp; Lemongrass
+    </option>
+    <option value="Strawberry & Mint">
+      Strawberry &amp; Mint
+    </option>
+    <option value="Lemon & Passion Fruit">
+      Lemon &amp; Passion Fruit
+    </option>
+    <option value="Peach">
+      Peach
+    </option>
+  </select>
 
-                  <select id="teaFlavor" name="teaFlavor">
+  <!-- RED BULL UPGRADE -->
 
-                    <option value="Lemon">Lemon</option>
+  <label class="tea-upgrade-option"
+         for="teaRedBull"
+         style="display:flex; align-items:center; gap:10px; margin-top:14px;">
 
-                    <option value="Hibiscus">Hibiscus</option>
+    <input
+      type="checkbox"
+      id="teaRedBull"
+      name="teaRedBull"
+      value="yes"
+      style="width:auto; margin:0;"
+    >
 
-                    <option value="Camomile">Camomile</option>
+    <span>
+      Add Red Bull
+      <strong>(+R10)</strong>
+    </span>
 
-                    <option value="Mint">Mint</option>
+  </label>
 
-                    <option value="Vanilla">Vanilla</option>
+  <p class="price-note">
+    Regular tea: R20 preorder / R25 on Market Day.
+    With Red Bull: R30 preorder / R35 on Market Day.
+  </p>
 
-                    <option value="Cinnamon">Cinnamon</option>
+  <!-- QUANTITY -->
 
-                  </select>
+  <div class="quantity-row">
+    <label for="teaQty">
+      Quantity
+    </label>
 
-                  <div class="quantity-row">
+    <input
+      type="number"
+      id="teaQty"
+      min="0"
+      max="50"
+      step="1"
+      value="0"
+    >
+  </div>
 
-                    <label for="teaQty">
-                      Quantity
-                    </label>
-
-                    <input
-                      type="number"
-                      id="teaQty"
-                      min="0"
-                      max="50"
-                      step="1"
-                      value="0"
-                    >
-
-                  </div>
-
-                </div>
-
+</div>
 
                 <!-- BRACELET -->
 
@@ -3333,13 +3374,15 @@
       },
 
       tea: {
-        name: "Herbal Iced Tea",
-        unitPrice: 20,
-        marketPrice: 25,
-        quantityId: "teaQty",
-        optionId: "teaFlavor",
-        optionLabel: "Flavour"
-      },
+  name: "Herbal Iced Tea",
+  unitPrice: 20,
+  marketPrice: 25,
+  quantityId: "teaQty",
+  optionId: "teaFlavor",
+  optionLabel: "Tea selections",
+  baseId: "teaBase",
+  redBullId: "teaRedBull"
+},
 
       bracelet: {
         name: "Scented Bracelet",
@@ -3392,37 +3435,70 @@
     }
 
 
-    function getBasket() {
-      const basket = [];
+   function getBasket() {
+  const basket = [];
 
-      Object.keys(PRODUCTS).forEach(function(key) {
+  Object.keys(PRODUCTS).forEach(function(key) {
+    const product = PRODUCTS[key];
+    const quantity = getQuantity(key);
 
-        const product = PRODUCTS[key];
-
-        const quantity = getQuantity(key);
-
-        if (quantity > 0) {
-
-          const option = getSelectedOption(key);
-
-          basket.push({
-            key: key,
-            name: product.name,
-            quantity: quantity,
-            option: option,
-            optionLabel: product.optionLabel,
-            unitPrice: product.unitPrice,
-            marketPrice: product.marketPrice,
-            subtotal: quantity * product.unitPrice
-          });
-
-        }
-
-      });
-
-      return basket;
+    if (quantity <= 0) {
+      return;
     }
 
+    let option = getSelectedOption(key);
+    let unitPrice = product.unitPrice;
+    let marketPrice = product.marketPrice;
+
+    const item = {
+      key: key,
+      name: product.name,
+      quantity: quantity,
+      option: option,
+      optionLabel: product.optionLabel,
+      unitPrice: unitPrice,
+      marketPrice: marketPrice,
+      subtotal: 0
+    };
+
+    if (key === "tea") {
+      const teaBase = document.getElementById(
+        product.baseId
+      ).value;
+
+      const teaFlavor = document.getElementById(
+        product.optionId
+      ).value;
+
+      const redBull = document.getElementById(
+        product.redBullId
+      ).checked;
+
+      item.teaBase = teaBase;
+      item.teaFlavor = teaFlavor;
+      item.redBull = redBull;
+
+      item.option = [
+        teaBase || "Base not selected",
+        teaFlavor || "Flavour not selected",
+        redBull ? "With Red Bull" : "Without Red Bull"
+      ].join(" — ");
+
+      if (redBull) {
+        unitPrice += 10;
+        marketPrice += 10;
+      }
+    }
+
+    item.unitPrice = unitPrice;
+    item.marketPrice = marketPrice;
+    item.subtotal = quantity * unitPrice;
+
+    basket.push(item);
+  });
+
+  return basket;
+}
 
     function getBasketTotal(basket) {
       return basket.reduce(function(total, item) {
@@ -3529,6 +3605,14 @@
         .addEventListener("change", updateBasket);
 
     });
+    
+    document
+  .getElementById("teaBase")
+  .addEventListener("change", updateBasket);
+
+document
+  .getElementById("teaRedBull")
+  .addEventListener("change", updateBasket);
 
 
     /* =========================================
@@ -3947,6 +4031,19 @@
           return;
 
         }
+        const teaOrder = basket.find(function(item) {
+  return item.key === "tea";
+});
+
+if (
+  teaOrder &&
+  (!teaOrder.teaBase || !teaOrder.teaFlavor)
+) {
+  errorElement.textContent =
+    "Please choose a tea base and flavour for your iced tea.";
+
+  return;
+}
 
 
         const total = getBasketTotal(basket);
@@ -3999,13 +4096,25 @@ formError.textContent = "";
           customerEmail: customerEmail,
           customerPhone: customerPhone,
 
-          items: basket.map(function(item) {
-            return {
-              key: item.key,
-              quantity: item.quantity,
-              option: item.option
-            };
-          })
+       items: basket.map(function(item) {
+  return {
+    key: item.key,
+    quantity: item.quantity,
+    option: item.option,
+
+    teaBase: item.key === "tea"
+      ? item.teaBase
+      : "",
+
+    teaFlavor: item.key === "tea"
+      ? item.teaFlavor
+      : "",
+
+    redBull: item.key === "tea"
+      ? item.redBull
+      : false
+  };
+})
         })
       }
     );
